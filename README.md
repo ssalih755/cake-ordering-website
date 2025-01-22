@@ -14,4 +14,9 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-This is a test readme file
+Welcome to my GitHub! I'm just getting started as a software developer and can't wait to showcase the projects I'm working on. Here's a little about me:
+
+🌱 Currently exploring: Fullstack development with TechElevator!
+🛠️ Skills I'm building: HTML, CSS, javaScript, Java & C#.
+🎯 What drives me: Building cool projects.
+
