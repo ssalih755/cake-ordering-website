@@ -1,7 +1,9 @@
-node_modules
-/dist
-
-# Visual Studio/.NET
+# ignore temporary file created by Learn
+preview-curriculum.zip
+autoconfig.yaml
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
 *.obj
 *.exe
 *.pdb
@@ -21,7 +23,6 @@ node_modules
 *.log
 *.dll
 !TechElevator*.dll
-!TestingLibrary.dll
 *.lib
 *.sbr
 bin/
@@ -29,13 +30,29 @@ obj/
 packages/
 .vs/
 
-# IntelliJ IDEA
+.DS_Store
+node_modules
+/dist
+
+# Add any directories, files, or patterns you don't want to be tracked by version control
+
+# Eclipse
+.classpath
+.project
+.settings
+target/
+
+### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
-target/
 
+# .NET
+obj/
+bin/
+.vs/
+*.user
 
 # local env files
 .env.local
@@ -47,19 +64,17 @@ yarn-debug.log*
 yarn-error.log*
 
 # Editor directories and files
+.idea
 .vscode
+*.suo
 *.ntvs*
 *.njsproj
 *.sw*
 *.jfm
+
 
 # Cypress e2e Testing
 cypress/screenshots
 cypress/videos
 /tests/e2e/videos/
 /tests/e2e/screenshots/
-
-# OS files
-Thumbs.db
-.DS_Store
-desktop.ini
