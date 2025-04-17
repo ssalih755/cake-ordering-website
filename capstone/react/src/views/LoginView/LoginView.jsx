@@ -16,6 +16,8 @@ export default function LoginView({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -42,10 +44,14 @@ export default function LoginView({ onLogin }) {
         setNotification({ type: 'error', message: message });
       });
   }
-
+  
   return (
-    <div id="view-login">
-      <h2>Login</h2>
+
+    <div id="view-login" className={styles.viewLogin} >
+      
+
+      <h2>Login</h2> 
+      
 
       <Notification notification={notification} clearNotification={() => setNotification(null)} />
 
