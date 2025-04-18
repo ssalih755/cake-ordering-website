@@ -8,7 +8,7 @@ import RegisterView from "./views/RegisterView/RegisterView";
 import UserProfileView from "./views/UserProfileView/UserProfileView";
 import MainNav from "./components/MainNav/MainNav";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import HomeView from "./views/HomeView/HomeView";     
 import axios from "axios";
 
 export default function App() {
@@ -59,6 +59,7 @@ export default function App() {
           <MainNav />
           <main id="main-content">
             <Routes>
+              <Route path="/" element={<HomeView />} />
               <Route
                 path="/login"
                 element={<LoginView onLogin={handleLogin} />}
