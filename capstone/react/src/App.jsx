@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 import AuthService from "./services/AuthService";
-import HomeView from "./views/HomeView/HomeView";
 import LoginView from "./views/LoginView/LoginView";
 import LogoutView from "./views/LogoutView";
 import RegisterView from "./views/RegisterView/RegisterView";
@@ -60,7 +59,6 @@ export default function App() {
           <MainNav />
           <main id="main-content">
             <Routes>
-              <Route path="/" element={<HomeView />} />
               <Route
                 path="/login"
                 element={<LoginView onLogin={handleLogin} />}

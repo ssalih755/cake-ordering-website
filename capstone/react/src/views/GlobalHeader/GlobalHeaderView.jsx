@@ -3,7 +3,6 @@ import { Route, Routes, Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import styles from "./GlobalHeaderView.module.css";
 import MainNav from "../../components/MainNav/MainNav";
-import HomeView from "../HomeView/HomeView";
 import LoginView from "../LoginView/LoginView";
 import LogoutView from "../LogoutView";
 import RegisterView from "../RegisterView/RegisterView";

@@ -1,12 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import cakeLogo from "./cakeLogo.png";
 
 export default function MainNav() {
   const user = useContext(UserContext);
 
   return (
     <nav id="main-nav" className="nav-list">
+      <img src={cakeLogo} alt="logo" id="logo" />
       <div className="nav-link">
         <NavLink to="/">Home</NavLink>
       </div>
