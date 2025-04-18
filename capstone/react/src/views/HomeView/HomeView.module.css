@@ -40,3 +40,19 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
+
+
+.flavor-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.flavor {
+    flex: 1;
+    gap: 16px;
+    max-width: 110px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 100px;
+}
