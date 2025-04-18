@@ -10,6 +10,7 @@ export default function MainNav() {
   return (
     <div className={styles.navBox} id="nav-box">
       <img src={cakeLogo} alt="logo" className={styles.logo} />
+      <h2>Bam's Cakery </h2>
       <nav id="main-nav" className={styles.navList}>
         <div className={styles.navLink}>
           <NavLink to="/">Home</NavLink>

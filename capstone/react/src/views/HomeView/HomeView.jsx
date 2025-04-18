@@ -86,18 +86,30 @@ export default function HomeView() {
         <h1>Flavors</h1>
 
         <div className={styles.flavorContainer}>
-          <img src={flavor1} alt="Bams Cakery" className={styles.flavor} />
-          <h2>Red Velvet</h2>
-          <img src={flavor2} alt="Bams Cakery" className={styles.flavor} />
-          <h2>Carrot Cake</h2>
-          <img src={flavor3} alt="Bams Cakery" className={styles.flavor} />
-          <h2>Butter Cream</h2>
-          <img src={flavor4} alt="Bams Cakery" className={styles.flavor} />
-          <h2>Chocolate</h2>
-          <img src={flavor5} alt="Bams Cakery" className={styles.flavor} />
-          <h2>Lemon</h2>
-          <img src={flavor6} alt="Bams Cakery" className={styles.flavor} />
-          <h2>Vanilla</h2>
+          <div className={styles.flavorBox}>
+            <img src={flavor1} alt="Bams Cakery" className={styles.flavor} />
+            <h2>Red Velvet</h2>
+          </div>
+          <div className={styles.flavorBox}>
+            <img src={flavor2} alt="Bams Cakery" className={styles.flavor} />
+            <h2>Carrot Cake</h2>
+          </div>
+          <div className={styles.flavorBox}>
+            <img src={flavor3} alt="Bams Cakery" className={styles.flavor} />
+            <h2>Butter Cream</h2>
+          </div>
+          <div className={styles.flavorBox}>
+            <img src={flavor4} alt="Bams Cakery" className={styles.flavor} />
+            <h2>Chocolate</h2>
+          </div>
+          <div className={styles.flavorBox}>
+            <img src={flavor5} alt="Bams Cakery" className={styles.flavor} />
+            <h2>Lemon</h2>
+          </div>
+          <div className={styles.flavorBox}>
+            <img src={flavor6} alt="Bams Cakery" className={styles.flavor} />
+            <h2>Vanilla</h2>
+          </div>
         </div>
       </section>
     </div>

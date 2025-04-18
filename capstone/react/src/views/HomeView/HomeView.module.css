@@ -3,6 +3,21 @@
 }
 .about{
    display: flex; 
+   color: #6b392f;
+   gap: 16px;
+   padding: 16px;
+   border-radius: 10px;
+   background: #f3f3f3;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+   align-items: flex-start;
+   max-width: 100%;
+   margin-bottom: 20px;
+   text-align: justify;
+   
+}
+
+.our-story :global(p){
+    padding: 300px;
 }
 .cake{
     width: 400px;
@@ -55,4 +70,12 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 100px;
+}
+
+.flavor-box :global(h2){
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    color: #6b392f
 }
