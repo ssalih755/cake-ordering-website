@@ -7,14 +7,17 @@ export default function MainNav() {
   const user = useContext(UserContext);
 
   return (
+    <div className="nav-box">
+       <img src={cakeLogo} alt="logo" id="logo" />
     <nav id="main-nav" className="nav-list">
-      <img src={cakeLogo} alt="logo" id="logo" />
+       
+     
       <div className="nav-link">
         <NavLink to="/">Home</NavLink>
       </div>
       {user ? (
         <>
-          <div className="nav-link">
+          <div   className="nav-link">
             <NavLink to="/userProfile">Profile</NavLink>
           </div>
           <div className="nav-link">
@@ -27,5 +30,6 @@ export default function MainNav() {
         </div>
       )}
     </nav>
+    </div>
   );
 }

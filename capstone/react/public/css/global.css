@@ -1,6 +1,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
+   
 }
 
 h1 {
@@ -79,25 +80,40 @@ main {
 
 #main-nav {
     grid-area: nav;
+    
+}
+.nav-box{
+    grid-area: nav;
+    display: flex;
+    background-color: #d9ecd1;
+  
 }
 
 /* Main Nav styles */
 .nav-list {
     display: flex;
-    border-bottom: 1px solid #000;
+
     flex-direction: row;
     justify-content: center;
     /* margin: 0;
     padding: 0; */
     width: 100vw; 
-    background-color: #d9ecd1; 
+  
+  
+}
+#logo {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+   
+     
 }
 
 .nav-link a {
     display: block;
     background-color: #d9ecd1;
     border-bottom: 1px solid rgba(216, 216, 216, 0.7);
-    color: #000;
+    color: #6B392F;
     margin: 5px;
     padding: 0.5rem 1rem;
     text-decoration: none;
@@ -105,14 +121,14 @@ main {
 }
 
 .nav-link a:hover {
-    color: #000;
+    color: #6B392F;
 }
 
 a.active {
     /* background-color: #83d85f; */
-    color: black;
+    color:#6B392F;
     font-weight: bold;
-    outline: solid 1px black;
+    outline: solid 1px #6B392F;;
 }
 
 /* Icon Button styles */
