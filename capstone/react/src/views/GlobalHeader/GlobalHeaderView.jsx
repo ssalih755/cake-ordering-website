@@ -10,22 +10,6 @@ import RegisterView from "../RegisterView/RegisterView";
 import UserProfileView from "../UserProfileView/UserProfileView";
 import ProtectedRoute from "../../components/ProtectedRoute";
 
-// function handleLogin(userData) {
-//   setUser(userData);
-// }
-
-// function handleLogout() {
-//   // Remove auth data from local storage
-//   localStorage.removeItem("user");
-//   localStorage.removeItem("token");
-
-//   // Clear auth token from axios
-//   delete axios.defaults.headers.common["Authorization"];
-
-//   // Clear the auth context
-//   setUser(null);
-// }
-
 export default function GlobalHeaderView() {
   return (
     <div>
@@ -40,30 +24,6 @@ export default function GlobalHeaderView() {
         </nav>
         {/* <i className="bi bi-person-circle"></i>
         <i className="bi bi-cart"></i> */}
-
-        <MainNav />
-        <main id="main-content">
-          <Routes>
-            <Route path="/" element={<HomeView />} />
-            <Route
-              path="/login"
-              element={<LoginView onLogin={handleLogin} />}
-            />
-            <Route
-              path="/logout"
-              element={<LogoutView onLogout={handleLogout} />}
-            />
-            <Route path="/register" element={<RegisterView />} />
-            <Route
-              path="/userProfile"
-              element={
-                <ProtectedRoute>
-                  <UserProfileView />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </main>
       </header>
     </div>
   );

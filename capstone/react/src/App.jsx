@@ -15,21 +15,21 @@ import axios from "axios";
 export default function App() {
   const [user, setUser] = useState(null);
 
-  // function handleLogin(userData) {
-  //   setUser(userData);
-  // }
+  function handleLogin(userData) {
+    setUser(userData);
+  }
 
-  // function handleLogout() {
-  //   // Remove auth data from local storage
-  //   localStorage.removeItem('user');
-  //   localStorage.removeItem('token');
+  function handleLogout() {
+    // Remove auth data from local storage
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
 
-  //   // Clear auth token from axios
-  //   delete axios.defaults.headers.common['Authorization'];
+    // Clear auth token from axios
+    delete axios.defaults.headers.common["Authorization"];
 
-  //   // Clear the auth context
-  //   setUser(null);
-  // }
+    // Clear the auth context
+    setUser(null);
+  }
 
   // When a user comes back to the app or refreshes the page, check for user/token in local storage and validate it
   useEffect(() => {
@@ -56,7 +56,31 @@ export default function App() {
   return (
     <BrowserRouter>
       <div id="app">
-        <UserContext.Provider value={user}></UserContext.Provider>
+        <UserContext.Provider value={user}>
+          <MainNav />
+          <main id="main-content">
+            <Routes>
+              <Route path="/" element={<HomeView />} />
+              <Route
+                path="/login"
+                element={<LoginView onLogin={handleLogin} />}
+              />
+              <Route
+                path="/logout"
+                element={<LogoutView onLogout={handleLogout} />}
+              />
+              <Route path="/register" element={<RegisterView />} />
+              <Route
+                path="/userProfile"
+                element={
+                  <ProtectedRoute>
+                    <UserProfileView />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </main>
+        </UserContext.Provider>
       </div>
     </BrowserRouter>
   );
