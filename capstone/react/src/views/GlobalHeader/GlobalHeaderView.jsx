@@ -1,0 +1,70 @@
+import { useContext } from "react";
+import { Route, Routes, Link } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
+import styles from "./GlobalHeaderView.module.css";
+import MainNav from "../../components/MainNav/MainNav";
+import HomeView from "../HomeView/HomeView";
+import LoginView from "../LoginView/LoginView";
+import LogoutView from "../LogoutView";
+import RegisterView from "../RegisterView/RegisterView";
+import UserProfileView from "../UserProfileView/UserProfileView";
+import ProtectedRoute from "../../components/ProtectedRoute";
+
+// function handleLogin(userData) {
+//   setUser(userData);
+// }
+
+// function handleLogout() {
+//   // Remove auth data from local storage
+//   localStorage.removeItem("user");
+//   localStorage.removeItem("token");
+
+//   // Clear auth token from axios
+//   delete axios.defaults.headers.common["Authorization"];
+
+//   // Clear the auth context
+//   setUser(null);
+// }
+
+export default function GlobalHeaderView() {
+  return (
+    <div>
+      <header>
+        {/*<img src={cakeLogo} alt="logo" id="logo" />*/}
+        <h2>Bam's Cakery</h2>
+        <nav>
+          <button>Home</button>
+          <button>Cakes</button>
+          <button>Custom Cakes</button>
+          <button>Log In</button>
+        </nav>
+        {/* <i className="bi bi-person-circle"></i>
+        <i className="bi bi-cart"></i> */}
+
+        <MainNav />
+        <main id="main-content">
+          <Routes>
+            <Route path="/" element={<HomeView />} />
+            <Route
+              path="/login"
+              element={<LoginView onLogin={handleLogin} />}
+            />
+            <Route
+              path="/logout"
+              element={<LogoutView onLogout={handleLogout} />}
+            />
+            <Route path="/register" element={<RegisterView />} />
+            <Route
+              path="/userProfile"
+              element={
+                <ProtectedRoute>
+                  <UserProfileView />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </main>
+      </header>
+    </div>
+  );
+}
