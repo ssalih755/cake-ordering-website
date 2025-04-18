@@ -6,10 +6,16 @@ import AuthService from "../../services/AuthService";
 import Notification from "../../components/Notification/Notification";
 import axios from "axios";
 import styles from "./HomeView.module.css";
+import cake from "./cake.png";
+import cake1 from "./cake1.png";
+import cake2 from "./cake2.png";  
+import cake3 from "./cake3.png";
+
 
 export default function HomeView() {
   return (
     <div className="homePage">
+      <div className={styles.about}>
       <section className="ourStory">
         <h2>Our Story</h2>
         <p>
@@ -31,10 +37,22 @@ export default function HomeView() {
           occasions alike.
         </p>
       </section>
-
-      <section className="standardCakes">
-        <h1>Cakes</h1>
+      
+      <img src={cake} alt="Bams Cakery" className={styles.cake} />
+      </div>
+      
+  
+      <section  className={styles.cakeTypes}>    
+      <h1>Cakes</h1>
+      
+      <div className={styles.cakeContainer} >
+        <img src={cake1} alt="Bams Cakery" className={styles.standardCakes}  />
+        <img src={cake2} alt="Bams Cakery" className={styles.standardCakes} />
+        <img src={cake3} alt="Bams Cakery" className={styles.standardCakes}/>
+        </div>
       </section>
+
+   
       <section className="customCakes">
         <h1>Custom cakes</h1>
       </section>

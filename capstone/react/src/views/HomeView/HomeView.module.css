@@ -1,3 +1,42 @@
 .home-page{
     color: tomato;
 }
+.about{
+   display: flex; 
+}
+.cake{
+    width: 400px;
+}
+.cake-types :global(h1){
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    color: #6b392f
+    
+
+}
+.cake-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.standard-cakes {
+    display: flex;
+ 
+    gap: 16px;
+    padding: 16px;
+    border-radius: 10px;
+    background: #f3f3f3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    align-items: flex-start;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  .standard-cakes {
+    flex: 1;
+    gap: 16px;
+    max-width: 250px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
