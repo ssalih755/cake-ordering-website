@@ -1,8 +1,8 @@
 BEGIN TRANSACTION;
 
-INSERT INTO users (username,password_hash,role) VALUES ('user1','user1','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('user2','user2','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('user3','user3','ROLE_USER');
+INSERT INTO users (username,password_hash,role,firstname, lastname, email, phone) VALUES ('user1','user1','ROLE_USER','user1first', 'user1last', 'user1@gmail.com', '6146146144');
+INSERT INTO users (username,password_hash,role,firstname, lastname, email, phone) VALUES ('user2','user2','ROLE_USER', 'user2first', 'user2last', 'user2@gmail.com', '6126126122');
+INSERT INTO users (username,password_hash,role,firstname, lastname, email, phone) VALUES ('user3','user3','ROLE_USER','user3first', 'user3last', 'user3@gmail.com', '6136136133');
 
 -- Insert into cakeFlavor table
 INSERT INTO cakeFlavor (flavor, isAvailable)
