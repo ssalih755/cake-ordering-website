@@ -24,8 +24,9 @@ public class JdbcCakeDao implements CakeDao {
     public List<Cake> getStandardCakes() {
         List<Cake> cakes =new ArrayList<>();
         String sql = "SELECT cake_id, cakeflavor_id, cakefrosting_id, cakefilling_id, cakestyle_id, \n" +
-                "cakesize_id, caketype_id, cakeprice_id, cakewriting_id, description, isavailable\n" +
-                "\tFROM cake;";
+                "cakesize_id, caketype_id, cakeprice_id, description, isavailable\n" +    //where iSavailable true     add name for standards
+                "\tFROM cake WHERE caketype_id = 1 " +
+                " ORDER BY cake_id;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()){
@@ -50,7 +51,6 @@ public class JdbcCakeDao implements CakeDao {
         cake.setSize(rs.getString("cakesize_id"));
         cake.setStyle(rs.getString("cakestyle_id"));
         cake.setType(rs.getString("caketype_id"));
-        cake.setWriting(rs.getString("cakewriting_id"));
         return cake;
 
     }

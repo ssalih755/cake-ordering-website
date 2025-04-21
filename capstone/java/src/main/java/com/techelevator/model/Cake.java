@@ -10,13 +10,12 @@ public class Cake {
     private String style;
     private String size;
     private int price;
-    private String writing;
     private String description;
     private boolean isAvailable;
 
 
     public Cake(int id, String type, String flavor, String frosting, String filling,
-                String style, String size, int price, String writing,String description, boolean isAvailable) {
+                String style, String size, int price, String description, boolean isAvailable) {
         this.id = id;
         this.type = type;
         this.flavor = flavor;
@@ -25,7 +24,6 @@ public class Cake {
         this.style = style;
         this.size = size;
         this.price = price;
-        this.writing = writing;
         this.description =description;
         this.isAvailable = isAvailable;
     }
@@ -102,14 +100,6 @@ public class Cake {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public String getWriting() {
-        return writing;
-    }
-
-    public void setWriting(String writing) {
-        this.writing = writing;
     }
 
     public boolean isAvailable() {
