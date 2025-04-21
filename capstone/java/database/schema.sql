@@ -49,13 +49,6 @@ cakePrice_id SERIAL PRIMARY KEY,
 price INTEGER NOT NULL
 );
 
-CREATE TABLE cakeWriting (
-cakeWriting_id SERIAL PRIMARY KEY,
-price INT NOT NULL DEFAULT 5,  --HARDCODE PRICE AS 5 IN CONTROLLER QUERY
-writing varchar(100) NOT NULL,
-isAvailable BOOLEAN NOT NULL DEFAULT TRUE
-);
-
 CREATE TABLE cakeSize(
     cakeSize_id SERIAL PRIMARY KEY,
     cakeStyle_id INTEGER NOT NULL,
@@ -68,12 +61,11 @@ CREATE TABLE cake (
     cake_id SERIAL PRIMARY KEY,
     cakeFlavor_id INT NOT NULL,
     cakeFrosting_id INT NOT NULL,
-    cakeFilling_id INT NOT NULL,
+    cakeFilling_id INT NULL,
     cakeStyle_id INT NOT NULL,
     cakeSize_id INT NOT NULL,
     cakeType_id INT NOT NULL,
     cakePrice_id INT NOT NULL,
-    cakeWriting_id INT NULL,
     description VARCHAR(400) NOT NULL,
     isAvailable BOOLEAN NOT NULL DEFAULT TRUE,
     FOREIGN KEY (cakeFlavor_id) REFERENCES cakeFlavor(cakeFlavor_id),
@@ -82,8 +74,7 @@ CREATE TABLE cake (
     FOREIGN KEY (cakeStyle_id) REFERENCES cakeStyle(cakeStyle_id),
     FOREIGN KEY (cakeSize_id) REFERENCES cakeSize(cakeSize_id),
     FOREIGN KEY (cakeType_id) REFERENCES cakeType(cakeType_id),
-    FOREIGN KEY (cakePrice_id) REFERENCES cakePrice(cakePrice_id),
-    FOREIGN KEY (cakeWriting_id) REFERENCES cakeWriting(cakeWriting_id)
+    FOREIGN KEY (cakePrice_id) REFERENCES cakePrice(cakePrice_id)
 );
 
 
