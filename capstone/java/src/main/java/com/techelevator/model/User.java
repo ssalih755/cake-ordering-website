@@ -14,16 +14,61 @@ public class User {
    private String password;
    @JsonIgnore
    private boolean activated;
+
+   private String firstname;
+
+   private String lastname;
+
+   private String email;
+   private String phone;
+
    private Set<Authority> authorities = new HashSet<>();
+
 
    public User() { }
 
-   public User(int id, String username, String password, String authorities) {
+   public User(int id, String username, String password, String authorities, String firstname, String lastname, String email, String phone) {
       this.id = id;
       this.username = username;
       this.password = password;
       if (authorities != null) this.setAuthorities(authorities);
       this.activated = true;
+      this.firstname =firstname;
+      this.lastname = lastname;
+      this.email = email;
+      this.phone = phone;
+   }
+
+   public String getFirstname() {
+      return firstname;
+   }
+
+   public void setFirstname(String firstname) {
+      this.firstname = firstname;
+   }
+
+   public String getLastname() {
+      return lastname;
+   }
+
+   public void setLastname(String lastname) {
+      this.lastname = lastname;
+   }
+
+   public String getEmail() {
+      return email;
+   }
+
+   public void setEmail(String email) {
+      this.email = email;
+   }
+
+   public String getPhone() {
+      return phone;
+   }
+
+   public void setPhone(String phone) {
+      this.phone = phone;
    }
 
    public int getId() {
