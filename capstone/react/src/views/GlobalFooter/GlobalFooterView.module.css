@@ -10,3 +10,29 @@
     font-weight: bold;
     font-size: 10px;
 }
+
+.contact-us{
+    display: flex;
+    flex-direction: column;
+    justify-content:left;
+    width: 100%;
+}
+.location-one{
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+    width: 100%;
+}
+.location-two{   display: flex;
+    
+    text-wrap: pretty;
+    flex-direction: row;
+    justify-content:left;
+    width: 100%;
+}
+.operating-hours{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    width: 100%;
+}
