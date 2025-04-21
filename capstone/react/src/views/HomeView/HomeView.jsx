@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import AuthService from "../../services/AuthService";
 import Notification from "../../components/Notification/Notification";
 import axios from "axios";
@@ -24,7 +23,7 @@ export default function HomeView() {
   return (
     <div className="homePage">
       <div className={styles.about}>
-        <section className="ourStory">
+        <section className={styles.ourStory}>
           <h2>Our Story</h2>
           <p>
             At Bams Cakery, we blend time-honored baking traditions with
@@ -112,6 +111,7 @@ export default function HomeView() {
           </div>
         </div>
       </section>
+       
     </div>
   );
 }

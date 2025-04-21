@@ -1,0 +1,38 @@
+.global-footer{
+    grid-area: footer;
+    display: flex;
+    background-color: #d9ecd1;
+    border-bottom: 1px solid rgba(216, 216, 216, 0.7);
+    color: #6B392F;
+    margin: 5px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.contact-us{
+    display: flex;
+    flex-direction: column;
+    justify-content:left;
+    width: 100%;
+}
+.location-one{
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+    width: 100%;
+}
+.location-two{   display: flex;
+    
+    text-wrap: pretty;
+    flex-direction: row;
+    justify-content:left;
+    width: 100%;
+}
+.operating-hours{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    width: 100%;
+}

@@ -8,7 +8,9 @@ import RegisterView from "./views/RegisterView/RegisterView";
 import UserProfileView from "./views/UserProfileView/UserProfileView";
 import MainNav from "./components/MainNav/MainNav";
 import ProtectedRoute from "./components/ProtectedRoute";
-import HomeView from "./views/HomeView/HomeView";     
+import HomeView from "./views/HomeView/HomeView";
+import GlobalFooterView from "./views/GlobalFooter/GlobalFooterView";
+
 import axios from "axios";
 
 export default function App() {
@@ -78,6 +80,7 @@ export default function App() {
                 }
               />
             </Routes>
+            <GlobalFooterView />
           </main>
         </UserContext.Provider>
       </div>
