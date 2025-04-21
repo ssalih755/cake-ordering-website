@@ -61,6 +61,7 @@ export default function App() {
           <MainNav />
           <main id="main-content">
             <Routes>
+            {/* <Route path="/cake" element={<StandardCakeView />} /> */}
               <Route path="/" element={<HomeView />} />
               <Route
                 path="/login"
