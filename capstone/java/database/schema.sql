@@ -17,7 +17,6 @@ CREATE TABLE users (
 
 -- CAKE TABLE AND ADJACENT TABLES --
 
-
 CREATE TABLE cakeFlavor(
 cakeFlavor_id SERIAL PRIMARY KEY,
 flavor varchar(40) NOT NULL UNIQUE,
