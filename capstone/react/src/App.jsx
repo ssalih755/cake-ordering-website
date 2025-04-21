@@ -9,6 +9,7 @@ import UserProfileView from "./views/UserProfileView/UserProfileView";
 import MainNav from "./components/MainNav/MainNav";
 import ProtectedRoute from "./components/ProtectedRoute";
 import HomeView from "./views/HomeView/HomeView";     
+import GlobalFooter from "./views/GlobalFooter/GlobalFooter";
 
 import axios from "axios";
 
@@ -79,6 +80,8 @@ export default function App() {
                   </ProtectedRoute>
                 }
               />
+        
+              <Route path="/" element={<GlobalFooter/>} />
             </Routes>
           </main>
         </UserContext.Provider>

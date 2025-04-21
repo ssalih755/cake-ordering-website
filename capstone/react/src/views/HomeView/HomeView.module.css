@@ -22,11 +22,12 @@
 }
 
 .our-story :global(h2){
-    padding: 300px;
+    padding: 10 px;
+    font-weight: bold;
      font-family: Nickainley;
 }
 .cake{
-    width: 400px;
+    width: 300px;
     
 }
 .cake-types :global(h1){
@@ -37,7 +38,7 @@
     color: #6b392f;
     font-family: Nickainley;
    font-weight: 300px;
-  font-style: bold;
+  font-weight: bold;
    font-size: 32px;
     
 
@@ -95,5 +96,5 @@
     flex-direction: row;
     justify-content: space-around;
     display: flex;
-    background-color: #f3f3f3;;
+    
 }

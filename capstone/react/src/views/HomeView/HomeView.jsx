@@ -23,7 +23,7 @@ export default function HomeView() {
   return (
     <div className="homePage">
       <div className={styles.about}>
-        <section className="ourStory">
+        <section className={styles.ourStory}>
           <h2>Our Story</h2>
           <p>
             At Bams Cakery, we blend time-honored baking traditions with
