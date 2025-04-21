@@ -9,7 +9,9 @@ import UserProfileView from "./views/UserProfileView/UserProfileView";
 import MainNav from "./components/MainNav/MainNav";
 import ProtectedRoute from "./components/ProtectedRoute";
 import HomeView from "./views/HomeView/HomeView";     
+
 import axios from "axios";
+
 
 export default function App() {
   const [user, setUser] = useState(null);

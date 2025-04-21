@@ -1,3 +1,4 @@
+ 
 .home-page{
     color: tomato;
 }
@@ -13,21 +14,31 @@
    max-width: 100%;
    margin-bottom: 20px;
    text-align: justify;
+   font-weight: 300px;
+   font-style: normal;
+   font-size: 14px;
+   
    
 }
 
-.our-story :global(p){
+.our-story :global(h2){
     padding: 300px;
+     font-family: Nickainley;
 }
 .cake{
     width: 400px;
+    
 }
 .cake-types :global(h1){
     text-align: center;
     font-size: 2rem;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
-    color: #6b392f
+    color: #6b392f;
+    font-family: Nickainley;
+   font-weight: 300px;
+  font-style: bold;
+   font-size: 32px;
     
 
 }
@@ -78,4 +89,11 @@
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
     color: #6b392f
+}
+.flavor-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    display: flex;
+    background-color: #f3f3f3;;
 }
