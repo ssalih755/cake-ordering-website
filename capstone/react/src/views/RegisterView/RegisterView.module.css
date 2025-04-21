@@ -1,4 +1,53 @@
 .form-button {
     margin-left: 165px;
-    margin-right: 15px;
+    margin-right: 1px;
+    background-color: #f6AEB9;
+    color: #6b392f;
+    font-family: Nickainley;
+    font-weight: 300px;
+    font-style: normal;
+    font-size: 22px;
+    margin-top: 20px ;
+}
+
+
+.view-register h2{
+
+    /* background-color: #FEFEE5 */
+    color: #6b392f;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 22px;
+    text-align: center;
+
+
+ }
+ .view-register{
+
+    /* background-color: #FEFEE5 */
+    color: #6b392f;
+    font-style: normal;
+    font-size: 14px;
+    text-align: center;
+    margin-left: 145px;
+    padding: px;
+
+ }
+
+ .form{
+    font-weight: bold;
+    text-align: center;
+    padding-right: 40px;
+
+}
+
+.form-control{
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+
+}
+
+.login-text{
+    text-align: center;
 }
