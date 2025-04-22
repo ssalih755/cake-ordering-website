@@ -1,8 +1,9 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS orders;
+
 DROP TABLE IF EXISTS orderDetails;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS orderStatus;
 DROP TABLE IF EXISTS cake;
 DROP TABLE IF EXISTS cakeFlavor;
@@ -93,13 +94,6 @@ CREATE TABLE cake (
     FOREIGN KEY (cakePrice_id) REFERENCES cakePrice(cakePrice_id)
 );
 
-CREATE TABLE orderDetails(
-    id SERIAL PRIMARY KEY,	
-	cake_id INT NOT NULL,
-    cake_quanity INT NOT NULL,
-	 CONSTRAINT FK_cake_id FOREIGN KEY(cake_id) REFERENCES cake(cake_id)
-	
-);
 
 CREATE TABLE orderStatus(
     id SERIAL PRIMARY KEY,
@@ -108,17 +102,24 @@ CREATE TABLE orderStatus(
 
 CREATE TABLE orders(
     id SERIAL PRIMARY KEY,
-    orderDetail_id INT NOT NULL,
     user_id INT NOT NULL,
     orderStatus_id INT NOT NULL,
-    pickup_date DATE NOT NULL,
-    pickup_time TIME NOT NULL,
+    pickup_date DATE  NULL,
+    pickup_time TIME  NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-    CONSTRAINT FK_orderDetail_id FOREIGN KEY(orderDetail_id) REFERENCES orderDetails(id),
     CONSTRAINT FK_user_id FOREIGN KEY(user_id) REFERENCES users(user_id),
     CONSTRAINT FK_orderStatus_id FOREIGN KEY(orderStatus_id) REFERENCES orderStatus(id)
 );
---
+
+CREATE TABLE orderDetails(
+    id SERIAL PRIMARY KEY,	
+	order_id INT NOT NULL,
+	cake_id INT NOT NULL,
+    cake_quantity INT NOT NULL,
+	 CONSTRAINT FK_cake_id FOREIGN KEY(cake_id) REFERENCES cake(cake_id),
+	CONSTRAINT FK_order_id FOREIGN KEY(order_id) REFERENCES orders(id)
+	
+);
 
 
 COMMIT TRANSACTION;

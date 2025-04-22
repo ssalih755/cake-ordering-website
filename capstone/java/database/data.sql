@@ -79,4 +79,10 @@ INSERT INTO cake (cakeFlavor_id, cakeFrosting_id, cakeFilling_id, cakeStyle_id, 
 (2, 5, 4, 1, 3, 1, 4, 'Custom vanilla cake with fondant and vanilla custard filling, 10-inch round', TRUE);
 
 
+INSERT INTO orderstatus(status)
+VALUES ('Pending'), 
+('Ready'),
+('Completed'), 
+('Canceled');
+
 COMMIT TRANSACTION;
