@@ -75,6 +75,8 @@ CREATE TABLE cakeSize(
 );
 
 CREATE TABLE cake (
+    name VARCHAR(30) NOT NULL,
+    imgURL VARCHAR(200) NOT NULL,
     cake_id SERIAL PRIMARY KEY,
     cakeFlavor_id INT NOT NULL,
     cakeFrosting_id INT NOT NULL,

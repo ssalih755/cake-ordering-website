@@ -7,9 +7,9 @@ export default function CakeCard({ cake }) {
   return (
    
       <div className={styles.card}>
-        <img src={cakePic} alt="Bams Cakery" />
+        <img src={cake.imgURL} alt="Bams Cakery" />
         <div className="card-body">
-          <h5 className="card-title">{cake.id}</h5>
+          <h5 className="card-name">{cake.name}</h5>
           <p className="card-text">{cake.description}</p>
         </div>
       </div>

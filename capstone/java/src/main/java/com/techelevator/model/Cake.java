@@ -2,6 +2,8 @@ package com.techelevator.model;
 
 public class Cake {
 
+    private String name;
+    private String imgURL;
     private int id;
     private String type;
     private String flavor;
@@ -14,8 +16,10 @@ public class Cake {
     private boolean isAvailable;
 
 
-    public Cake(int id, String type, String flavor, String frosting, String filling,
+    public Cake(String name, String imgURL, int id, String type, String flavor, String frosting, String filling,
                 String style, String size, int price, String description, boolean isAvailable) {
+        this.name = name;
+        this.imgURL = imgURL;
         this.id = id;
         this.type = type;
         this.flavor = flavor;
@@ -29,6 +33,22 @@ public class Cake {
     }
 
     public Cake() {}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
 
     public String getDescription() {
         return description;

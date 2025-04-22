@@ -35,10 +35,10 @@ VALUES (1, '8-inch', TRUE);
 
 INSERT INTO cake (cake_id, cakeFlavor_id, cakeFrosting_id, cakeFilling_id, cakeStyle_id,
                    cakeSize_id, cakeType_id, cakePrice_id,description,isAvailable)
-                   VALUES ( 1, 1, 1, 1,1, 1,1,1, 'a nice chocolatey cake' , true);
+                   VALUES ( 'chocolate cake', 'www.cakes.org', 1, 1, 1, 1,1, 1,1,1, 'a nice chocolatey cake' , true);
 
 INSERT INTO cake (cake_id, cakeFlavor_id, cakeFrosting_id, cakeFilling_id, cakeStyle_id,
                    cakeSize_id, cakeType_id, cakePrice_id,description,isAvailable)
-                   VALUES ( 2, 1, 1, 1, 1, 1, 1, 1, 'a nice lemony cake', true);
+                   VALUES ( 'lemon cake', 'www.cakes.org', 2, 1, 1, 1, 1, 1, 1, 1, 'a nice lemony cake', true);
 
 COMMIT TRANSACTION;
