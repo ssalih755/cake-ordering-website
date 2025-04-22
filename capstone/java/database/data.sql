@@ -32,7 +32,7 @@ INSERT INTO cakeFilling (filling, isAvailable) VALUES
 ('Chocolate Mousse', TRUE),
 ('Lemon Curd', TRUE),
 ('Vanilla Custard', TRUE),
-('None', TRUE);
+('Blackberry', TRUE);
 
 -- Insert into cakeStyle table
 INSERT INTO cakeStyle (style, isAvailable) VALUES
@@ -49,11 +49,11 @@ INSERT INTO cakeType (type) VALUES
 
 -- Insert into cakePrice table
 INSERT INTO cakePrice (price) VALUES
-(2500),  -- $25.00
-(3500),  -- $35.00
-(4500),  -- $45.00
-(6000),  -- $60.00
-(7500);  -- $75.00
+(25),  -- $25.00
+(35),  -- $35.00
+(45),  -- $45.00
+(60),  -- $60.00
+(75);  -- $75.00
 
 -- Insert into cakeSize table
 -- Note: cakeStyle_id references must match styles inserted above

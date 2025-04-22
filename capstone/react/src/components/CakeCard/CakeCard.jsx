@@ -11,8 +11,9 @@ export default function CakeCard({ cake }) {
         <div className="card-body">
           <h5 className="card-name">{cake.name}</h5>
           <p className="card-text">{cake.description}</p>
+          <h2>${cake.price}</h2>
+          <h2>{cake.type}</h2>
         </div>
       </div>
-  
   );
 }

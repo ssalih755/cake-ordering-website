@@ -96,7 +96,6 @@ CREATE TABLE cake (
     FOREIGN KEY (cakePrice_id) REFERENCES cakePrice(cakePrice_id)
 );
 
-
 CREATE TABLE orderStatus(
     id SERIAL PRIMARY KEY,
     status VARCHAR(20) NOT NULL
@@ -117,11 +116,11 @@ CREATE TABLE orderDetails(
     id SERIAL PRIMARY KEY,	
 	order_id INT NOT NULL,
 	cake_id INT NOT NULL,
+	writing VARCHAR(150) NULL,
     cake_quantity INT NOT NULL,
 	 CONSTRAINT FK_cake_id FOREIGN KEY(cake_id) REFERENCES cake(cake_id),
 	CONSTRAINT FK_order_id FOREIGN KEY(order_id) REFERENCES orders(id)
 	
 );
-
 
 COMMIT TRANSACTION;
