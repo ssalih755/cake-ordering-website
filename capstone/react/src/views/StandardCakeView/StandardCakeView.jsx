@@ -15,22 +15,18 @@ export default function StandardCakeView() {
     CakeService.getStandardCakes()
       .then((response) => {
         setCakes(response.data);
-        console.log(cakes)
+        console.log(cakes);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-
   return (
-
     <div className={styles.cardContainer}>
       {cakes.map((cake) => {
-
         // this is how the compontent knows about the cake context
-       return <CakeCard key={cake.id} cake={cake} />;
-       
+        return <CakeCard key={cake.id} cake={cake} />;
       })}
     </div>
   );

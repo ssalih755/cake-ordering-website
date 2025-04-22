@@ -33,8 +33,8 @@ public class JdbcCakeDao implements CakeDao {
                 "FROM cake " +
                 "LEFT JOIN cakeflavor ON cake.cakeflavor_id = cakeflavor.cakeflavor_id " +
                 "LEFT JOIN cakefrosting ON cake.cakefrosting_id = cakefrosting.cakefrosting_id " +
-                "LEFT JOIN cakefilling ON cake.cakefilling_id = cakefilling.cakefilling_id " +
-                "LEFT JOIN cakestyle ON cake.cakestyle_id = cakestyle.cakestyle_id " +
+                "LEFT JOIN cakefilling ON cake.cakefilling_id = cakefilling.cakefilling_id " +  //for some reason cake filling was preventing the query from providing
+                "LEFT JOIN cakestyle ON cake.cakestyle_id = cakestyle.cakestyle_id " +          // all of the standard cakes, hence the left joins
                 "LEFT JOIN cakesize ON cake.cakesize_id = cakesize.cakesize_id " +
                 "LEFT JOIN caketype ON cake.caketype_id = caketype.caketype_id " +
                 "LEFT JOIN cakeprice ON cake.cakeprice_id = cakeprice.cakeprice_id " +

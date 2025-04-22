@@ -9,15 +9,32 @@ export default function ProductPageView() {
   const navigate = useNavigate();
 
   const cakeId = parseInt(id);
-  const cakeQuantity = 1; // Hardcoded quantity for now
+  const cakeQuantity = 1;
+
+  const [writing, setWriting] = useState("");
+
+  function handleWritingChange(event) {
+    setWriting(event.target.value);
+  }
+
+  // **************************************************************************************************************
+  // ******* not adding to payload yet, try adding 'writing' to line 35 of checkout jsx and debug from there*******
+  // **************************************************************************************************************
 
   const handleBuyNow = () => {
-    //selectCake(cake.id, 1); // Always 1 quantity for now
-    navigate("/checkout", { state: { cakeId, cakeQuantity } });
+    console.log("Navigating with writing:", writing); // debugging payload issue
+    navigate("/checkout", { state: { cakeId, writing, cakeQuantity } });
   };
 
   return (
     <>
+      <h1>Product Page</h1>
+      <input
+        type="text"
+        placeholder="Write your message here, then click 'Buy Now'"
+        value={writing}
+        onChange={handleWritingChange}
+      />
       <button onClick={handleBuyNow}>Buy Now</button>
     </>
   );
