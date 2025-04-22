@@ -10,12 +10,11 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
-  const cakeId = state?.cakeId;
-  const cakeQuantity = state?.cakeQuantity;
+  //********* FIX: Destructure 'writing' from state *********
+  const { cakeId, cakeQuantity, writing } = state || {};
+  //********* END FIX *********
 
   const [notification, setNotification] = useState("");
-
-  
   const [pickupDate, setPickupDate] = useState("");
   const [pickupTime, setPickupTime] = useState("");
 
@@ -35,6 +34,7 @@ export default function Checkout() {
       orderDetails: [
         {
           cakeId,
+          writing,
           cakeQuantity,
         },
       ],
