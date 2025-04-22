@@ -2,14 +2,15 @@ import { createContext, useContext, useState } from "react";
 
 export const CakeContext = createContext(null);
 
-export const CakeProvider = ({ children }) => {
-  const [selectedCake, setSelectedCake] = useState([]);
 
-  const selectCake = (cakeId, cakeQuantity) => {
-    setSelectedCake({ cakeId, cakeQuantity });
-  };
+export const CakeContexProvider = ({ children }) => {
+  const [cakes, setCakes] = useState([]);
 
-  const clearCake = () => setSelectedCake(null);
+  // const selectCake = (cakeId, cakeQuantity) => {
+  //   setSelectedCake({ cakeId, cakeQuantity });
+  // };
+
+  // const clearCake = () => setSelectedCake(null);
 
   return (
     <CakeContext.Provider value={{ selectedCake, selectCake, clearCake }}>

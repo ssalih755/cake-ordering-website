@@ -70,11 +70,11 @@ INSERT INTO cakeSize (cakeStyle_id, size, isAvailable) VALUES
 -- Insert into cake table
 -- Note: All foreign keys must reference IDs that exist in their respective tables
 INSERT INTO cake (cakeFlavor_id, cakeFrosting_id, cakeFilling_id, cakeStyle_id, cakeSize_id, cakeType_id, cakePrice_id, description, isAvailable) VALUES
-(1, 1, 2, 1, 2, 2, 3, 'Classic chocolate cake with buttercream frosting and chocolate mousse filling, 8-inch round', TRUE),
-(2, 2, 1, 1, 1, 2, 2, 'Vanilla cake with cream cheese frosting and raspberry filling, 6-inch round', TRUE),
-(3, 2, NULL, 2, 4, 2, 3, 'Red velvet cake with cream cheese frosting, 8x8-inch square', TRUE),
-(4, 4, 3, 3, 6, 2, 4, 'Lemon cake with whipped cream frosting and lemon curd filling, 9x13-inch sheet', TRUE),
-(5, 2, NULL, 5, 8, 2, 3, 'Carrot cake cupcakes with cream cheese frosting, dozen', TRUE),
+(1, 1, 2, 1, 2, 1, 3, 'Classic chocolate cake with buttercream frosting and chocolate mousse filling, 8-inch round', TRUE),
+(2, 2, 1, 1, 1, 2, 1, 'Vanilla cake with cream cheese frosting and raspberry filling, 6-inch round', TRUE),
+(3, 2, NULL, 2, 4, 1, 3, 'Red velvet cake with cream cheese frosting, 8x8-inch square', TRUE),
+(4, 4, 3, 3, 6, 1, 4, 'Lemon cake with whipped cream frosting and lemon curd filling, 9x13-inch sheet', TRUE),
+(5, 2, NULL, 5, 8, 1, 3, 'Carrot cake cupcakes with cream cheese frosting, dozen', TRUE),
 (1, 3, 2, 4, 7, 1, 5, 'Custom 2-tier chocolate cake with ganache frosting and chocolate mousse filling', TRUE),
 (2, 5, 4, 1, 3, 1, 4, 'Custom vanilla cake with fondant and vanilla custard filling, 10-inch round', TRUE);
 

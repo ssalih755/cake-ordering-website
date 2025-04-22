@@ -1,43 +1,37 @@
-import React from 'react'
-import styles from './StandardCakeView.module.css'
-import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./StandardCakeView.module.css";
+import cake from "../HomeView/cake.png";
+import cake1 from "../HomeView/cake1.png";
+import cake2 from "../HomeView/cake2.png";
+import cake3 from "../HomeView/cake3.png";
+import CakeService from "../../services/CakeService";
+import CakeCard from "../../components/CakeCard/CakeCard";
 
-return (
-    <div className='StandardCakeView'>
-      <div className={styles.cakeTypes}>
-        <h2>Standard Cakes</h2>
-        <div className={styles.cakeContainer}>
-          <div className={styles.flavorBox}>
-            <img src={flavor1} alt="Bams Cakery" className={styles.flavor} />
-            <h2>Red Velvet</h2>
-            <p>This is a lovely red velvet cake</p>
-          </div>
-          <div className={styles.flavorBox}>
-            <img src={flavor2} alt="Bams Cakery" className={styles.flavor} />
-            <h2>Carrot Cake</h2>
-            <p>This is a lovely Carrot cake</p>
-          </div>
-          <div className={styles.flavorBox}>
-            <img src={flavor3} alt="Bams Cakery" className={styles.flavor} />
-            <h2>Butter Cream</h2>
-            <p>This is a lovely Butter Cream cake</p>
-          </div>
-          <div className={styles.flavorBox}>
-            <img src={flavor4} alt="Bams Cakery" className={styles.flavor} />
-            <h2>Chocolate</h2>
-            <p>This is a lovely Chocolate cake</p>
-          </div>
-          <div className={styles.flavorBox}>
-            <img src={flavor5} alt="Bams Cakery" className={styles.flavor} />
-            <h2>Vanilla</h2>
-            <p>This is a lovely Vanilla cake</p>
-          </div>
-          <div className={styles.flavorBox}>
-            <img src={flavor6} alt="Bams Cakery" className={styles.flavor} />
-            <h2>Strawberry</h2>
-            <p>This is a lovely Strawberry Cake</p>
-          </div>
-        </div>
-      </div>
+export default function StandardCakeView() {
+  const [cakes, setCakes] = useState([]);
+
+  useEffect(() => {
+    CakeService.getStandardCakes()
+      .then((response) => {
+        setCakes(response.data);
+        console.log(cakes)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
+  return (
+
+    <div className={styles.cardContainer}>
+      {cakes.map((cake) => {
+
+        // this is how the compontent knows about the cake context
+       return <CakeCard key={cake.id} cake={cake} />;
+       
+      })}
     </div>
   );
+}

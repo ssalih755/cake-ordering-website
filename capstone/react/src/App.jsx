@@ -13,6 +13,7 @@ import HomeView from "./views/HomeView/HomeView";
 import GlobalFooterView from "./views/GlobalFooterView/GlobalFooterView";
 import Checkout from "./components/Checkout/Checkout";
 import ProductPageView from "./views/ProductPageView/ProductPageView";
+import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
 
 import axios from "axios";
 
@@ -65,7 +66,7 @@ export default function App() {
             <MainNav />
             <main id="main-content">
               <Routes>
-                {/* <Route path="/cake" element={<StandardCakeView />} /> */}
+                <Route path="/cakes" element={<StandardCakeView />} />
                 <Route path="/" element={<HomeView />} />
                 <Route
                   path="/login"

@@ -1,14 +1,46 @@
-.flavor-box :global(h2){
-    text-align: center;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-    color: #6b392f
+.flavor-box :global(h2) {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  color: #6b392f;
 }
-.flavor-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    display: flex;
-    
+.flavor-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  display: flex;
+}
+
+section{
+  display: flex;
+  flex-direction: row;
+}
+
+.cake-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.standard-cakes {
+  display: flex;
+
+  gap: 16px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #f3f3f3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  align-items: flex-start;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.card-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
