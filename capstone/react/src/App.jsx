@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
+import { CakeContext } from "./context/CakeContext";
 import AuthService from "./services/AuthService";
 import LoginView from "./views/LoginView/LoginView";
 import LogoutView from "./views/LogoutView";
@@ -9,7 +10,9 @@ import UserProfileView from "./views/UserProfileView/UserProfileView";
 import MainNav from "./components/MainNav/MainNav";
 import ProtectedRoute from "./components/ProtectedRoute";
 import HomeView from "./views/HomeView/HomeView";
-import GlobalFooterView from "./views/GlobalFooter/GlobalFooterView";
+import GlobalFooterView from "./views/GlobalFooterView/GlobalFooterView";
+import Checkout from "./components/Checkout/Checkout";
+import ProductPageView from "./views/ProductPageView/ProductPageView";
 
 import axios from "axios";
 
@@ -58,31 +61,35 @@ export default function App() {
     <BrowserRouter>
       <div id="app">
         <UserContext.Provider value={user}>
-          <MainNav />
-          <main id="main-content">
-            <Routes>
-            {/* <Route path="/cake" element={<StandardCakeView />} /> */}
-              <Route path="/" element={<HomeView />} />
-              <Route
-                path="/login"
-                element={<LoginView onLogin={handleLogin} />}
-              />
-              <Route
-                path="/logout"
-                element={<LogoutView onLogout={handleLogout} />}
-              />
-              <Route path="/register" element={<RegisterView />} />
-              <Route
-                path="/userProfile"
-                element={
-                  <ProtectedRoute>
-                    <UserProfileView />
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
-            <GlobalFooterView />
-          </main>
+          <CakeContext.Provider value={{}}>
+            <MainNav />
+            <main id="main-content">
+              <Routes>
+                {/* <Route path="/cake" element={<StandardCakeView />} /> */}
+                <Route path="/" element={<HomeView />} />
+                <Route
+                  path="/login"
+                  element={<LoginView onLogin={handleLogin} />}
+                />
+                <Route
+                  path="/logout"
+                  element={<LogoutView onLogout={handleLogout} />}
+                />
+                <Route path="/register" element={<RegisterView />} />
+                <Route
+                  path="/userProfile"
+                  element={
+                    <ProtectedRoute>
+                      <UserProfileView />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/cakes/:id" element={<ProductPageView />} />
+              </Routes>
+              <GlobalFooterView />
+            </main>
+          </CakeContext.Provider>
         </UserContext.Provider>
       </div>
     </BrowserRouter>
