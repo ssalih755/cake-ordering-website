@@ -7,6 +7,7 @@ import App from './App.jsx'
 /* import fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser, faUserCircle, faTrashCan, faPencil, faCirclePlus, faTriangleExclamation, faXmark, faMagnifyingGlass, faExternalLink, faShoppingCart, faEnvelope, faUsers } from '@fortawesome/free-solid-svg-icons'
+ 
 
 /* add icons to the library */
 library.add(faUserCircle)
@@ -22,7 +23,7 @@ library.add(faExternalLink)
 library.add(faShoppingCart)
 library.add(faEnvelope)
 library.add(faUsers)
-
+ 
  
  
  

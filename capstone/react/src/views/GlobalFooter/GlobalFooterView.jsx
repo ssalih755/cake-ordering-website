@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./GlobalFooterView.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function GlobalFooterView() {
@@ -14,7 +15,9 @@ export default function GlobalFooterView() {
           bamscakery@cake.com</p>
         </div>
         <div className={styles.socailMedia}>
-                       <p>@BamsCakery</p>
+        <p>
+        <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
+                       @BamsCakery</p>
         </div>
       </div>
       <div className={styles.locationOne}>
