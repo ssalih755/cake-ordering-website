@@ -45,8 +45,30 @@ section{
   align-items: stretch;
 }
 
+.titleAndButtonContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  font-family: Nickainley;
+  font-weight: 300px;
+  font-style: bold;
+  font-size: 32px;
+  color: #6b392f;
+}
+
+
 .adminButton {
-  background-color: #ff6b6b;
+  position: absolute;
+  right: 0;
+  background-color: #697ce7;
   color: white;
   padding: 10px 16px;
   border: none;
@@ -61,7 +83,7 @@ section{
 }
 
 .adminButton:hover {
-  background-color: #ff4d4d;
+  background-color: #697ce7;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
