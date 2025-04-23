@@ -17,9 +17,6 @@ export default function ProductPageView() {
     setWriting(event.target.value);
   }
 
-  // **************************************************************************************************************
-  // ******* not adding to payload yet, try adding 'writing' to line 35 of checkout jsx and debug from there*******
-  // **************************************************************************************************************
 
   const handleBuyNow = () => {
     console.log("Navigating with writing:", writing); // debugging payload issue
@@ -34,8 +31,9 @@ export default function ProductPageView() {
         placeholder="Write your message here, then click 'Buy Now'"
         value={writing}
         onChange={handleWritingChange}
+        className={styles.writingInput}
       />
-      <button onClick={handleBuyNow}>Buy Now</button>
+      <button className={styles.formButton} onClick={handleBuyNow}>Buy Now</button>
     </>
   );
 }
