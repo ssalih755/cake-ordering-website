@@ -1,16 +1,18 @@
 package com.techelevator.dao;
 
+import com.techelevator.dao.optionDaos.CakePriceDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Cake;
-import com.techelevator.model.User;
+import com.techelevator.model.options.CakePrice;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 public class JdbcCakeDao implements CakeDao {
@@ -70,4 +72,43 @@ public class JdbcCakeDao implements CakeDao {
 
     }
 
+    @Component
+    public static class JdbcCakePriceDao implements CakePriceDao {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+
+        public JdbcCakePriceDao(JdbcTemplate jdbcTemplate){
+            this.jdbcTemplate = jdbcTemplate;
+        }
+
+        @Override
+        public List<CakePrice> getAllPrices() {
+            List<CakePrice> prices = new ArrayList<>();
+
+            String sql = "SELECT cakeprice_id, price FROM cakeprice;";
+
+            try {
+                SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+                while(result.next()) {
+                    CakePrice price = mapRowToPrices(result);
+                    prices.add(price);
+                }
+            }catch (EmptyResultDataAccessException e){
+                throw new DaoException("CakePrices returned an empty set", e);
+            }catch (CannotGetJdbcConnectionException exception) {
+                throw new DaoException("unable to connect to server", exception);
+            }
+            return prices;
+
+
+        }
+
+        private CakePrice mapRowToPrices(SqlRowSet result) {
+            CakePrice prices = new CakePrice();
+            prices.setId(result.getInt("cakePrice_id"));
+            prices.setPrice(BigDecimal.valueOf(result.getInt("Price")));
+
+            return prices;
+        }
+
+    }
 }

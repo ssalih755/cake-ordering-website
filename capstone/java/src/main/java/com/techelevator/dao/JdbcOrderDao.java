@@ -15,11 +15,11 @@ import java.util.List;
 public class JdbcOrderDao  implements OrderDao {
 
     JdbcTemplate jdbcTemplate = new JdbcTemplate();
-    private final  OrderDetailDao orderDetailDao;
+   // private final  OrderDetailDao orderDetailDao;
 
     public JdbcOrderDao(JdbcTemplate jdbcTemplate, OrderDetailDao orderDetailDao) {
         this.jdbcTemplate = jdbcTemplate;
-        this.orderDetailDao = orderDetailDao;
+      //  this.orderDetailDao = orderDetailDao;
     }
 
     @Override
