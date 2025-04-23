@@ -62,7 +62,7 @@ export default function Checkout() {
     { length: 24 },
     (_, i) => i.toString().padStart(2, "0") + ":00"
   );
-
+    // return infomation
   return (
     <div>
       <h2 className={styles.title}>Checkout </h2>
@@ -89,7 +89,7 @@ export default function Checkout() {
               </option>
             ))}
           </select>
-
+      
           <button type="submit" className={styles.formButton}>
             Submit
           </button>
