@@ -34,4 +34,15 @@ public class FrostingController {
         }
         return frostings;
     }
+
+    @GetMapping(path = "/getAvailableFrostings")
+    public List<Frosting> getAvailableFrostings() {
+        List<Frosting> frostings;
+        try {
+            frostings = frostingDao.getAvailableFrostings();
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return frostings;
+    }
 }

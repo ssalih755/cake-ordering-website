@@ -34,4 +34,15 @@ public class FillingController {
         }
         return fillings;
     }
+
+    @GetMapping(path = "/getAvailableFillings")
+    public List<Filling> getAvailableFillings() {
+        List<Filling> fillings;
+        try {
+            fillings = fillingDao.getAvailableFillings();
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return fillings;
+    }
 }

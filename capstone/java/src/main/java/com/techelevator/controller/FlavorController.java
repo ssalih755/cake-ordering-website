@@ -34,4 +34,15 @@ public class FlavorController {
         }
         return flavors;
     }
+
+    @GetMapping(path = "/getAvailableFlavors")
+    public List<Flavor> getAvailableFlavors() {
+        List<Flavor> flavors;
+        try {
+            flavors = flavorDao.getAvailableFlavors();
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return flavors;
+    }
 }

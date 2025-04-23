@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface FlavorDao {
     List<Flavor> getFlavors();
+
+    List<Flavor> getAvailableFlavors();
 }

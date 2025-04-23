@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface StyleDao {
     List<Style> getAllStyles();
+    List<Style> getAvailableStyles();
 }

@@ -46,6 +46,31 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
 
     }
 
+    @Override
+    public List<CakeSize> getAvailableSizes() {
+
+        List<CakeSize> sizes = new ArrayList<>();
+
+        String sql = "SELECT c.cakesize_id, cs.style, c.size, c.isavailable\n" +
+                "FROM cakesize c\n" +
+                "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id WHERE c.isAvailable = true";
+
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+            while(result.next()) {
+                CakeSize size = mapRowToSizes(result);
+                sizes.add(size);
+            }
+        }catch (EmptyResultDataAccessException e){
+            throw new DaoException("CakeSizes returned an empty set", e);
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return sizes;
+
+
+    }
+
     private CakeSize mapRowToSizes(SqlRowSet result) {
         CakeSize sizes = new CakeSize();
         sizes.setId(result.getInt("cakesize_id"));

@@ -39,6 +39,25 @@ public class JdbcFrostingDao implements FrostingDao {
 
     }
 
+    @Override
+    public List<Frosting> getAvailableFrostings() {
+        List<Frosting> frostings = new ArrayList<>();
+
+        final String sql = "SELECT cakefrosting_id, frosting, isAvailable\n" +
+                "FROM cakeFrosting WHERE isAvailable = true;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                Frosting frosting = mapRowToFrosting(results);
+                frostings.add(frosting);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return frostings;
+
+    }
+
     private Frosting mapRowToFrosting(SqlRowSet rs) {
         Frosting frosting = new Frosting();
         frosting.setId(rs.getInt("cakefrosting_id"));

@@ -37,6 +37,24 @@ public class JdbcFillingDao implements FillingDao {
 
     }
 
+    @Override
+    public List<Filling> getAvailableFillings() {
+        List<Filling> fillings = new ArrayList<>();
+
+        final String sql = "SELECT cakefilling_id, filling, isAvailable\n" +
+                "FROM cakeFilling WHERE isAvailable = true;";
+        try{
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()){
+                Filling filling = mapRowToFilling(results);
+                fillings.add(filling);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);}
+        return fillings;
+
+    }
+
     private Filling mapRowToFilling(SqlRowSet rs){
         Filling filling = new Filling();
         filling.setId(rs.getInt("cakefilling_id"));

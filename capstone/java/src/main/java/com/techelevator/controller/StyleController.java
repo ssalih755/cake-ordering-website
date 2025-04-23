@@ -37,4 +37,15 @@ public class StyleController {
         }
         return styles;
     }
+
+    @GetMapping(path = "/getAvailableStyles")
+    public List<Style> getAvailableStyles() {
+        List<Style> styles;
+        try {
+            styles = styleDao.getAvailableStyles();
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return styles;
+    }
 }

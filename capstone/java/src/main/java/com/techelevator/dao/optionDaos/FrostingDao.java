@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface FrostingDao {
     List<Frosting> getAllFrostings();
+    List<Frosting> getAvailableFrostings();
 }

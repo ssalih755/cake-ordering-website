@@ -8,4 +8,6 @@ import java.util.List;
 public interface CakeSizeDao {
 
     List<CakeSize> getAllSizes();
+
+    List<CakeSize> getAvailableSizes();
 }
