@@ -74,13 +74,13 @@ CREATE TABLE cakeSize(
     CONSTRAINT FK_SizeStyle FOREIGN KEY (cakeStyle_id) REFERENCES cakeStyle(cakeStyle_id)
 );
 
-CREATE TABLE cake (
+CREATE TABLE cake (//
     name VARCHAR(30) NOT NULL,
     imgURL VARCHAR(200) NOT NULL,
     cake_id SERIAL PRIMARY KEY,
     cakeFlavor_id INT NOT NULL,
     cakeFrosting_id INT NOT NULL,
-    cakeFilling_id INT NULL,
+    cakeFilling_id INT Not NULL,
     cakeStyle_id INT NOT NULL,
     cakeSize_id INT NOT NULL,
     cakeType_id INT NOT NULL,

@@ -134,6 +134,28 @@ public class JdbcCakeDao implements CakeDao {
 
         }
 
+        @Override
+        public List<CakePrice> getAvailableOptions() {
+            List<CakePrice> prices = new ArrayList<>();
+
+            String sql = "SELECT cakeprice_id, price FROM cakeprice WHERE isAvailable = true;";
+
+            try {
+                SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+                while(result.next()) {
+                    CakePrice price = mapRowToPrices(result);
+                    prices.add(price);
+                }
+            }catch (EmptyResultDataAccessException e){
+                throw new DaoException("CakePrices returned an empty set", e);
+            }catch (CannotGetJdbcConnectionException exception) {
+                throw new DaoException("unable to connect to server", exception);
+            }
+            return prices;
+
+
+        }
+
         private CakePrice mapRowToPrices(SqlRowSet result) {
             CakePrice prices = new CakePrice();
             prices.setId(result.getInt("cakePrice_id"));
