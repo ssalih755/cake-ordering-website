@@ -22,6 +22,7 @@ export default function App() {
 
   function handleLogin(userData) {
     setUser(userData);
+    
   }
 
   function handleLogout() {

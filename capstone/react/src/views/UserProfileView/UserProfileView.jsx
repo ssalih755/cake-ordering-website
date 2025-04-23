@@ -3,7 +3,6 @@ import { UserContext } from '../../context/UserContext';
 
 export default function UserProfileView() {
   const user = useContext(UserContext);
-
   return (
     <div>
       <h1>User Profile</h1>
