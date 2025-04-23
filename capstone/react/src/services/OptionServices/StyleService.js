@@ -3,8 +3,8 @@ import axios from "axios";
 const token = localStorage.getItem("token");
 
 export default {
-  getAllFillings() {
-    return axios.get(`/filling/getFillings`, {
+  getAllStyles() {
+    return axios.get(`/style/getAllStyles`, {
       headers: { Authorization: `Bearer ${token}` },
     });
   },

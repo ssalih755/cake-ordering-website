@@ -1,8 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
+
+const token = localStorage.getItem("token");
 
 export default {
-    getAllPrices() {
-        return axios.get(`/getCakeSizes`);
-      },
- 
-}
+  getAllSizes() {
+    return axios.get(`/size/getSizes`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  },
+};

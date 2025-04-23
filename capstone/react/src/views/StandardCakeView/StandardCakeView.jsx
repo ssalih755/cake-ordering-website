@@ -21,7 +21,6 @@ export default function StandardCakeView() {
     CakeService.getStandardCakes()
       .then((response) => {
         setCakes(response.data);
-        console.log(cakes);
       })
       .catch((err) => {
         console.log(err);
