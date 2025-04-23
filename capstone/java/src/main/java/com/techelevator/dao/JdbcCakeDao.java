@@ -51,7 +51,24 @@ public class JdbcCakeDao implements CakeDao {
             return cakes;
     }
 
-    private Cake mapRowToCake(SqlRowSet rs){
+    @Override
+    public Cake getCakeById(int cake_id) {
+        Cake cake =null;
+        String sql = "SELECT name, imgurl, cake_id, cakeflavor_id, cakefrosting_id, cakefilling_id, cakestyle_id, cakesize_id, caketype_id, cakeprice_id, description, isavailable\n" +
+                "\tFROM cake\n" +
+                "\tWHERE cake_id = ?;";
+        try {
+            final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cake_id);
+            if (result.next()) {
+                cake = mapRowToOneCake(result);
+            }
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return cake;
+    }
+
+    private Cake mapRowToCake(SqlRowSet rs) {
         Cake cake = new Cake();
         cake.setName(rs.getString("name"));
         cake.setImgURL(rs.getString("imgURL"));
@@ -65,6 +82,24 @@ public class JdbcCakeDao implements CakeDao {
         cake.setSize(rs.getString("size"));
         cake.setStyle(rs.getString("style"));
         cake.setType(rs.getString("type"));
+        return cake;
+    }
+
+    //added ths for get by id
+        private Cake mapRowToOneCake(SqlRowSet rs){
+        Cake cake = new Cake();
+        cake.setName(rs.getString("name"));
+        cake.setImgURL(rs.getString("imgURL"));
+        cake.setAvailable(rs.getBoolean("isavailable"));
+        cake.setDescription(rs.getString("description"));
+        cake.setFilling(rs.getString("cakefilling_id"));
+        cake.setFlavor(rs.getString("cakeflavor_id"));
+        cake.setFrosting(rs.getString("cakefrosting_id"));
+        cake.setId(rs.getInt("cake_id"));
+        cake.setPrice(rs.getInt("cakeprice_id"));
+        cake.setSize(rs.getString("cakesize_id"));
+        cake.setStyle(rs.getString("cakestyle_id"));
+        cake.setType(rs.getString("caketype_id"));
         return cake;
 
     }
