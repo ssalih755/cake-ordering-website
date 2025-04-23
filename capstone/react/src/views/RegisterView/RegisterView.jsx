@@ -143,12 +143,14 @@ export default function RegisterView() {
         <div className={styles.formControl}>
           <label htmlFor="Phone">Phone:</label>
           <input
-            type="text"
+            type="tel"
             id="phone"
+            pattern="[0-9]*"
             value={phone}
-            size="50"
+            placeholder="1234567890"
             required
             onChange={(event) => setPhone(event.target.value)}
+           
           />
         </div>
 

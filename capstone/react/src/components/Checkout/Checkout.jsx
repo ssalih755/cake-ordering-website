@@ -17,6 +17,7 @@ export default function Checkout() {
   const [notification, setNotification] = useState("");
   const [pickupDate, setPickupDate] = useState("");
   const [pickupTime, setPickupTime] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -97,32 +98,6 @@ export default function Checkout() {
       {notification.message ? (
         <div className={styles.notification}>{notification.message}</div>
       ) : null}
-    </div>
-  );
-}
-
-function ConfirmationPage(notification) {
-  const [countdown, setCountdown] = useState(5);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown((prev) => prev - 1);
-    }, 1000);
-
-    if (countdown === 0) {
-      clearInterval(timer);
-      navigate("/");
-    }
-
-    return () => clearInterval(timer);
-  }, [countdown, navigate]);
-
-  return (
-    <div>
-      <p className={styles.notification}>{notification}</p>
-
-      <p>Redirecting to the home page in {countdown} seconds...</p>
     </div>
   );
 }
