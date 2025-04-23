@@ -90,14 +90,21 @@ export default function Checkout() {
             ))}
           </select>
       
-          <button type="submit" className={styles.formButton}>
+          <button type="submit" className={styles.formButton} 
+            onClick={() => setShowPopup(true)} >  
             Submit
           </button>
         </div>
       </form>
-      {notification.message ? (
-        <div className={styles.notification}>{notification.message}</div>
-      ) : null}
-    </div>
-  );
+     
+ {showPopup ? (
+  <div className={styles.notification} onClick={() => setShowPopup(false)}  >
+      <h2 className={styles.close}>close</h2>
+    {notification.message}
+   
+   </div>
+  ): null}
+</div>
+);
 }
+
