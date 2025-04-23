@@ -14,6 +14,7 @@ import GlobalFooterView from "./views/GlobalFooterView/GlobalFooterView";
 import Checkout from "./components/Checkout/Checkout";
 import ProductPageView from "./views/ProductPageView/ProductPageView";
 import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
+import AddCakeView from "./views/AddCakeView/AddCakeView";
 
 import axios from "axios";
 
@@ -87,6 +88,7 @@ export default function App() {
                 />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/cakes/:id" element={<ProductPageView />} />
+                <Route path="/addcake" element={<AddCakeView />} />
               </Routes>
               <GlobalFooterView />
             </main>

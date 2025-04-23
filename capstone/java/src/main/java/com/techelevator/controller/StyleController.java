@@ -27,7 +27,7 @@ public class StyleController {
         this.styleDao = styleDao;
     }
 
-    @GetMapping(path = "/getStyles")
+    @GetMapping(path = "/getAllStyles")
     public List<Style> getAllStyles() {
         List<Style> styles;
         try {
