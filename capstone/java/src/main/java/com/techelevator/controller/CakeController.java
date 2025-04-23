@@ -8,10 +8,7 @@ import com.techelevator.model.User;
 import net.sf.jsqlparser.expression.TryCastExpression;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -39,6 +36,21 @@ public class CakeController {
         }
         return cakes;
     }
+    @GetMapping(path = "/{id}")
+    public Cake getCakeById(@PathVariable int id){
+        final Cake cake;
+        try {
+            cake = cakeDao.getCakeById(id);
+            if (cake == null)
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No cake found with that Id");
+
+        }catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");
+        }
+
+        return cake;
+    }
+
 
 
 }
