@@ -88,7 +88,7 @@ public class JdbcCakeDao implements CakeDao {
         return cake;
     }
 
-
+    //added ths for get by id
         private Cake mapRowToOneCake(SqlRowSet rs){
         Cake cake = new Cake();
         cake.setName(rs.getString("name"));

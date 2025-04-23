@@ -35,7 +35,8 @@ public class CakeController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
         return cakes;
-    }
+    }//this is get by id
+    
     @GetMapping(path = "/{id}")
     public Cake getCakeById(@PathVariable int id){
         final Cake cake;
