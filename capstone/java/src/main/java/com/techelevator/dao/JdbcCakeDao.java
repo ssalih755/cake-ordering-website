@@ -26,22 +26,19 @@ public class JdbcCakeDao implements CakeDao {
     @Override
     public List<Cake> getStandardCakes() {
         List<Cake> cakes =new ArrayList<>();
-//        String sql = "SELECT name, imgURL, cake_id, cakeflavor_id, cakefrosting_id, cakefilling_id, cakestyle_id, \n" +
-//                "cakesize_id, caketype_id, cakeprice_id, description, isavailable\n" +    //where iSavailable true     add name for standards
-//                "\tFROM cake WHERE caketype_id = 1 " +
-//                " ORDER BY name;";
-        String sql = "SELECT cake.name, cake.imgURL, cake.cake_id, cakeflavor.flavor, cakefrosting.frosting, cakefilling.filling, " +
-                "cakestyle.style, cakesize.size, caketype.type, cakeprice.price, cake.description, cake.isavailable " +
-                "FROM cake " +
-                "LEFT JOIN cakeflavor ON cake.cakeflavor_id = cakeflavor.cakeflavor_id " +
-                "LEFT JOIN cakefrosting ON cake.cakefrosting_id = cakefrosting.cakefrosting_id " +
-                "LEFT JOIN cakefilling ON cake.cakefilling_id = cakefilling.cakefilling_id " +  //for some reason cake filling was preventing the query from providing
-                "LEFT JOIN cakestyle ON cake.cakestyle_id = cakestyle.cakestyle_id " +          // all of the standard cakes, hence the left joins
-                "LEFT JOIN cakesize ON cake.cakesize_id = cakesize.cakesize_id " +
-                "LEFT JOIN caketype ON cake.caketype_id = caketype.caketype_id " +
-                "LEFT JOIN cakeprice ON cake.cakeprice_id = cakeprice.cakeprice_id " +
-                "WHERE caketype.type = 'standard' " +
-                "ORDER BY cake.name;";
+
+        String sql = "SELECT c.name, c.imgURL, c.cake_id, cf.flavor, cr.frosting,\n" +
+                " cz.size, ct.type, cp.price, c.description, c.isavailable \n" +
+                "FROM cake c\n" +
+                "JOIN cakeflavor cf ON c.cakeflavor_id = cf.cakeflavor_id\n" +
+                "JOIN cakefrosting cr ON c.cakefrosting_id = cr.cakefrosting_id\n" +
+                "JOIN cakefilling cl ON c.cakefilling_id = cl.cakefilling_id  \n" +
+                "JOIN cakestyle cs ON c.cakestyle_id = cs.cakestyle_id          \n" +
+                "JOIN cakesize cz ON c.cakesize_id = cz.cakesize_id\n" +
+                "JOIN caketype ct ON c.caketype_id = ct.caketype_id\n" +
+                "JOIN cakeprice cp ON c.cakeprice_id = cp.cakeprice_id\n" +
+                "WHERE ct.type = 'standard'\n" +
+                "ORDER BY c.name;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()){
