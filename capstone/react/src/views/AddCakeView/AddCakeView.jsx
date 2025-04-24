@@ -29,7 +29,6 @@ export default function AddCakeView() {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedFrosting, setSelectedFrosting] = useState("");
   const [selectedStyle, setSelectedStyle] = useState("");
-  const [selectedPrice, setSelectedPrice] = useState("");
   const [notification, setNotification] = useState(null);
 
   function handleSubmit(event) {
@@ -45,7 +44,7 @@ export default function AddCakeView() {
       style: selectedStyle,
       description: cakeDescription,
       type: "standard",
-      price: selectedPrice,
+      price: price,
     };
 
     CakeService.createCake(cake)
@@ -107,7 +106,7 @@ export default function AddCakeView() {
             <input
               className={styles.imgURL}
               type="number"
-              min="0"
+              min="0.00"
               id="price"
               placeholder="Enter Price"
               value={price}

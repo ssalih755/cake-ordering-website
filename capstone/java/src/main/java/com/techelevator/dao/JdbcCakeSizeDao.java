@@ -90,7 +90,7 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
                 "\tVALUES (?, ?, ?) RETURNING cakesize_id;";
         try{ int newSizeId = jdbcTemplate.queryForObject(sql, int.class,
                  cakeSize.getSize(), cakeSize.getStyle_id(), true);
-            
+
         }
     }
 
