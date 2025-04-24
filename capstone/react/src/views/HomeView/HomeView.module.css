@@ -2,11 +2,18 @@
 .home-page{
     color: tomato;
 }
+.our-story :global(h2){
+    display: flex;
+    padding: 20px;
+    font-weight: bold;
+     font-family: Nickainley;
+     font-size: 32px;
+}
 .about{
    display: flex; 
    color: #6b392f;
-   gap: 16px;
-   padding: 16px;
+   gap: 20px;
+   padding: 20px;
    border-radius: 10px;
    background: #f3f3f3;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -16,7 +23,7 @@
    text-align: justify;
    font-weight: 300px;
    font-style: normal;
-   font-size: 14px;
+   font-size: 18px;
    
 }
 
@@ -29,45 +36,60 @@
      font-size: 20px;
 }
 .cake{
-    width: 300px;
+    width: 200px;
     
 }
-.cake-types :global(h1){
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-    color: #6b392f;
-    font-family: Nickainley;
-   font-weight: 300px;
-  font-weight: bold;
-   font-size: 32px;
+.section-container{
+    display: flex;
+    flex-direction: column;
+}
+.types {
+    direction: flex;
+        
+    flex-direction: column;
     
+    padding: 20px;
+    max-width: 10%;
+    margin-bottom: 20px;
+    text-align: justify;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 32px;
+    
+  
 
 }
 .cake-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    max-width: 100%;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    flex: 1;
+    gap: 16px;
+    object-fit: cover;
+    
+   
+    
+  
+
 }
 .standard-cakes {
-    display: flex;
  
+    display: flex;
+    justify-content: space-evenly;  
     gap: 16px;
     padding: 16px;
     border-radius: 10px;
     background: #f3f3f3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    align-items: flex-start;
-    max-width: 100%;
+    align-items: center;
     margin-bottom: 20px;
-  }
-  .standard-cakes {
-    flex: 1;
-    gap: 16px;
-    max-width: 250px;
-    aspect-ratio: 1 / 1;
+   
     object-fit: cover;
+    aspect-ratio: 1 / 1;
+    max-width: 350px;
+   
 }
 
 

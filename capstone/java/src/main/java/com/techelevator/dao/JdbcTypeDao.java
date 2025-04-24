@@ -17,7 +17,7 @@ public class JdbcTypeDao implements TypeDao{
     @Override
     public int getTypeIdByName(String type) {
         int typeId;
-        String sql = "SELECT caketype_id, type\n" +
+        String sql = "SELECT caketype_id\n" +
                 "FROM caketype WHERE type ILIKE ?;";
         try {
             typeId = jdbcTemplate.queryForObject(sql, int.class, type);

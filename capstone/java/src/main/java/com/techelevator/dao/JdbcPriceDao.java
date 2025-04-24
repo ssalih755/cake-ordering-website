@@ -42,7 +42,7 @@ public class JdbcPriceDao implements CakePriceDao {
         int priceId;
         String sql = "SELECT cakeprice_id\n" +
                 "FROM cakeprice\n" +
-                "WHERE price ILIKE ?;";
+                "WHERE price = ?;";
         try {
             priceId = jdbcTemplate.queryForObject(sql, int.class, price);
 

@@ -12,4 +12,7 @@ export default {
   createCake(cake) {
     return axios.post("/cake/createCake", cake);
   },
+  getCakeById(cakeId) {
+    return axios.get(`/cake/${cakeId}`);
+  },
 };

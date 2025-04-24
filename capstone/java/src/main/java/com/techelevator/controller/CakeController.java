@@ -37,7 +37,7 @@ public class CakeController {
         }
         return cakes;
     }//this is get by id
-    
+
     @GetMapping(path = "/{id}")
     public Cake getCakeById(@PathVariable int id){
         final Cake cake;

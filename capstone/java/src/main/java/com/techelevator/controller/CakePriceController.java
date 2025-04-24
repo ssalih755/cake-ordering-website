@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("hasRole('ROLE_ADMIN')")
-@RequestMapping(path = "/price")
+@RequestMapping(path = "/")
 public class CakePriceController {
 
     private final CakePriceDao cakePriceDao;
@@ -24,7 +24,7 @@ public class CakePriceController {
     public CakePriceController(CakePriceDao cakePriceDao) {
         this.cakePriceDao = cakePriceDao;
     }
-
+    @CrossOrigin
     @GetMapping(path = "/getCakePrices")
     public List<CakePrice> getAllPrices(){
         List<CakePrice> prices;

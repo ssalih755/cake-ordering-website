@@ -1,4 +1,3 @@
-import styles from "./AddCakeView.module.css";
 import { useState, useEffect } from "react";
 import FlavorService from "../../services/OptionServices/FlavorService";
 import FillingService from "../../services/OptionServices/FillingService";
@@ -6,19 +5,23 @@ import SizeService from "../../services/OptionServices/SizeService";
 import FrostingService from "../../services/OptionServices/FrostingService";
 import StyleService from "../../services/OptionServices/StyleService";
 import CakeService from "../../services/CakeService";
+import PriceService from "../../services/OptionServices/PriceService";
+import styles from "./AddCakeView.module.css";
 
 export default function AddCakeView() {
   const [flavors, setFlavors] = useState([]);
   const [fillings, setFillings] = useState([]);
   const [frostings, setFrostings] = useState([]);
   const [sizes, setSizes] = useState([]);
-  const [styles, setStyles] = useState([]);
+  const [cakeStyles, setCakeStyles] = useState([]);
+  const [prices, setPrices] = useState([]);
 
   const [selectedFlavor, setSelectedFlavor] = useState("");
   const [selectedFilling, setSelectedFilling] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedFrosting, setSelectedFrosting] = useState("");
   const [selectedStyle, setSelectedStyle] = useState("");
+  const [selectedPrice, setSelectedPrice] = useState("");
 
   const [cakeName, setCakeName] = useState("");
   const [imgURL, setImgURL] = useState("");
@@ -32,12 +35,15 @@ export default function AddCakeView() {
     // build the cake object
     const cake = {
       name: cakeName,
-      imageUrl: imgURL,
-      flavorId: selectedFlavor,
-      fillingId: selectedFilling,
-      sizeId: selectedSize,
-      frostingId: selectedFrosting,
-      styleId: selectedStyle,
+      imgURL: imgURL,
+      flavor: selectedFlavor,
+      filling: selectedFilling,
+      size: selectedSize,
+      frosting: selectedFrosting,
+      style: selectedStyle,
+      description: cakeDescription,
+      type: "standard",
+      price: selectedPrice,
     };
 
     CakeService.createCake(cake)
@@ -62,9 +68,7 @@ export default function AddCakeView() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
 
-  useEffect(() => {
     FlavorService.getAllFlavors()
       .then((response) => {
         setFlavors(response.data);
@@ -72,9 +76,7 @@ export default function AddCakeView() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
 
-  useEffect(() => {
     FillingService.getAllFillings()
       .then((response) => {
         setFillings(response.data);
@@ -82,9 +84,7 @@ export default function AddCakeView() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
 
-  useEffect(() => {
     FrostingService.getAllFrostings()
       .then((response) => {
         setFrostings(response.data);
@@ -92,12 +92,19 @@ export default function AddCakeView() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
 
-  useEffect(() => {
     StyleService.getAllStyles()
       .then((response) => {
-        setStyles(response.data);
+        setCakeStyles(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    PriceService.getAllPrices()
+      .then((response) => {
+        setPrices(response.data);
+        console.log(prices);
       })
       .catch((err) => {
         console.log(err);
@@ -135,7 +142,7 @@ export default function AddCakeView() {
           </div>
 
           <div className={styles.cakeDescriptionBox}>
-            <label htmlFor="cakeName">Cake Description</label>
+            <label htmlFor="cakeDescription">Cake Description</label>
             <input
               className={styles.cakeDescription}
               type="text"
@@ -157,6 +164,22 @@ export default function AddCakeView() {
           </div>
 
           <div>
+            <label>Price</label>
+            <select
+              className="price"
+              value={selectedPrice}
+              onChange={(event) => setSelectedPrice(event.target.value)}
+            >
+              <option value="">-- Choose a price --</option>
+              {prices.map((price) => (
+                <option key={price.id} value={price.price}>
+                  {price.price}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
             <label>Size</label>
             <select
               className="sizes"
@@ -165,7 +188,7 @@ export default function AddCakeView() {
             >
               <option value="">-- Choose a size --</option>
               {sizes.map((size) => (
-                <option key={size.id} value={size.id}>
+                <option key={size.id} value={size.size}>
                   {size.size}
                 </option>
               ))}
@@ -181,7 +204,7 @@ export default function AddCakeView() {
             >
               <option value="">-- Choose a flavor --</option>
               {flavors.map((flavor) => (
-                <option key={flavor.id} value={flavor.id}>
+                <option key={flavor.id} value={flavor.flavor}>
                   {flavor.flavor}
                 </option>
               ))}
@@ -197,7 +220,7 @@ export default function AddCakeView() {
             >
               <option value="">-- Choose a filling --</option>
               {fillings.map((filling) => (
-                <option key={filling.id} value={filling.id}>
+                <option key={filling.id} value={filling.filling}>
                   {filling.filling}
                 </option>
               ))}
@@ -213,7 +236,7 @@ export default function AddCakeView() {
             >
               <option value="">-- Choose a frosting --</option>
               {frostings.map((frosting) => (
-                <option key={frosting.id} value={frosting.id}>
+                <option key={frosting.id} value={frosting.frosting}>
                   {frosting.frosting}
                 </option>
               ))}
@@ -228,9 +251,9 @@ export default function AddCakeView() {
               onChange={(event) => setSelectedStyle(event.target.value)}
             >
               <option value="">-- Choose a style --</option>
-              {styles.map((style) => (
-                <option key={style.id} value={style.id}>
-                  {style.style}
+              {cakeStyles.map((cakeStyle) => (
+                <option key={cakeStyle.id} value={cakeStyle.style}>
+                  {cakeStyle.style}
                 </option>
               ))}
             </select>
