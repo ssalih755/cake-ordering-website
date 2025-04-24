@@ -12,4 +12,6 @@ public interface CakeSizeDao {
     List<CakeSize> getAvailableSizes();
 
     int getSizeIdByName(String size);
+
+    CakeSize addSize();
 }
