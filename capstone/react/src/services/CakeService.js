@@ -15,4 +15,8 @@ export default {
   getCakeById(cakeId) {
     return axios.get(`/cake/${cakeId}`);
   },
+
+  toggleAvailability(cakeId) {
+    return axios.put(`/cake/toggleAvailable/${cakeId}`);
+  },
 };

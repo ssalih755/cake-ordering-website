@@ -28,7 +28,7 @@ public class CakeController {
     }
 
     @GetMapping(path = "/getStandardCakes")
-    public List<Cake> getAllCakes() {
+    public List<Cake> getStandardCakes() {
         List<Cake> cakes;
         try {
             cakes = cakeDao.getStandardCakes();
@@ -36,13 +36,40 @@ public class CakeController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
         return cakes;
-    }//this is get by id
+    }
+
+    @GetMapping(path = "/getAvailableStandardCakes")
+    public List<Cake> getAllCakes() {
+        List<Cake> cakes;
+        try {
+            cakes = cakeDao.getStandardAvailableCakes();
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return cakes;
+    }
+
 
     @GetMapping(path = "/{id}")
     public Cake getCakeById(@PathVariable int id){
         final Cake cake;
         try {
             cake = cakeDao.getCakeById(id);
+            if (cake == null)
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No cake found with that Id");
+
+        }catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");
+        }
+
+        return cake;
+    }
+
+    @PutMapping(path = "/toggleAvailable/{id}")
+    public Cake toggleCakeById(@PathVariable int id){
+        final Cake cake;
+        try {
+            cake = cakeDao.toggleAvailabilityById(id);
             if (cake == null)
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No cake found with that Id");
 
@@ -66,5 +93,7 @@ public class CakeController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");
         }
     }
+
+
 
 }

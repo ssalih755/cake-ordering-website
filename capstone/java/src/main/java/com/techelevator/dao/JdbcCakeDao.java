@@ -39,6 +39,46 @@ public class JdbcCakeDao implements CakeDao {
     }
 
     @Override
+    public List<Cake> getStandardAvailableCakes() {
+        List<Cake> cakes = new ArrayList<>();
+
+        String sql = "SELECT c.name AS name," +
+                " c.imgURL AS imgURL," +
+                " c.cake_id AS cake_id," +
+                " cf.flavor AS flavor," +
+                " cr.frosting AS frosting," +
+                " cz.size AS size," +
+                " ct.type AS type," +
+                " cp.price AS price," +
+                " c.description AS description," +
+                " c.isavailable AS isavailable," +
+                " cl.filling AS filling," +
+                " cs.style AS style" +
+                " FROM cake c" +
+                " JOIN cakeflavor cf ON c.cakeflavor_id = cf.cakeflavor_id" +
+                " JOIN cakefrosting cr ON c.cakefrosting_id = cr.cakefrosting_id" +
+                " JOIN cakefilling cl ON c.cakefilling_id = cl.cakefilling_id" +
+                " JOIN cakestyle cs ON c.cakestyle_id = cs.cakestyle_id" +
+                " JOIN cakesize cz ON c.cakesize_id = cz.cakesize_id" +
+                " JOIN caketype ct ON c.caketype_id = ct.caketype_id" +
+                " JOIN cakeprice cp ON c.cakeprice_id = cp.cakeprice_id" +
+                " WHERE (ct.type = 'standard') and (c.isAvailable = true); ";
+
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                Cake cake = mapRowToCake(results);
+                cakes.add(cake);
+            }
+
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        }
+        return cakes;
+    }
+
+    @Override
     public List<Cake> getStandardCakes() {
         List<Cake> cakes = new ArrayList<>();
 
@@ -113,7 +153,7 @@ public class JdbcCakeDao implements CakeDao {
         return cake;
     }
 
-    public Cake toggleAvailability(int cake_id) {
+    public Cake toggleAvailabilityById(int cake_id) {
         Cake cake = getCakeById(cake_id);
         if (cake == null) {
             throw new DaoException("Cake with ID " + cake_id + " not found");

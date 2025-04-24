@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./StandardCakeView.module.css";
 import CakeService from "../../services/CakeService";
 import CakeCard from "../../components/CakeCard/CakeCard";
 import { UserContext } from "../../context/UserContext";
-import { isAdmin } from "../../services/UserHelper"; // Update this path
+import { isAdmin } from "../../services/UserHelper";
 
 export default function StandardCakeView() {
   const [cakes, setCakes] = useState([]);
@@ -12,6 +12,10 @@ export default function StandardCakeView() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    loadCakes();
+  }, []);
+
+  const loadCakes = () => {
     CakeService.getStandardCakes()
       .then((response) => {
         setCakes(response.data);
@@ -19,10 +23,20 @@ export default function StandardCakeView() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  };
 
   const handleAddNewCake = () => {
     navigate("/addcake");
+  };
+
+  const handleAvailabilityChanged = (cakeId) => {
+    CakeService.toggleAvailability(cakeId)
+      .then(() => {
+        loadCakes();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -30,20 +44,24 @@ export default function StandardCakeView() {
       <div className={styles.headerContainer}>
         <div className={styles.titleAndButtonContainer}>
           <h1>Standard Cakes</h1>
-          <section className={styles.buttonContainer}>
-            {isAdmin(user) && (
+          {isAdmin(user) && (
+            <section className={styles.buttonContainer}>
               <button className={styles.adminButton} onClick={handleAddNewCake}>
                 Add Cake
               </button>
-            )}
-          
-          </section>
+            </section>
+          )}
         </div>
       </div>
+
       <div className={styles.cardContainer}>
-        {cakes.map((cake) => {
-          return <CakeCard key={cake.id} cake={cake} />;
-        })}
+        {cakes.map((cake) => (
+          <CakeCard
+            key={cake.id}
+            cake={cake}
+            onAvailabilityChanged={handleAvailabilityChanged}
+          />
+        ))}
       </div>
     </div>
   );
