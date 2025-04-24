@@ -90,10 +90,11 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
                 "FROM cakesize c\n" +
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id" +
                 "WHERE cakesize_id = ?;";
-
-        final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakesize_id);
         try {
-            cakeSize = mapRowToSizes(result);
+            final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakesize_id);
+            if (result.next()) {
+                cakeSize = mapRowToSizes(result);
+            }
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
         }
@@ -106,13 +107,12 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
                 "\tVALUES (?, ?, ?) RETURNING cakesize_id;";
         try {
             int newSizeId = jdbcTemplate.queryForObject(sql, int.class,
-                    cakeSize.getStyle_id(),cakeSize.getSize(), true);
+                    cakeSize.getStyle_id(), cakeSize.getSize(), true);
             return getSizeById(newSizeId);
-        }catch (CannotGetJdbcConnectionException exception) {
+        } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
         }
     }
-
 
 
     private CakeSize mapRowToSizes(SqlRowSet result) {
