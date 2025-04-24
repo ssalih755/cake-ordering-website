@@ -20,18 +20,16 @@ public class JdbcCakeDao implements CakeDao {
     private final JdbcTemplate jdbcTemplate;
     private final FlavorDao flavorDao;
     private final StyleDao styleDao;
-    private final CakePriceDao cakePriceDao;
     private final FrostingDao frostingDao;
     private final FillingDao fillingDao;
     private final CakeSizeDao cakeSizeDao;
     private final TypeDao typeDao;
 
 
-    public JdbcCakeDao(JdbcTemplate jdbcTemplate, FlavorDao flavorDao, StyleDao styleDao, CakePriceDao cakePriceDao, FrostingDao frostingDao, FillingDao fillingDao, CakeSizeDao cakeSizeDao, TypeDao typeDao) {
+    public JdbcCakeDao(JdbcTemplate jdbcTemplate, FlavorDao flavorDao, StyleDao styleDao, FrostingDao frostingDao, FillingDao fillingDao, CakeSizeDao cakeSizeDao, TypeDao typeDao) {
         this.jdbcTemplate = jdbcTemplate;
         this.flavorDao = flavorDao;
         this.styleDao = styleDao;
-        this.cakePriceDao = cakePriceDao;
         this.frostingDao = frostingDao;
         this.fillingDao = fillingDao;
         this.cakeSizeDao = cakeSizeDao;
@@ -49,7 +47,7 @@ public class JdbcCakeDao implements CakeDao {
                 " cr.frosting AS frosting," +
                 " cz.size AS size," +
                 " ct.type AS type," +
-                " cp.price AS price," +
+                " c.price," +
                 " c.description AS description," +
                 " c.isavailable AS isavailable," +
                 " cl.filling AS filling," +
@@ -61,7 +59,6 @@ public class JdbcCakeDao implements CakeDao {
                 " JOIN cakestyle cs ON c.cakestyle_id = cs.cakestyle_id" +
                 " JOIN cakesize cz ON c.cakesize_id = cz.cakesize_id" +
                 " JOIN caketype ct ON c.caketype_id = ct.caketype_id" +
-                " JOIN cakeprice cp ON c.cakeprice_id = cp.cakeprice_id" +
                 " WHERE ct.type = 'standard';";
 
 
@@ -88,7 +85,7 @@ public class JdbcCakeDao implements CakeDao {
                 " cr.frosting AS frosting," +
                 " cz.size AS size," +
                 " ct.type AS type," +
-                " cp.price AS price," +
+                " c.price," +
                 " c.description AS description," +
                 " c.isavailable AS isavailable," +
                 " cl.filling AS filling," +
@@ -100,7 +97,6 @@ public class JdbcCakeDao implements CakeDao {
                 " JOIN cakestyle cs ON c.cakestyle_id = cs.cakestyle_id" +
                 " JOIN cakesize cz ON c.cakesize_id = cz.cakesize_id" +
                 " JOIN caketype ct ON c.caketype_id = ct.caketype_id" +
-                " JOIN cakeprice cp ON c.cakeprice_id = cp.cakeprice_id" +
                 " WHERE c.cake_id = ?;";
         try {
             final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cake_id);
@@ -141,7 +137,7 @@ public class JdbcCakeDao implements CakeDao {
 
     @Override
     public Cake CreateCake(Cake cake) {
-        String sql = "INSERT INTO cake(name, imgurl, cakeflavor_id, cakefrosting_id, cakefilling_id, cakestyle_id, cakesize_id, caketype_id, cakeprice_id, description, isavailable)\n" +
+        String sql = "INSERT INTO cake(name, imgurl, cakeflavor_id, cakefrosting_id, cakefilling_id, cakestyle_id, cakesize_id, caketype_id, cakeprice, description, isavailable)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING cake_id;";
         try{
             int newCakeId = jdbcTemplate.queryForObject(sql, int.class,
@@ -153,7 +149,7 @@ public class JdbcCakeDao implements CakeDao {
                     styleDao.getStyleIdByName(cake.getStyle()),
                     cakeSizeDao.getSizeIdByName(cake.getSize()),
                     typeDao.getTypeIdByName(cake.getType()),
-                    cakePriceDao.getPriceIdByName(cake.getPrice()),
+                    cake.getPrice(),
                     cake.getDescription(),
                     true
             );
@@ -174,7 +170,7 @@ public class JdbcCakeDao implements CakeDao {
         cake.setFlavor(rs.getString("flavor"));
         cake.setFrosting(rs.getString("frosting"));
         cake.setId(rs.getInt("cake_id"));
-        cake.setPrice(rs.getInt("price"));
+        cake.setPrice(rs.getBigDecimal("price"));
         cake.setSize(rs.getString("size"));
         cake.setStyle(rs.getString("style"));
         cake.setType(rs.getString("type"));

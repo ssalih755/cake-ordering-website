@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.math.BigDecimal;
+
 public class Cake {
 
     private String name;
@@ -11,13 +13,13 @@ public class Cake {
     private String filling;
     private String style;
     private String size;
-    private int price;
+    private BigDecimal price;
     private String description;
     private boolean isAvailable;
 
 
     public Cake(String name, String imgURL, int id, String type, String flavor, String frosting, String filling,
-                String style, String size, int price, String description, boolean isAvailable) {
+                String style, String size, BigDecimal price, String description, boolean isAvailable) {
         this.name = name;
         this.imgURL = imgURL;
         this.id = id;
@@ -114,11 +116,11 @@ public class Cake {
         this.size = size;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
