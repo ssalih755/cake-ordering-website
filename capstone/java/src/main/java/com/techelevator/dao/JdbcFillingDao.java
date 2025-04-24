@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.dao.optionDaos.FillingDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.options.CakeSize;
 import com.techelevator.model.options.Filling;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -68,6 +69,35 @@ public class JdbcFillingDao implements FillingDao {
         }
         return fillingId;
     }
+
+    @Override
+    public Filling addFilling(Filling filling) {
+        String sql = "INSERT INTO cakefilling( filling, isavailable)\n" +
+                "\tVALUES (?, ?) RETURNING cakefilling_id;";
+        try {
+            int newSizeId = jdbcTemplate.queryForObject(sql, int.class,
+                    filling.getFilling(), true);
+            return getFillingById(newSizeId);
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+    }
+
+    @Override
+    public Filling getFillingById(int cakefilling_id) {
+        Filling filling = null;
+        String sql = "SELECT cakefilling_id, filling, isavailable\n" +
+                "\tFROM cakefilling WHERE cakefilling_id = ?;";
+
+        final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakefilling_id);
+        try {
+            filling = mapRowToFilling(result);
+        } catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return filling;
+    }
+
     private Filling mapRowToFilling(SqlRowSet rs){
         Filling filling = new Filling();
         filling.setId(rs.getInt("cakefilling_id"));

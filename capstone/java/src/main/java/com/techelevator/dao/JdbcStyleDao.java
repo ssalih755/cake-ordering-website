@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.dao.optionDaos.StyleDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.options.Filling;
 import com.techelevator.model.options.Style;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -52,6 +53,34 @@ public class JdbcStyleDao implements StyleDao {
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);}
         return styles;
+    }
+
+    @Override
+    public Style addStyle(Style style) {
+        String sql = "INSERT INTO cakestyle( style, isavailable)\n" +
+                "\tVALUES (?, ?) RETURNING cakestyle_id;";
+        try {
+            int newStyleId = jdbcTemplate.queryForObject(sql, int.class,
+                    style.getStyle(), true);
+            return getStyleById(newStyleId);
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+    }
+
+    @Override
+    public Style getStyleById(int cakestyle_id) {
+        Style style = null;
+        String sql = "SELECT cakestyle_id, style, isavailable\n" +
+                "\tFROM cakestyle WHERE cakestyle_id = ?;";
+
+        final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakestyle_id);
+        try {
+            style = mapRowToStyle(result);
+        } catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return style;
     }
 
     @Override

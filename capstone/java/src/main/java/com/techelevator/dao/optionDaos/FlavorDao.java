@@ -10,4 +10,7 @@ public interface FlavorDao {
     List<Flavor> getAvailableFlavors();
 
     int getFlavorIdByName(String flavor);
+
+    Flavor addFlavor(Flavor flavor);
+    Flavor getFlavorById(int cakeflavor_id);
 }

@@ -2,13 +2,12 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.optionDaos.FlavorDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.options.Filling;
 import com.techelevator.model.options.Flavor;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -45,4 +44,19 @@ public class FlavorController {
         }
         return flavors;
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(path = "/addFlavor")
+    @CrossOrigin
+    public void createSize(@RequestBody @Valid Flavor flavor){
+        try{
+            Flavor newFlavor = flavorDao.addFlavor(flavor);
+            if (newFlavor == null) {
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create cake");
+            }
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");
+        }
+    }
+
 }

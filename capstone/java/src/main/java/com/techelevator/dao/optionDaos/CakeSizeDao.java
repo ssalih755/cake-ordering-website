@@ -13,5 +13,7 @@ public interface CakeSizeDao {
 
     int getSizeIdByName(String size);
 
-    CakeSize addSize();
+    CakeSize getSizeById(int cakesize_id);
+
+    CakeSize addSize(CakeSize cakeSize);
 }

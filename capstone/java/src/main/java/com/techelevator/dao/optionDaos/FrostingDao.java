@@ -9,4 +9,7 @@ public interface FrostingDao {
     List<Frosting> getAvailableFrostings();
 
     int getFrostingIdByName(String frosting);
+
+    Frosting addFrosting(Frosting frosting);
+    Frosting getFrostingById(int cakefrosting_id);
 }

@@ -10,4 +10,8 @@ public interface FillingDao {
     List<Filling> getAvailableFillings();
 
     int getFillingIdByName(String filling);
+
+    Filling addFilling(Filling filling);
+
+    Filling getFillingById(int cakefilling_id );
 }
