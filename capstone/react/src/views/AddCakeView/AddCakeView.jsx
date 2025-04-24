@@ -18,11 +18,12 @@ export default function AddCakeView() {
   const fillings = useOptionData(FillingService.getAllFillings);
   const frostings = useOptionData(FrostingService.getAllFrostings);
   const stylesData = useOptionData(StyleService.getAllStyles);
-  const prices = useOptionData(PriceService.getAllPrices);
 
   const [cakeName, setCakeName] = useState("");
   const [imgURL, setImgURL] = useState("");
   const [cakeDescription, setCakeDescription] = useState("");
+  const [price, setPrice] = useState("");
+
   const [selectedFlavor, setSelectedFlavor] = useState("");
   const [selectedFilling, setSelectedFilling] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
@@ -101,16 +102,18 @@ export default function AddCakeView() {
             />
           </div>
 
-          <Dropdown
-            label="Price"
-            options={prices}
-            value={selectedPrice}
-            onChange={(e) => setSelectedPrice(e.target.value)}
-            placeholder="-- Choose a price --"
-            optionKey="price"
-            optionValue="price"
-          />
-
+          <div className={styles.price}>
+            <label htmlFor="price">Price</label>
+            <input
+              className={styles.imgURL}
+              type="number"
+              min="0"
+              id="price"
+              placeholder="Enter Price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
           <Dropdown
             label="Size"
             options={sizes}
