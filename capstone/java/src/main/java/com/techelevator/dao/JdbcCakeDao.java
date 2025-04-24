@@ -98,6 +98,33 @@ public class JdbcCakeDao implements CakeDao {
         return cake;
     }
 
+    public Cake toggleAvailability(int cake_id) {
+        Cake cake = getCakeById(cake_id);
+        if (cake == null) {
+            throw new DaoException("Cake with ID " + cake_id + " not found");
+        }
+
+        //boolean which is the opposite of current status
+        boolean newAvailabilityStatus = !cake.isAvailable();
+
+        String sql = "UPDATE cake SET isavailable = ? WHERE cake_id = ?;";
+
+        try {
+            int rowsAffected = jdbcTemplate.update(sql, newAvailabilityStatus, cake_id);
+
+            if (rowsAffected == 0) {
+                throw new DaoException("Failed to update availability for cake with ID " + cake_id);
+            }
+
+            // Update the cake object with new availability status
+            cake.setAvailable(newAvailabilityStatus);
+
+        } catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("Unable to connect to server", exception);
+        }
+        return cake;
+    }
+
     private Cake mapRowToCake(SqlRowSet rs) {
         Cake cake = new Cake();
         cake.setName(rs.getString("name"));

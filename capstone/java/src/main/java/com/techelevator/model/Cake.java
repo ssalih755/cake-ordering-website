@@ -129,4 +129,12 @@ public class Cake {
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
+
+    public void toggleAvailable(){
+        if( isAvailable){
+            isAvailable = false;
+        } else {
+            isAvailable = true;
+        }
+    }
 }
