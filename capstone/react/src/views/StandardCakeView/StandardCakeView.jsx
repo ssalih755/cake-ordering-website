@@ -15,8 +15,14 @@ export default function StandardCakeView() {
     loadCakes();
   }, []);
 
+
   const loadCakes = () => {
-    CakeService.getStandardCakes()
+    // Determine which endpoint to use based on admin status
+    const cakeEndpoint = isAdmin(user) 
+      ? CakeService.getStandardCakes() 
+      : CakeService.getAllCakes();
+      
+    cakeEndpoint
       .then((response) => {
         setCakes(response.data);
       })
