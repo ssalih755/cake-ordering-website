@@ -7,19 +7,64 @@ import CakeService from "../../services/CakeService";
 import CakeCard from "../../components/CakeCard/CakeCard";
 import { UserContext } from "../../context/UserContext"
 
+import Dropdown from "../../components/Dropdown";
+import useOptionData from "../../Components/useOptionData";
+
+import FlavorService from "../../services/OptionServices/FlavorService";
+import FillingService from "../../services/OptionServices/FillingService";
+import SizeService from "../../services/OptionServices/SizeService";
+import FrostingService from "../../services/OptionServices/FrostingService";
+import StyleService from "../../services/OptionServices/StyleService";
+
 export default function ProductPageView() {
   //const { selectCake } = useCakeContext([]);
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState();
   const [cake, setCake] = useState();
+    const sizes = useOptionData(SizeService.getAllSizes);
+    const flavors = useOptionData(FlavorService.getAllFlavors);
+    const fillings = useOptionData(FillingService.getAllFillings);
+    const frostings = useOptionData(FrostingService.getAllFrostings);
+    const stylesData = useOptionData(StyleService.getAllStyles);
+    const [selectedFlavor, setSelectedFlavor] = useState("");
+    const [selectedFilling, setSelectedFilling] = useState("");
+    const [selectedSize, setSelectedSize] = useState("");
+    const [selectedFrosting, setSelectedFrosting] = useState("");
+    const [selectedStyle, setSelectedStyle] = useState("");
+    const [notification, setNotification] = useState(null);
 
 
 
  
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+    function handleSubmit(event) {
+      event.preventDefault();
+  
+      const cake = {
+        name: "Custom Cake", 
+        imgURL ,
+        flavor: selectedFlavor,
+        filling: selectedFilling,
+        size: selectedSize,
+        frosting: selectedFrosting,
+        style: selectedStyle,
+        description: "Custom Cake",
+        type: "Custom",
+        price: 75.00,
+      };
+  
+      CakeService.createCake(cake)
+        .then(() =>
+          setNotification({
+            type: "success",
+            message: "Cake Created Successfully",
+          })
+        )
+        .catch((error) => {
+          const message = error.response?.data?.message || "Create cake failed.";
+          setNotification({ type: "error", message });
+        });
+    }
 
   const cakeId = parseInt(id);
   const cakeQuantity = 1;
@@ -29,9 +74,9 @@ export default function ProductPageView() {
   function handleWritingChange(event) {
     setWriting(event.target.value);
   }
-  function Dropdown(event) {
-      setSelectedOption(event.target.value);
-  }
+  // function Dropdown(event) {
+  //     setSelectedOption(event.target.value);
+  // }
 
 
   const handleBuyNow = () => {
@@ -42,45 +87,67 @@ export default function ProductPageView() {
   return (
     <>
       <h1 className={styles.cakePage}>Custom Cake Page</h1>
+      <form onSubmit={handleSubmit}>
       <div className={styles.formContainer}>
       < img src={cakePic} alt="Bams Cakery" className={styles.cakePic} />
       <div className={styles.dropdown} >
       <div >
-      <label htmlFor="dropdown">Cake Style:</label>
-      <select id="dropdown" value={selectedOption} onChange={handleChange}>
-        <option value="Select">--Select--</option>
-        <option value="Round">Round</option>
-        <option value="banana">Banana</option>
-        <option value="cherry">Cherry</option>
-      </select>
+      <Dropdown
+            label="Cake Style"
+            options={stylesData}
+            value={selectedStyle}
+            onChange={(e) => setSelectedStyle(e.target.value)}
+            placeholder="-- Choose a style --"
+            optionKey="style"
+            optionValue="style"
+          />
     </div>
     <div>
-      <label htmlFor="dropdown">Cake Size:</label>
-      <select id="dropdown" value={selectedOption} onChange={handleChange}>
-        <option value="Select">--Select--</option>
-        <option value="Small">Small</option>
-        <option value="banana">Banana</option>
-        <option value="cherry">Cherry</option>
-      </select>
+    <Dropdown
+            label="Cake Flavor"
+            options={flavors}
+            value={selectedFlavor}
+            onChange={(e) => setSelectedFlavor(e.target.value)}
+            placeholder="-- Choose a flavor --"
+            optionKey="flavor"
+            optionValue="flavor"
+          />
+          </div>
+
+    <div>
+    <Dropdown
+            label="Cake Filling"
+            options={fillings}
+            value={selectedFilling}
+            onChange={(e) => setSelectedFilling(e.target.value)}
+            placeholder="-- Choose a filling --"
+            optionKey="filling"
+            optionValue="filling"
+          />
     </div>
     <div>
-      <label htmlFor="dropdown">Cake Filling:</label>
-      <select id="dropdown" value={selectedOption} onChange={handleChange}>
-        <option value="Select">--Select--</option>
-        <option value="Chocolate">Chocolate</option>
-        <option value="banana">Banana</option>
-        <option value="cherry">Cherry</option>
-      </select>
+    <Dropdown
+            label=" Cake Frosting"
+            options={frostings}
+            value={selectedFrosting}
+            onChange={(e) => setSelectedFrosting(e.target.value)}
+            placeholder="-- Choose a frosting --"
+            optionKey="frosting"
+            optionValue="frosting"
+          />
     </div>
     <div>
-      <label htmlFor="dropdown">Cake Frosting:</label>
-      <select id="dropdown" value={selectedOption} onChange={handleChange}>
-        <option value="Select">--Select--</option>
-        <option value="Butter Cream">Butter Cream</option>
-        <option value="banana">Banana</option>
-        <option value="cherry">Cherry</option>
-      </select>
+      <Dropdown
+            label="Cake Size"
+            options={sizes}
+            value={selectedSize}
+            onChange={(e) => setSelectedSize(e.target.value)}
+            placeholder="-- Choose a size --"
+            optionKey="size"
+            optionValue="size"
+          />
     </div>
+
     </div>
     </div>
       <section className={styles.buyNowContainer}>
@@ -94,8 +161,9 @@ export default function ProductPageView() {
       
       <button className={styles.formButton} onClick={handleBuyNow}>Buy Now</button>
      </section>
-    
+     </form>
     </>
+    
 
   );
 }
