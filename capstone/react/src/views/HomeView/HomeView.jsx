@@ -22,7 +22,7 @@ import flavor6 from "./images/flavor6.png";
 export default function HomeView() {
   const navigate = useNavigate();
   const handleCustomCake = () => {
-    navigate("/cakes/2");
+    navigate("/customcake");
   };
   const handleStandardCake = () => {
     navigate("/cakes");

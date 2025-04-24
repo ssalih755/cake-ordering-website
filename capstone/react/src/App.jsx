@@ -88,7 +88,7 @@ export default function App() {
                   }
                 />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="/cakes/:id" element={<ProductPageView />} />
+                <Route path="/customcake" element={<ProductPageView />} />
                 <Route path="/addcake" element={<AddCakeView />} />
                 
                 <Route path="/toggleCakeAvailability" element={<AddCakeView />} />
