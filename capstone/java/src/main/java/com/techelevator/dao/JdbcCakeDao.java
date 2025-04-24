@@ -42,25 +42,25 @@ public class JdbcCakeDao implements CakeDao {
         List<Cake> cakes = new ArrayList<>();
 
         String sql = "SELECT c.name AS name," +
-                " c.imgURL AS imgURL," +
-                " c.cake_id AS cake_id," +
-                " cf.flavor AS flavor," +
-                " cr.frosting AS frosting," +
-                " cz.size AS size," +
-                " ct.type AS type," +
-                " c.cakeprice," +
-                " c.description AS description," +
-                " c.isavailable AS isavailable," +
-                " cl.filling AS filling," +
-                " cs.style AS style" +
-                " FROM cake c" +
-                " JOIN cakeflavor cf ON c.cakeflavor_id = cf.cakeflavor_id" +
-                " JOIN cakefrosting cr ON c.cakefrosting_id = cr.cakefrosting_id" +
-                " JOIN cakefilling cl ON c.cakefilling_id = cl.cakefilling_id" +
-                " JOIN cakestyle cs ON c.cakestyle_id = cs.cakestyle_id" +
-                " JOIN cakesize cz ON c.cakesize_id = cz.cakesize_id" +
-                " JOIN caketype ct ON c.caketype_id = ct.caketype_id" +
-                " WHERE (ct.type = 'standard') and (c.isAvailable = true); ";
+        " c.imgURL AS imgURL," +
+        " c.cake_id AS cake_id," +
+        " cf.flavor AS flavor," +
+        " cr.frosting AS frosting," +
+        " cz.size AS size," +
+        " ct.type AS type," +
+        " c.cakeprice," +
+        " c.description AS description," +
+        " c.isavailable AS isavailable," +
+        " cl.filling AS filling," +
+        " cs.style AS style" +
+        " FROM cake c" +
+        " JOIN cakeflavor cf ON c.cakeflavor_id = cf.cakeflavor_id" +
+        " JOIN cakefrosting cr ON c.cakefrosting_id = cr.cakefrosting_id" +
+        " JOIN cakefilling cl ON c.cakefilling_id = cl.cakefilling_id" +
+        " JOIN cakestyle cs ON c.cakestyle_id = cs.cakestyle_id" +
+        " JOIN cakesize cz ON c.cakesize_id = cz.cakesize_id" +
+        " JOIN caketype ct ON c.caketype_id = ct.caketype_id" +
+        " WHERE (ct.type = 'standard') AND (c.isavailable = true)";
 
 
         try {

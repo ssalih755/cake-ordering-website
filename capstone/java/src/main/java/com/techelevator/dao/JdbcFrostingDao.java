@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.dao.optionDaos.FrostingDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.options.Filling;
 import com.techelevator.model.options.Frosting;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -71,6 +72,35 @@ public class JdbcFrostingDao implements FrostingDao {
         }
         return frostingId;
     }
+
+    @Override
+    public Frosting addFrosting(Frosting frosting) {
+        String sql = "INSERT INTO cakefrosting( frostign, isavailable)\n" +
+                "\tVALUES (?, ?) RETURNING cakefrosting_id;";
+        try {
+            int newFrostingid = jdbcTemplate.queryForObject(sql, int.class,
+                    frosting.getFrosting(), true);
+            return getFrostingById(newFrostingid);
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+    }
+
+    @Override
+    public Frosting getFrostingById(int cakefrosting_id) {
+        Frosting frosting = null;
+        String sql = "SELECT cakefrosting_id, frosting, isavailable\n" +
+                "\tFROM cakefrosting WHERE cakefrosting_id = ?;";
+
+        final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakefrosting_id);
+        try {
+            frosting = mapRowToFrosting(result);
+        } catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return frosting;
+    }
+
     private Frosting mapRowToFrosting(SqlRowSet rs) {
         Frosting frosting = new Frosting();
         frosting.setId(rs.getInt("cakefrosting_id"));

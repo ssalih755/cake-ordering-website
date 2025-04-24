@@ -55,6 +55,9 @@ export default function StandardCakeView() {
               <button className={styles.adminButton} onClick={handleAddNewCake}>
                 Add Cake
               </button>
+              <button className={styles.adminButton} onClick={handleAddNewCake}>
+                Add Cake Options
+              </button>
             </section>
           )}
         </div>
