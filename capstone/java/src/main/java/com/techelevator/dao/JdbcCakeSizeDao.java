@@ -102,11 +102,11 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
 
     @Override
     public CakeSize addSize(CakeSize cakeSize) {
-        String sql = "INSERT INTO cakesize( cakestyle_id, size, isavailable)\n" +
+        String sql = "INSERT INTO cakesize(cakestyle_id, size, isavailable)\n" +
                 "\tVALUES (?, ?, ?) RETURNING cakesize_id;";
         try {
             int newSizeId = jdbcTemplate.queryForObject(sql, int.class,
-                    cakeSize.getSize(), cakeSize.getStyle_id(), true);
+                    cakeSize.getStyle_id(),cakeSize.getSize(), true);
             return getSizeById(newSizeId);
         }catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
