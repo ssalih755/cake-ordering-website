@@ -10,4 +10,6 @@ public interface CakeSizeDao {
     List<CakeSize> getAllSizes();
 
     List<CakeSize> getAvailableSizes();
+
+    int getSizeIdByName(String size);
 }

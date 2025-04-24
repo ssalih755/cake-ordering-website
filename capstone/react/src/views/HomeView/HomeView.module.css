@@ -50,6 +50,13 @@ flex-basis: 200px;
     justify-content: center;
 }
 
+
+.our-story :global(h2){
+    padding: 10 px;
+    font-weight: bold;
+     font-family: Nickainley;
+     font-size: 20px;
+}
 .cake{
     width: 200px;
     

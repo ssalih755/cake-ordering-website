@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.dao.optionDaos.CakePriceDao;
+import com.techelevator.dao.optionDaos.*;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Cake;
 import com.techelevator.model.options.CakePrice;
@@ -18,9 +18,24 @@ import java.util.List;
 public class JdbcCakeDao implements CakeDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final FlavorDao flavorDao;
+    private final StyleDao styleDao;
+    private final CakePriceDao cakePriceDao;
+    private final FrostingDao frostingDao;
+    private final FillingDao fillingDao;
+    private final CakeSizeDao cakeSizeDao;
+    private final TypeDao typeDao;
 
-    public JdbcCakeDao(JdbcTemplate jdbcTemplate) {
+
+    public JdbcCakeDao(JdbcTemplate jdbcTemplate, FlavorDao flavorDao, StyleDao styleDao, CakePriceDao cakePriceDao, FrostingDao frostingDao, FillingDao fillingDao, CakeSizeDao cakeSizeDao, TypeDao typeDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.flavorDao = flavorDao;
+        this.styleDao = styleDao;
+        this.cakePriceDao = cakePriceDao;
+        this.frostingDao = frostingDao;
+        this.fillingDao = fillingDao;
+        this.cakeSizeDao = cakeSizeDao;
+        this.typeDao = typeDao;
     }
 
     @Override
@@ -122,7 +137,31 @@ public class JdbcCakeDao implements CakeDao {
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("Unable to connect to server", exception);
         }
-        return cake;
+        return cake;}
+
+    @Override
+    public Cake CreateCake(Cake cake) {
+        String sql = "INSERT INTO cake(name, imgurl, cakeflavor_id, cakefrosting_id, cakefilling_id, cakestyle_id, cakesize_id, caketype_id, cakeprice_id, description, isavailable)\n" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING cake_id;";
+        try{
+            int newCakeId = jdbcTemplate.queryForObject(sql, int.class,
+                    cake.getName(),
+                    cake.getImgURL(),
+                   flavorDao.getFlavorIdByName(cake.getFlavor()),
+                   frostingDao.getFrostingIdByName(cake.getFrosting()),
+                    fillingDao.getFillingIdByName(cake.getFilling()),
+                    styleDao.getStyleIdByName(cake.getStyle()),
+                    cakeSizeDao.getSizeIdByName(cake.getSize()),
+                    typeDao.getTypeIdByName(cake.getType()),
+                    cakePriceDao.getPriceIdByName(cake.getPrice()),
+                    cake.getDescription(),
+                    true
+            );
+            System.out.println(flavorDao.getFlavorIdByName(cake.getFlavor()));
+            return getCakeById(newCakeId);
+        } catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
     }
 
     private Cake mapRowToCake(SqlRowSet rs) {

@@ -57,6 +57,19 @@ public class JdbcFlavorDao implements FlavorDao {
 
     }
 
+    @Override
+    public int getFlavorIdByName(String flavor) {
+        int flavorId;
+        String sql = "SELECT cakeflavor_id\n" +
+                "FROM cakeflavor WHERE flavor ILIKE ?;";
+        try {
+            flavorId = jdbcTemplate.queryForObject(sql, Integer.class, flavor.trim());
+
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return flavorId;
+    }
     private Flavor mapRowToFlavor(SqlRowSet rs){
         Flavor flavor = new Flavor();
         flavor.setId(rs.getInt("cakeflavor_id"));
