@@ -47,7 +47,7 @@ public class JdbcCakeDao implements CakeDao {
                 " cr.frosting AS frosting," +
                 " cz.size AS size," +
                 " ct.type AS type," +
-                " cp.price AS price," +
+                " c.price," +
                 " c.description AS description," +
                 " c.isavailable AS isavailable," +
                 " cl.filling AS filling," +
@@ -59,7 +59,6 @@ public class JdbcCakeDao implements CakeDao {
                 " JOIN cakestyle cs ON c.cakestyle_id = cs.cakestyle_id" +
                 " JOIN cakesize cz ON c.cakesize_id = cz.cakesize_id" +
                 " JOIN caketype ct ON c.caketype_id = ct.caketype_id" +
-                " JOIN cakeprice cp ON c.cakeprice_id = cp.cakeprice_id" +
                 " WHERE (ct.type = 'standard') and (c.isAvailable = true); ";
 
 
