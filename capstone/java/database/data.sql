@@ -81,5 +81,5 @@ VALUES ('Pending'),
 INSERT INTO orders(user_id, orderstatus_id, pickup_date, pickup_time) VALUES
 (1, 1, '2025-04-26', '12:00'),
 (2, 2, '2025-04-27', '10:00'),
-(3, 3, '2025-04-27', '10:00')
+(3, 3, '2025-04-27', '10:00');
 COMMIT TRANSACTION;

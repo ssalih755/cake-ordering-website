@@ -90,10 +90,11 @@ public class JdbcFlavorDao implements FlavorDao {
         Flavor flavor = null;
         String sql = "SELECT cakeflavor_id, flavor, isavailable\n" +
                 "\tFROM cakeflavor WHERE cakeflavor_id = ?;";
-
-        final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakeflavor_id);
         try {
-            flavor = mapRowToFlavor(result);
+            final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakeflavor_id);
+            if (result.next()) {
+                flavor = mapRowToFlavor(result);
+            }
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
         }

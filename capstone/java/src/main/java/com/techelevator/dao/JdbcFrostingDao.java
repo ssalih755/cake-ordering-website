@@ -91,10 +91,11 @@ public class JdbcFrostingDao implements FrostingDao {
         Frosting frosting = null;
         String sql = "SELECT cakefrosting_id, frosting, isavailable\n" +
                 "\tFROM cakefrosting WHERE cakefrosting_id = ?;";
-
-        final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakefrosting_id);
         try {
-            frosting = mapRowToFrosting(result);
+            final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakefrosting_id);
+            if (result.next()) {
+                frosting = mapRowToFrosting(result);
+            }
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
         }
