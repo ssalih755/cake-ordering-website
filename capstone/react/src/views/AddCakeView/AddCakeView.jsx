@@ -1,41 +1,42 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Dropdown from "../../components/Dropdown";
+import useOptionData from "../../Components/useOptionData";
+
 import FlavorService from "../../services/OptionServices/FlavorService";
 import FillingService from "../../services/OptionServices/FillingService";
 import SizeService from "../../services/OptionServices/SizeService";
 import FrostingService from "../../services/OptionServices/FrostingService";
 import StyleService from "../../services/OptionServices/StyleService";
-import CakeService from "../../services/CakeService";
 import PriceService from "../../services/OptionServices/PriceService";
+import CakeService from "../../services/CakeService";
+
 import styles from "./AddCakeView.module.css";
 
 export default function AddCakeView() {
-  const [flavors, setFlavors] = useState([]);
-  const [fillings, setFillings] = useState([]);
-  const [frostings, setFrostings] = useState([]);
-  const [sizes, setSizes] = useState([]);
-  const [cakeStyles, setCakeStyles] = useState([]);
-  const [prices, setPrices] = useState([]);
+  const sizes = useOptionData(SizeService.getAllSizes);
+  const flavors = useOptionData(FlavorService.getAllFlavors);
+  const fillings = useOptionData(FillingService.getAllFillings);
+  const frostings = useOptionData(FrostingService.getAllFrostings);
+  const stylesData = useOptionData(StyleService.getAllStyles);
+  const prices = useOptionData(PriceService.getAllPrices);
 
+  const [cakeName, setCakeName] = useState("");
+  const [imgURL, setImgURL] = useState("");
+  const [cakeDescription, setCakeDescription] = useState("");
   const [selectedFlavor, setSelectedFlavor] = useState("");
   const [selectedFilling, setSelectedFilling] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedFrosting, setSelectedFrosting] = useState("");
   const [selectedStyle, setSelectedStyle] = useState("");
   const [selectedPrice, setSelectedPrice] = useState("");
-
-  const [cakeName, setCakeName] = useState("");
-  const [imgURL, setImgURL] = useState("");
-  const [cakeDescription, setCakeDescription] = useState("");
   const [notification, setNotification] = useState(null);
 
-  //handles submission to Database
   function handleSubmit(event) {
     event.preventDefault();
 
-    // build the cake object
     const cake = {
       name: cakeName,
-      imgURL: imgURL,
+      imgURL,
       flavor: selectedFlavor,
       filling: selectedFilling,
       size: selectedSize,
@@ -47,87 +48,21 @@ export default function AddCakeView() {
     };
 
     CakeService.createCake(cake)
-      .then(() => {
+      .then(() =>
         setNotification({
           type: "success",
           message: "Cake Created Successfully",
-        });
-      })
+        })
+      )
       .catch((error) => {
-        // Check for a response message, but display a default if that doesn't exist
         const message = error.response?.data?.message || "Create cake failed.";
         setNotification({ type: "error", message });
       });
   }
 
-  useEffect(() => {
-    SizeService.getAllSizes()
-      .then((response) => {
-        setSizes(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    FlavorService.getAllFlavors()
-      .then((response) => {
-        setFlavors(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    FillingService.getAllFillings()
-      .then((response) => {
-        setFillings(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    FrostingService.getAllFrostings()
-      .then((response) => {
-        setFrostings(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    StyleService.getAllStyles()
-      .then((response) => {
-        setCakeStyles(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    PriceService.getAllPrices()
-      .then((response) => {
-        setPrices(response.data);
-        console.log(prices);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  const handleNameChange = (e) => {
-    setCakeName(e.target.value);
-  };
-
-  const handleDescriptionChange = (e) => {
-    setCakeDescription(e.target.value);
-  };
-
-  const handleImgURLChange = (e) => {
-    setImgURL(e.target.value);
-  };
-
   return (
     <div>
-      {/* //5 dropdowns forms that connect with each option
-          // 1 textbox for the cakename
-          //1 tetxbox that accepts image URL */}
+      <h1 className={styles.title}>Add New Cake</h1>
       <form onSubmit={handleSubmit}>
         <div className={styles.formContainer}>
           <div className={styles.cakeNameBox}>
@@ -137,7 +72,8 @@ export default function AddCakeView() {
               type="text"
               id="cakeName"
               placeholder="Enter Cake Name"
-              onChange={handleNameChange}
+              value={cakeName}
+              onChange={(e) => setCakeName(e.target.value)}
             />
           </div>
 
@@ -148,7 +84,8 @@ export default function AddCakeView() {
               type="text"
               id="cakeDescription"
               placeholder="Enter Cake Description"
-              onChange={handleDescriptionChange}
+              value={cakeDescription}
+              onChange={(e) => setCakeDescription(e.target.value)}
             />
           </div>
 
@@ -159,109 +96,76 @@ export default function AddCakeView() {
               type="text"
               id="imgURL"
               placeholder="Enter Image URL"
-              onChange={handleImgURLChange}
+              value={imgURL}
+              onChange={(e) => setImgURL(e.target.value)}
             />
           </div>
 
-          <div>
-            <label>Price</label>
-            <select
-              className="price"
-              value={selectedPrice}
-              onChange={(event) => setSelectedPrice(event.target.value)}
-            >
-              <option value="">-- Choose a price --</option>
-              {prices.map((price) => (
-                <option key={price.id} value={price.price}>
-                  {price.price}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Dropdown
+            label="Price"
+            options={prices}
+            value={selectedPrice}
+            onChange={(e) => setSelectedPrice(e.target.value)}
+            placeholder="-- Choose a price --"
+            optionKey="price"
+            optionValue="price"
+          />
 
-          <div>
-            <label>Size</label>
-            <select
-              className="sizes"
-              value={selectedSize}
-              onChange={(event) => setSelectedSize(event.target.value)}
-            >
-              <option value="">-- Choose a size --</option>
-              {sizes.map((size) => (
-                <option key={size.id} value={size.size}>
-                  {size.size}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Dropdown
+            label="Size"
+            options={sizes}
+            value={selectedSize}
+            onChange={(e) => setSelectedSize(e.target.value)}
+            placeholder="-- Choose a size --"
+            optionKey="size"
+            optionValue="size"
+          />
 
-          <div>
-            <label>Flavor</label>
-            <select
-              className="flavors"
-              value={selectedFlavor}
-              onChange={(event) => setSelectedFlavor(event.target.value)}
-            >
-              <option value="">-- Choose a flavor --</option>
-              {flavors.map((flavor) => (
-                <option key={flavor.id} value={flavor.flavor}>
-                  {flavor.flavor}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Dropdown
+            label="Flavor"
+            options={flavors}
+            value={selectedFlavor}
+            onChange={(e) => setSelectedFlavor(e.target.value)}
+            placeholder="-- Choose a flavor --"
+            optionKey="flavor"
+            optionValue="flavor"
+          />
 
-          <div>
-            <label>Filling</label>
-            <select
-              className="fillings"
-              value={selectedFilling}
-              onChange={(event) => setSelectedFilling(event.target.value)}
-            >
-              <option value="">-- Choose a filling --</option>
-              {fillings.map((filling) => (
-                <option key={filling.id} value={filling.filling}>
-                  {filling.filling}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Dropdown
+            label="Filling"
+            options={fillings}
+            value={selectedFilling}
+            onChange={(e) => setSelectedFilling(e.target.value)}
+            placeholder="-- Choose a filling --"
+            optionKey="filling"
+            optionValue="filling"
+          />
 
-          <div>
-            <label>Frosting</label>
-            <select
-              className="frostings"
-              value={selectedFrosting}
-              onChange={(event) => setSelectedFrosting(event.target.value)}
-            >
-              <option value="">-- Choose a frosting --</option>
-              {frostings.map((frosting) => (
-                <option key={frosting.id} value={frosting.frosting}>
-                  {frosting.frosting}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Dropdown
+            label="Frosting"
+            options={frostings}
+            value={selectedFrosting}
+            onChange={(e) => setSelectedFrosting(e.target.value)}
+            placeholder="-- Choose a frosting --"
+            optionKey="frosting"
+            optionValue="frosting"
+          />
 
-          <div>
-            <label>Style</label>
-            <select
-              className="styles"
-              value={selectedStyle}
-              onChange={(event) => setSelectedStyle(event.target.value)}
-            >
-              <option value="">-- Choose a style --</option>
-              {cakeStyles.map((cakeStyle) => (
-                <option key={cakeStyle.id} value={cakeStyle.style}>
-                  {cakeStyle.style}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Dropdown
+            label="Style"
+            options={stylesData}
+            value={selectedStyle}
+            onChange={(e) => setSelectedStyle(e.target.value)}
+            placeholder="-- Choose a style --"
+            optionKey="style"
+            optionValue="style"
+          />
+          <button type="submit" className={styles.button}>
+            Add Cake
+          </button>
         </div>
-        <div className={styles.button}>
-          <button type="submit">Add Cake</button>
-        </div>
+
+        {/* <div className={styles.button}></div> */}
       </form>
     </div>
   );
