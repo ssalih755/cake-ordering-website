@@ -83,15 +83,17 @@ public class CakeController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/createCake")
     @CrossOrigin
-    public void createNewCake(@RequestBody @Valid Cake cake){
+    public Cake createNewCake(@RequestBody @Valid Cake cake){
+        Cake newCake;
         try {
-            Cake newCake = cakeDao.CreateCake(cake);
+            newCake = cakeDao.CreateCake(cake);
             if (newCake == null) {
                 throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create cake");
             }
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");
         }
+        return newCake;
     }
 
 

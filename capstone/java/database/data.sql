@@ -70,11 +70,16 @@ INSERT INTO cake (name, imgURL, cakeFlavor_id, cakeFrosting_id, cakeFilling_id, 
 ('Two Tiered Cake', 'https://126432146.cdn6.editmysite.com/uploads/1/2/6/4/126432146/I6CGHG7VAUUMXJ2WIR2ZRKP6.jpeg?width=2400&optimize=medium',1, 3, 2, 4, 7, 1, 50, '2-tier chocolate cake with ganache frosting and chocolate mousse filling', TRUE),
 ('Double Vanilla Cake', 'https://thescranline.com/wp-content/uploads/2025/02/VANILLA-CAKE-25-WEB-04.jpg',2, 5, 4, 1, 3, 1, 40, 'vanilla cake with fondant and vanilla custard filling', TRUE);
 
-
+-- Insert into orderStatus table
 INSERT INTO orderstatus(status)
 VALUES ('Pending'), 
 ('Ready'),
 ('Completed'), 
 ('Canceled');
 
+-- Insert into Order table
+INSERT INTO orders(user_id, orderstatus_id, pickup_date, pickup_time) VALUES
+(1, 1, '2025-04-26', '12:00'),
+(2, 2, '2025-04-27', '10:00'),
+(3, 3, '2025-04-27', '10:00')
 COMMIT TRANSACTION;
