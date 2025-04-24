@@ -1,0 +1,22 @@
+.imgURLBox{
+
+    outline: dotted red 1px;
+}
+div {
+    margin: 12px 0;
+}
+select {
+
+    width: 250px; /* optional: for consistency */
+  }
+
+button{
+    display: flex;
+    background-color: #f6AEB9;
+    color: #6b392f;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 14px;
+  justify-content: center; 
+  align-items: center;     
+}

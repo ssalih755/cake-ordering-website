@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.OrderDao;
 import com.techelevator.dao.OrderDetailDao;
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.Order;
 import com.techelevator.model.OrderDetail;
 import jakarta.validation.Valid;
@@ -24,9 +25,13 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "")
     public void createNewOrder(@RequestBody @Valid Order order){
-        Order newOrder = orderDao.createOrder(order);
-        if(newOrder  == null){
-            throw new ResponseStatusException(HttpStatus.BAD_GATEWAY, "Unable to connect to server");
+        try {
+            Order newOrder = orderDao.createOrder(order);
+            if (newOrder == null) {
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create order");
+            }
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request", e);
         }
 
     }

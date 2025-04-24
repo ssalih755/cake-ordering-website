@@ -67,8 +67,20 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
             throw new DaoException("unable to connect to server", exception);
         }
         return sizes;
+    }
 
+    @Override
+    public int getSizeIdByName(String size) {
+        int sizeId;
+        String sql = "SELECT cakesize_id\n" +
+                "FROM cakesize WHERE size ILIKE ?;";
+        try {
+            sizeId = jdbcTemplate.queryForObject(sql, int.class, size);
 
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return sizeId;
     }
 
     private CakeSize mapRowToSizes(SqlRowSet result) {

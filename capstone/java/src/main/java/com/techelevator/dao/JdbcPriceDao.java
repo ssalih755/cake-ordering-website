@@ -1,11 +1,8 @@
 package com.techelevator.dao;
 
 import com.techelevator.dao.optionDaos.CakePriceDao;
-import com.techelevator.dao.optionDaos.FillingDao;
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Cake;
 import com.techelevator.model.options.CakePrice;
-import com.techelevator.model.options.Filling;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -40,7 +37,20 @@ public class JdbcPriceDao implements CakePriceDao {
 
     }
 
+    @Override
+    public int getPriceIdByName(int price) {
+        int priceId;
+        String sql = "SELECT cakeprice_id\n" +
+                "FROM cakeprice\n" +
+                "WHERE price ILIKE ?;";
+        try {
+            priceId = jdbcTemplate.queryForObject(sql, int.class, price);
 
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return priceId;
+    }
     private CakePrice mapRowToPrice(SqlRowSet rs){
         CakePrice cakePrice = new CakePrice();
         cakePrice.setId(rs.getInt("cakeprice_id"));

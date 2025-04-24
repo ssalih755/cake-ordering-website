@@ -5,6 +5,7 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Cake;
 import com.techelevator.model.User;
+import jakarta.validation.Valid;
 import net.sf.jsqlparser.expression.TryCastExpression;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -52,6 +53,18 @@ public class CakeController {
         return cake;
     }
 
-
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(path = "/createCake")
+    @CrossOrigin
+    public void createNewCake(@RequestBody @Valid Cake cake){
+        try {
+            Cake newCake = cakeDao.CreateCake(cake);
+            if (newCake == null) {
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create cake");
+            }
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");
+        }
+    }
 
 }

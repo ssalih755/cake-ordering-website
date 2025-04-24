@@ -7,4 +7,7 @@ import java.util.List;
 public interface CakePriceDao {
     List<CakePrice> getAllPrices();
 
+    int getPriceIdByName(int price);
+
+
 }

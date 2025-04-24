@@ -58,6 +58,19 @@ public class JdbcFrostingDao implements FrostingDao {
 
     }
 
+    @Override
+    public int getFrostingIdByName(String frosting) {
+        int frostingId;
+        String sql = "SELECT cakefrosting_id\n" +
+                "FROM cakefrosting WHERE frosting ILIKE ?;";
+        try {
+            frostingId = jdbcTemplate.queryForObject(sql, int.class, frosting);
+
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return frostingId;
+    }
     private Frosting mapRowToFrosting(SqlRowSet rs) {
         Frosting frosting = new Frosting();
         frosting.setId(rs.getInt("cakefrosting_id"));

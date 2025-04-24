@@ -55,6 +55,19 @@ public class JdbcFillingDao implements FillingDao {
 
     }
 
+    @Override
+    public int getFillingIdByName(String filling) {
+        int fillingId;
+        String sql = "SELECT cakefilling_id\n" +
+                "FROM cakefilling WHERE filling ILIKE ?;";
+        try {
+            fillingId = jdbcTemplate.queryForObject(sql, int.class, filling);
+
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return fillingId;
+    }
     private Filling mapRowToFilling(SqlRowSet rs){
         Filling filling = new Filling();
         filling.setId(rs.getInt("cakefilling_id"));

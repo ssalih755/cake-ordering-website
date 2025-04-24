@@ -8,4 +8,6 @@ public interface FillingDao {
     List<Filling> getFillings();
 
     List<Filling> getAvailableFillings();
+
+    int getFillingIdByName(String filling);
 }

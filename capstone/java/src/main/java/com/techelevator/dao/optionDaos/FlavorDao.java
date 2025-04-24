@@ -8,4 +8,6 @@ public interface FlavorDao {
     List<Flavor> getFlavors();
 
     List<Flavor> getAvailableFlavors();
+
+    int getFlavorIdByName(String flavor);
 }

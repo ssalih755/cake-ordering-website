@@ -20,7 +20,7 @@ public class JdbcCakeDaoTest extends BaseDaoTest {
     @BeforeEach
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        sut = new JdbcCakeDao(jdbcTemplate);
+        sut = new TestJdbcCakeDao(jdbcTemplate);
     }
 
     @Test
@@ -31,6 +31,12 @@ public class JdbcCakeDaoTest extends BaseDaoTest {
         assertEquals(2, cakes.size());
 
 
+    }
+
+    public class TestJdbcCakeDao extends JdbcCakeDao {
+        public TestJdbcCakeDao(JdbcTemplate jdbcTemplate) {
+            super(jdbcTemplate, null, null, null, null, null, null);
+        }
     }
 
 }

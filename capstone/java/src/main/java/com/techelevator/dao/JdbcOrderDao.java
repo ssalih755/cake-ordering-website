@@ -47,7 +47,6 @@ public class JdbcOrderDao  implements OrderDao {
     public Order createOrder(Order order) {
         List<OrderDetail> orderDetails = order.getOrderDetails();
         OrderDetail detail = orderDetails.get(0);
-        System.out.println(orderDetails);
 
         String sql = "INSERT INTO orders( user_id, orderstatus_id, pickup_date, pickup_time)\n" +
                 "VALUES (?, ?, ?, ?) RETURNING id;";
