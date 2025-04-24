@@ -28,7 +28,7 @@ export default function HomeView() {
     navigate("/cakes");
   };
   return (
-    <div className="homePage">
+    <div className={styles.homePage}>
       <div className={styles.about}>
         <section className={styles.ourStory}>
           <h2>Our Story</h2>
@@ -51,13 +51,13 @@ export default function HomeView() {
             life and special occasions alike.
           </p>
         </section>
-
-        <img src={cake} alt="Bams Cakery" className={styles.cake} />
+        {/* <img src={cake} alt="Bams Cakery" className={styles.cake} /> */}
       </div>
 
       <section className={styles.sectionContainer}>
-        <h1 className={styles.types}>Cakes</h1>
-
+      <div className={styles.typeContainer}>
+       <h1 className={styles.types}>Cakes</h1>
+       </div>
         <div className={styles.cakeContainer}>
           <img src={cake1} alt="Bams Cakery" className={styles.standardCakes} onClick={handleStandardCake} />
           
@@ -67,7 +67,11 @@ export default function HomeView() {
       </section>
 
       <section className={styles.sectionContainer}>
-        <h1 className={styles.types}>Custom Cakes</h1>
+       <div className={styles.typeContainer}>
+       <h1 className={styles.types}>Custom Cakes</h1>
+       </div>
+       
+        
 
         <div className={styles.cakeContainer}>
           <img
@@ -93,8 +97,9 @@ export default function HomeView() {
         </div>
       </section>
       <section className={styles.sectionContainer} >
-        <h1 className={styles.types}>Flavors</h1>
-
+      <div className={styles.typeContainer}>
+       <h1 className={styles.types}>Flavors</h1>
+       </div>
         <div className={styles.flavorContainer}>
           <div className={styles.flavorBox}>
             <img src={flavor1} alt="Bams Cakery" className={styles.flavor} />

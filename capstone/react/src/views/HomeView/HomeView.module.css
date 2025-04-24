@@ -2,15 +2,32 @@
 .home-page{
     color: tomato;
 }
-.our-story :global(h2){
+
+.our-story{
     display: flex;
+    flex-direction: column;
+}
+.our-story :global(h2){
+    
     padding: 20px;
     font-weight: bold;
      font-family: Nickainley;
      font-size: 32px;
 }
+
+.about :global(img){
+flex-basis: 200px;
+
+}
+
+.home-page :global(h1) {
+    display: flex;
+    justify-content: center;
+}
+
 .about{
    display: flex; 
+   flex-direction: row;
    color: #6b392f;
    gap: 20px;
    padding: 20px;
@@ -25,8 +42,13 @@
    font-style: normal;
    font-size: 18px;
    
+   
 }
 
+.type-container{
+    display: flex;
+    justify-content: center;
+}
 
 
 .our-story :global(h2){
@@ -44,7 +66,8 @@
     flex-direction: column;
 }
 .types {
-    direction: flex;
+    display: flex;
+    text-align: center;
         
     flex-direction: column;
     

@@ -2,7 +2,9 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  flex-basis: 400px;
+  flex-wrap: wrap;
+  flex: 0 0 33.33%;
+  /* flex-basis: 400px; */
   gap: 20px;
   padding: 16px;
   border-radius: 10px;

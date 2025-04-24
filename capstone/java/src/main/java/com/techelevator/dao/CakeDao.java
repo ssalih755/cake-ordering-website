@@ -10,4 +10,6 @@ public interface CakeDao {
 
    Cake CreateCake(Cake cake);
 
+   public Cake toggleAvailability(int cake_id);
+
 }

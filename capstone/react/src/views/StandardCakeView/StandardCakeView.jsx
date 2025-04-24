@@ -28,13 +28,16 @@ export default function StandardCakeView() {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.headerContainer}>
-       <div className={styles.titleAndButtonContainer}>
-        <h1>Standard Cakes</h1>
-        {isAdmin(user) && (
-          <button className={styles.adminButton} onClick={handleAddNewCake}>
-            Add Cake
-          </button>
-        )}
+        <div className={styles.titleAndButtonContainer}>
+          <h1>Standard Cakes</h1>
+          <section className={styles.buttonContainer}>
+            {isAdmin(user) && (
+              <button className={styles.adminButton} onClick={handleAddNewCake}>
+                Add Cake
+              </button>
+            )}
+          
+          </section>
         </div>
       </div>
       <div className={styles.cardContainer}>
