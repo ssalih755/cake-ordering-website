@@ -3,12 +3,13 @@ package com.techelevator.dao;
 import com.techelevator.dao.optionDaos.*;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Cake;
-import com.techelevator.model.options.CakePrice;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.w3c.dom.ls.LSOutput;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class JdbcCakeDao implements CakeDao {
                 " cr.frosting AS frosting," +
                 " cz.size AS size," +
                 " ct.type AS type," +
-                " c.price," +
+                " c.cakeprice," +
                 " c.description AS description," +
                 " c.isavailable AS isavailable," +
                 " cl.filling AS filling," +
@@ -86,7 +87,7 @@ public class JdbcCakeDao implements CakeDao {
                 " cr.frosting AS frosting," +
                 " cz.size AS size," +
                 " ct.type AS type," +
-                " c.price," +
+                " c.cakeprice," +
                 " c.description AS description," +
                 " c.isavailable AS isavailable," +
                 " cl.filling AS filling," +
@@ -124,7 +125,7 @@ public class JdbcCakeDao implements CakeDao {
                 " cr.frosting AS frosting," +
                 " cz.size AS size," +
                 " ct.type AS type," +
-                " c.price," +
+                " c.cakeprice," +
                 " c.description AS description," +
                 " c.isavailable AS isavailable," +
                 " cl.filling AS filling," +
@@ -192,7 +193,6 @@ public class JdbcCakeDao implements CakeDao {
                     cake.getDescription(),
                     true
             );
-            System.out.println(flavorDao.getFlavorIdByName(cake.getFlavor()));
             return getCakeById(newCakeId);
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
@@ -209,7 +209,7 @@ public class JdbcCakeDao implements CakeDao {
         cake.setFlavor(rs.getString("flavor"));
         cake.setFrosting(rs.getString("frosting"));
         cake.setId(rs.getInt("cake_id"));
-        cake.setPrice(rs.getBigDecimal("price"));
+        cake.setPrice(rs.getBigDecimal("cakeprice"));
         cake.setSize(rs.getString("size"));
         cake.setStyle(rs.getString("style"));
         cake.setType(rs.getString("type"));
