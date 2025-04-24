@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.dao.optionDaos.CakeSizeDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.options.CakeSize;
+import jakarta.validation.constraints.Size;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -81,6 +82,16 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
             throw new DaoException("unable to connect to server", exception);
         }
         return sizeId;
+    }
+
+    @Override
+    public CakeSize addSize(CakeSize cakeSize) {
+        String sql ="INSERT INTO cakesize( cakestyle_id, size, isavailable)\n" +
+                "\tVALUES (?, ?, ?) RETURNING cakesize_id;";
+        try{ int newSizeId = jdbcTemplate.queryForObject(sql, int.class,
+                 cakeSize.getSize(), cakeSize.getStyle_id(), true);
+
+        }
     }
 
     private CakeSize mapRowToSizes(SqlRowSet result) {

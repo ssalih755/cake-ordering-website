@@ -12,7 +12,6 @@ DROP TABLE IF EXISTS cakeStyle;
 DROP TABLE IF EXISTS cakeFrosting;
 DROP TABLE IF EXISTS cakeFilling;
 DROP TABLE IF EXISTS cakeType;
-DROP TABLE IF EXISTS cakePrice;
 
 --ROLLBACK;
 
@@ -55,16 +54,14 @@ style varchar(25) NOT NULL UNIQUE,
 isAvailable BOOLEAN NOT NULL DEFAULT TRUE
 );
 
+--ROLLBACK;
+
 CREATE TABLE cakeType(
 cakeType_id SERIAL PRIMARY KEY,
 type varchar(20) NOT NULL,
 CONSTRAINT type CHECK (type= 'custom' OR type = 'standard')
 );
 
-CREATE TABLE cakePrice(
-cakePrice_id SERIAL PRIMARY KEY,
-price INTEGER NOT NULL
-);
 
 CREATE TABLE cakeSize(
     cakeSize_id SERIAL PRIMARY KEY,
@@ -76,7 +73,7 @@ CREATE TABLE cakeSize(
 
 CREATE TABLE cake (
     name VARCHAR(30) NOT NULL,
-    imgURL VARCHAR(200) NOT NULL,
+    imgURL VARCHAR(200) NULL,
     cake_id SERIAL PRIMARY KEY,
     cakeFlavor_id INT NOT NULL,
     cakeFrosting_id INT NOT NULL,
@@ -84,7 +81,7 @@ CREATE TABLE cake (
     cakeStyle_id INT NOT NULL,
     cakeSize_id INT NOT NULL,
     cakeType_id INT NOT NULL,
-    cakePrice_id INT NOT NULL,
+    cakePrice DECIMAL(4,2) NOT NULL,
     description VARCHAR(400) NOT NULL,
     isAvailable BOOLEAN NOT NULL DEFAULT TRUE,
     FOREIGN KEY (cakeFlavor_id) REFERENCES cakeFlavor(cakeFlavor_id),
@@ -92,8 +89,7 @@ CREATE TABLE cake (
     FOREIGN KEY (cakeFilling_id) REFERENCES cakeFilling(cakeFilling_id),
     FOREIGN KEY (cakeStyle_id) REFERENCES cakeStyle(cakeStyle_id),
     FOREIGN KEY (cakeSize_id) REFERENCES cakeSize(cakeSize_id),
-    FOREIGN KEY (cakeType_id) REFERENCES cakeType(cakeType_id),
-    FOREIGN KEY (cakePrice_id) REFERENCES cakePrice(cakePrice_id)
+    FOREIGN KEY (cakeType_id) REFERENCES cakeType(cakeType_id)
 );
 
 CREATE TABLE orderStatus(
