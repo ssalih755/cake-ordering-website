@@ -53,3 +53,29 @@ h2{
   flex-wrap: wrap;
   align-items: stretch;
 }
+
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+
+.available-text{
+  display: flex;
+}
+
+.available-text :global(h1){
+  display: flex;
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  justify-content: center;
+  color: rgb(116, 118, 230);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  gap: 8px;
+  border: #696767 solid 1px;
+  background-color: aliceblue;
+
+}
+
+
