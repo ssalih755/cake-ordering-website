@@ -8,5 +8,8 @@ export default {
     getStandardCakes() {
         return axios.get(`/cake/getStandardCakes`);
       },
+    getCakeById(cakeId) {
+        return axios.get(`/cake/${cakeId}`);
+      }
  
 }

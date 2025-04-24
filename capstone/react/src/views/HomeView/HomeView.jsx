@@ -48,8 +48,8 @@ export default function HomeView() {
         <img src={cake} alt="Bams Cakery" className={styles.cake} />
       </div>
 
-      <section className={styles.cakeTypes}>
-        <h1>Cakes</h1>
+      <section className={styles.sectionContainer}>
+        <h1 className={styles.types}>Cakes</h1>
 
         <div className={styles.cakeContainer}>
           <img src={cake1} alt="Bams Cakery" className={styles.standardCakes} />
@@ -58,8 +58,8 @@ export default function HomeView() {
         </div>
       </section>
 
-      <section className={styles.cakeTypes}>
-        <h1>Custom Cakes</h1>
+      <section className={styles.sectionContainer}>
+        <h1 className={styles.types}>Custom Cakes</h1>
 
         <div className={styles.cakeContainer}>
           <img
@@ -81,8 +81,8 @@ export default function HomeView() {
           />
         </div>
       </section>
-      <section className={styles.cakeTypes}>
-        <h1>Flavors</h1>
+      <section className={styles.sectionContainer} >
+        <h1 className={styles.types}>Flavors</h1>
 
         <div className={styles.flavorContainer}>
           <div className={styles.flavorBox}>
