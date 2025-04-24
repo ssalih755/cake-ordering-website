@@ -3,12 +3,20 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useCakeContext } from "../../context/CakeContext";
 import styles from "./ProductPageView.module.css";
 import cakePic from "../HomeView/cake.png";
+import CakeService from "../../services/CakeService";
+import CakeCard from "../../components/CakeCard/CakeCard";
+import { UserContext } from "../../context/UserContext"
 
 export default function ProductPageView() {
-  const { selectCake } = useCakeContext();
+  //const { selectCake } = useCakeContext([]);
   const { id } = useParams();
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState();
+  const [cake, setCake] = useState();
+
+
+
+ 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -33,11 +41,11 @@ export default function ProductPageView() {
 
   return (
     <>
-      <h1 className={styles.cakePage}>Cake Page</h1>
+      <h1 className={styles.cakePage}>Custom Cake Page</h1>
       <div className={styles.formContainer}>
       < img src={cakePic} alt="Bams Cakery" className={styles.cakePic} />
-      <div className={styles.dropdown}>
-      <div>
+      <div className={styles.dropdown} >
+      <div >
       <label htmlFor="dropdown">Cake Style:</label>
       <select id="dropdown" value={selectedOption} onChange={handleChange}>
         <option value="Select">--Select--</option>
@@ -74,8 +82,8 @@ export default function ProductPageView() {
       </select>
     </div>
     </div>
-      
-      </div>
+    </div>
+      <section className={styles.buyNowContainer}>
       <input
         type="text"
         placeholder="Write your message here, then click 'Buy Now'"
@@ -85,7 +93,7 @@ export default function ProductPageView() {
       />
       
       <button className={styles.formButton} onClick={handleBuyNow}>Buy Now</button>
-      
+     </section>
     
     </>
 

@@ -20,6 +20,13 @@ import flavor5 from "./images/flavor5.png";
 import flavor6 from "./images/flavor6.png";
 
 export default function HomeView() {
+  const navigate = useNavigate();
+  const handleCustomCake = () => {
+    navigate("/cakes/2");
+  };
+  const handleStandardCake = () => {
+    navigate("/cakes");
+  };
   return (
     <div className="homePage">
       <div className={styles.about}>
@@ -52,9 +59,10 @@ export default function HomeView() {
         <h1 className={styles.types}>Cakes</h1>
 
         <div className={styles.cakeContainer}>
-          <img src={cake1} alt="Bams Cakery" className={styles.standardCakes} />
-          <img src={cake2} alt="Bams Cakery" className={styles.standardCakes} />
-          <img src={cake3} alt="Bams Cakery" className={styles.standardCakes} />
+          <img src={cake1} alt="Bams Cakery" className={styles.standardCakes} onClick={handleStandardCake} />
+          
+          <img src={cake2} alt="Bams Cakery" className={styles.standardCakes} onClick={handleStandardCake} />
+          <img src={cake3} alt="Bams Cakery" className={styles.standardCakes} onClick={handleStandardCake} />
         </div>
       </section>
 
@@ -66,18 +74,21 @@ export default function HomeView() {
             src={custom1}
             alt="Bams Cakery"
             className={styles.standardCakes}
+            onClick={handleCustomCake}
           />
 
           <img
             src={custom2}
             alt="Bams Cakery"
             className={styles.standardCakes}
+            onClick={handleCustomCake}
           />
 
           <img
             src={custom3}
             alt="Bams Cakery"
             className={styles.standardCakes}
+            onClick={handleCustomCake}
           />
         </div>
       </section>

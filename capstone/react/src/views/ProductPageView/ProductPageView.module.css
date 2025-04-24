@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 325px;
+  
     width: 325px;
     padding-block: 5px;
     text-align: center;
@@ -11,7 +11,7 @@
 }
 
 .formButton{
-    margin-left: 465px;
+   
     margin-right: 1px;
     background-color: #f6AEB9;
     color: #6b392f;
@@ -46,14 +46,51 @@
     margin-bottom: 20px;
   }
   .cake-Pic {
-    width: 200px;
-    height: 200px;
+
+    display: flex;
+    justify-content: space-evenly; 
+     
+    gap: 16px;
+    padding: 16px;
+    border-radius: 10px;
+    background: #f3f3f3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    align-items: flex-start;
+    margin-bottom: 20px;
+   
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    max-width: 400px;
+  }
+  .dropdown{
+    
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      width: 400px;
+      height: 425px;
+      border-radius: 10px;
+  
+      color: #6b392f;
+      font-family: Nickainley;
+      font-weight: 300px;
+      font-style: normal;
+      font-size: 28px;
+      text-align: center;
+
   }
   
   .formContainer{
+     
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
+      align-items: center;
       color: #6b392f;
       font-family: Nickainley;
       font-weight: 300px;
@@ -62,21 +99,15 @@
       text-align: center;
       font-weight: bold;
   }
-  .cake-DropDown{
-      margin-left: 10px;
-      margin-right: 10px;
-      margin-bottom: 10px;
-      margin-top: 10px;
-      width: 200px;
-      height: 40px;
-      border-radius: 10px;
-      background-color: #f6AEB9;
-      color: #6b392f;
-      font-family: Nickainley;
-      font-weight: 300px;
-      font-style: normal;
-      font-size: 22px;
-      text-align: center;
+
+  .buy_Now_Container{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
 
   }
   
