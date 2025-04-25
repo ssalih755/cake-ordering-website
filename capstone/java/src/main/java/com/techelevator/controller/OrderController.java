@@ -7,9 +7,12 @@ import com.techelevator.model.Order;
 import com.techelevator.model.OrderDetail;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -34,6 +37,17 @@ public class OrderController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request", e);
         }
 
+    }
+
+    @GetMapping(path = "/pendingorders")
+    public List<Order> getPendingOrders(){
+        List<Order> pendingOrders;
+        try{
+            pendingOrders = orderDao.getAllPendingOrders();
+        }catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return pendingOrders;
     }
 
 }

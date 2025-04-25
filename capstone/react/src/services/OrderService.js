@@ -9,6 +9,9 @@ const OrderService = {
   createOrder(order) {
     return axios.post("/order", order);
   },
+  getAllPendingOrders() {
+    return axios.get("/pendingorders");
+  },
 };
 
 export default OrderService;
