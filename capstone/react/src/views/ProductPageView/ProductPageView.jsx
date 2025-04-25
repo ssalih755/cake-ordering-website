@@ -19,7 +19,7 @@ export default function ProductPageView() {
 
 
   const handleBuyNow = () => {
-    console.log("Navigating with writing:", writing); // debugging payload issue
+  
     navigate("/checkout", { state: { cakeId, writing, cakeQuantity } });
   };
 
