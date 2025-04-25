@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import com.techelevator.model.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -59,6 +60,25 @@ public class JdbcOrderDao  implements OrderDao {
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
         }
+    }
+
+    @Override
+    public List<Order> getAllPendingOrders(){
+        List<Order> pendingOrders = new ArrayList<>();
+        String sql = "SELECT id, user_id, orderstatus_id, pickup_date, pickup_time, created_at\n" +
+                "FROM orders WHERE orderstatus_id = 1;";
+        try{
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+            while(result.next()){
+                Order order = mapRowToOrder(result);
+                if(order != null){
+                    pendingOrders.add(order);
+                }
+            }
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to process request", exception);
+        }
+        return pendingOrders;
     }
     private Order mapRowToOrder(SqlRowSet result) {
         Order order = new Order();
