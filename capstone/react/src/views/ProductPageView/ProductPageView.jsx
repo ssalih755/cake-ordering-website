@@ -19,12 +19,13 @@ export default function ProductPageView() {
 
 
   const handleBuyNow = () => {
-    console.log("Navigating with writing:", writing); // debugging payload issue
+  
     navigate("/checkout", { state: { cakeId, writing, cakeQuantity } });
   };
 
   return (
     <>
+    <div className={styles.pageContainer}>
       <h1>Product Page</h1>
       <input
         type="text"
@@ -34,6 +35,7 @@ export default function ProductPageView() {
         className={styles.writingInput}
       />
       <button className={styles.formButton} onClick={handleBuyNow}>Buy Now</button>
+    </div>
     </>
   );
 }

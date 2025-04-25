@@ -1,8 +1,14 @@
+.pageContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
 .writingInput{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-  
+  align-items: center;
     width: 325px;
     padding-block: 5px;
     text-align: center;
@@ -11,7 +17,9 @@
 }
 
 .formButton{
-   
+   display: flex;
+   flex-direction: column;
+   align-items: center;
     margin-right: 1px;
     background-color: #f6AEB9;
     color: #6b392f;
@@ -24,12 +32,18 @@
     margin-bottom: 10px;
 }
 .cake-Page{
+  display: flex;
+  flex-direction: column;
     color: #6b392f;
     font-family: Nickainley;    
     font-weight: bold;
     font-size: 32px;
     padding: 20px;
 
+}
+.formButton:hover{
+    background-color: #6b392f;
+    color: #f6AEB9;
 }
 
 
@@ -39,8 +53,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
 
   }
   
