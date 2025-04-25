@@ -15,11 +15,8 @@ import Checkout from "./components/Checkout/Checkout";
 import ProductPageView from "./views/ProductPageView/ProductPageView";
 import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
 import AddCakeView from "./views/AddCakeView/AddCakeView";
-<<<<<<< HEAD
 import PendingOrdersView from "./views/EmployeeViews/PendingOrdersView";
-=======
 import CustomProductPageView from "./views/CustomPageView/CustomProductPageView";
->>>>>>> 0c71e970d32cc882c9c9dd1a8c46f38aa593fbba
 
 import axios from "axios";
 
@@ -29,7 +26,7 @@ export default function App() {
   function handleLogin(userData) {
     setUser(userData);
   }
-   //sarrahs comment
+  //sarrahs comment
 
   function handleLogout() {
     // Remove auth data from local storage
