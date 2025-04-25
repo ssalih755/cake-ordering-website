@@ -28,11 +28,11 @@ flex-basis: 200px;
 .about{
    display: flex; 
    flex-direction: row;
-   color: #6b392f;
+   color: #33261D;
    gap: 20px;
    padding: 20px;
    border-radius: 10px;
-   background: #f3f3f3;
+   background: #FCBFB7;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
    align-items: flex-start;
    max-width: 100%;
@@ -55,12 +55,12 @@ flex-basis: 200px;
     padding: 10 px;
     font-weight: bold;
      font-family: Nickainley;
-     font-size: 20px;
+     font-size: 40px;
 }
 .cake{
     width: 200px;
-    
 }
+
 .section-container{
     display: flex;
     flex-direction: column;
@@ -104,7 +104,7 @@ flex-basis: 200px;
     gap: 16px;
     padding: 16px;
     border-radius: 10px;
-    background: #f3f3f3;
+    background:#FCBFB7;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     align-items: center;
     margin-bottom: 20px;
@@ -124,24 +124,23 @@ flex-basis: 200px;
 
 .flavor {
     flex: 1;
+    background-color: #ffe96e;
     gap: 16px;
-    max-width: 110px;
+    max-width: 150px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    
+}
+
+.flavor-box :global(img){
     border-radius: 100px;
 }
 
 .flavor-box :global(h2){
     text-align: center;
-    font-size: 1rem;
+    font-size: 20px;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
     color: #6b392f
 }
-.flavor-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    display: flex;
-    
-}
+

@@ -52,8 +52,9 @@ export default function StandardCakeView() {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.headerContainer}>
-        <div className={styles.titleAndButtonContainer}>
-          <h1>Standard Cakes</h1>
+      <h1>Standard Cakes</h1>
+        <div className={styles.ButtonContainer}>
+         
           {isAdmin(user) && (
             <section className={styles.buttonContainer}>
               <button className={styles.adminButton} onClick={handleAddNewCake}>

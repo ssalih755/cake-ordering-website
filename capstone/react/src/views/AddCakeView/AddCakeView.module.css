@@ -37,3 +37,7 @@ button{
   margin: 5% 5% 5% 25%;
   
 }
+
+.form-container :global(input){
+    width: 243px;
+}

@@ -1,17 +1,10 @@
 .nav-box{
     grid-area: nav;
     display: flex;
-    background-color: #d9ecd1;
+    background-color: #334E58;
+    color: #FCBFB7;
+    border-radius: 15px;
   
-}
-.nav-box h2{
-    font-family: Nickainley;
-    font-weight: 300px;
-    font-style: normal;
-    font-size: 22px;
-    padding-left: 30px;
-    width: 20px;
-     
 }
 
 /* Main Nav styles */
@@ -31,34 +24,50 @@
     justify-content: center;
     width: 75px;
     font-size: 22px;
+    padding: 10px;
+    margin-right: 10px;
      
 }
 
 .nav-link a {
     display: block;
-    background-color: #d9ecd1;
-    border-bottom: 1px solid rgba(216, 216, 216, 0.7);
-    color: #6B392F;
-    margin: 5px;
+    
+    
+    color: #FCBFB7 ;
+    margin: 8px;
     padding: 0.5rem 1rem;
     text-decoration: none;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 30px;
     font-family: Nickainley;
     
 }
 
 .nav-link :global(a:hover) {
-    color: #6B392F;
+    color: #FCBFB7 ;
+}
+
+.logoText{
+    font-family: Nickainley;
+    font-weight: 300px;
+    font-style: normal;
+    font-size: 30px;
+    padding-left: 30px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+   align-self: center;
 }
 
 :global(a.active) {
-    /* background-color: #83d85f; */
-    color:#6B392F;
+    background-color: #568292;
+    color: #FCBFB7 ;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 30px;
     font-family: Nickainley;
-    outline: solid 1px #6B392F;;
+    outline: solid 2px #FCBFB7;
+    border-radius: 10px;
+
 }
 .nav-icons{
     display: flex;
