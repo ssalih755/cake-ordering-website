@@ -31,74 +31,7 @@
     padding: 20px;
 
 }
-.card {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    flex-basis: 200px;
-    gap: 20px;
-    padding: 16px;
-    border-radius: 10px;
-    background: #f3f3f3;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    align-items: flex-start;
-    max-width: 200px;
-    margin-bottom: 20px;
-  }
-  .cake-Pic {
 
-    display: flex;
-    justify-content: space-evenly; 
-     
-    gap: 16px;
-    padding: 16px;
-    border-radius: 10px;
-    background: #f3f3f3;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    align-items: flex-start;
-    margin-bottom: 20px;
-   
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
-    max-width: 400px;
-  }
-  .dropdown{
-    
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
-      margin-left: 10px;
-      margin-right: 10px;
-      margin-bottom: 10px;
-      margin-top: 10px;
-      width: 400px;
-      height: 425px;
-      border-radius: 10px;
-  
-      color: #6b392f;
-      font-family: Nickainley;
-      font-weight: 300px;
-      font-style: normal;
-      font-size: 28px;
-      text-align: center;
-
-  }
-  
-  .formContainer{
-     
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-      color: #6b392f;
-      font-family: Nickainley;
-      font-weight: 300px;
-      font-style: normal;
-      font-size: 22px;
-      text-align: center;
-      font-weight: bold;
-  }
 
   .buy_Now_Container{
    

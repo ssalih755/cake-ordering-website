@@ -60,7 +60,7 @@ public class JdbcCakeDao implements CakeDao {
         " JOIN cakestyle cs ON c.cakestyle_id = cs.cakestyle_id" +
         " JOIN cakesize cz ON c.cakesize_id = cz.cakesize_id" +
         " JOIN caketype ct ON c.caketype_id = ct.caketype_id" +
-        " WHERE (ct.type = 'standard') AND (c.isavailable = true)";
+        " WHERE (ct.type = 'standard') AND (c.isavailable = true);";
 
 
         try {

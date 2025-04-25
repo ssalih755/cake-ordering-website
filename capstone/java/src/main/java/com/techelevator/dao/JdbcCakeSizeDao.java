@@ -26,7 +26,7 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
 
         List<CakeSize> sizes = new ArrayList<>();
 
-        String sql = "SELECT c.cakesize_id, cs.style, c.size, c.isavailable\n" +
+        String sql = "SELECT c.cakesize_id, cs.style, cs.cakestyle_id, c.size, c.isavailable\n" +
                 "FROM cakesize c\n" +
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id";
 
@@ -51,7 +51,7 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
 
         List<CakeSize> sizes = new ArrayList<>();
 
-        String sql = "SELECT c.cakesize_id, cs.style, c.size, c.isavailable\n" +
+        String sql = "SELECT c.cakesize_id, cs.style, cs.cakestyle_id, c.size, c.isavailable\n" +
                 "FROM cakesize c\n" +
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id WHERE c.isAvailable = true";
 
@@ -86,14 +86,15 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
     @Override
     public CakeSize getSizeById(int cakesize_id) {
         CakeSize cakeSize = null;
-        String sql = "SELECT c.cakesize_id, cs.style, c.size, c.isavailable\n" +
+        String sql = "SELECT c.cakesize_id, cs.style,cs.cakestyle_id, c.size, c.isavailable\n" +
                 "FROM cakesize c\n" +
-                "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id" +
+                "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id \n" +
                 "WHERE cakesize_id = ?;";
-
-        final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakesize_id);
         try {
-            cakeSize = mapRowToSizes(result);
+            final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakesize_id);
+            if (result.next()) {
+                cakeSize = mapRowToSizes(result);
+            }
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
         }
@@ -102,17 +103,16 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
 
     @Override
     public CakeSize addSize(CakeSize cakeSize) {
-        String sql = "INSERT INTO cakesize( cakestyle_id, size, isavailable)\n" +
+        String sql = "INSERT INTO cakesize(cakestyle_id, size, isavailable)\n" +
                 "\tVALUES (?, ?, ?) RETURNING cakesize_id;";
         try {
             int newSizeId = jdbcTemplate.queryForObject(sql, int.class,
-                    cakeSize.getSize(), cakeSize.getStyle_id(), true);
+                    cakeSize.getStyleId(), cakeSize.getSize(), true);
             return getSizeById(newSizeId);
-        }catch (CannotGetJdbcConnectionException exception) {
+        } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
         }
     }
-
 
 
     private CakeSize mapRowToSizes(SqlRowSet result) {
@@ -120,6 +120,7 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
         sizes.setId(result.getInt("cakesize_id"));
         sizes.setSize(result.getString("size"));
         sizes.setAvailable(result.getBoolean("isavailable"));
+        sizes.setStyleId(result.getInt("cakestyle_id"));
         sizes.setStyle(result.getString("style"));
 
         return sizes;

@@ -73,10 +73,11 @@ public class JdbcStyleDao implements StyleDao {
         Style style = null;
         String sql = "SELECT cakestyle_id, style, isavailable\n" +
                 "\tFROM cakestyle WHERE cakestyle_id = ?;";
-
-        final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakestyle_id);
         try {
-            style = mapRowToStyle(result);
+            final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, cakestyle_id);
+            if (result.next()) {
+                style = mapRowToStyle(result);
+            }
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
         }
