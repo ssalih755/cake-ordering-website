@@ -8,4 +8,10 @@ export default {
       headers: { Authorization: `Bearer ${token}` },
     });
   },
+
+  addSize(size) {
+    return axios.post(`/size/addSize`, size, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  },
 };

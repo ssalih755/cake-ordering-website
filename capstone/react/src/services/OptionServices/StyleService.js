@@ -8,4 +8,10 @@ export default {
       headers: { Authorization: `Bearer ${token}` },
     });
   },
+
+  addStyle(style) {
+    return axios.post(`/style/addStyle`, style, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
 };

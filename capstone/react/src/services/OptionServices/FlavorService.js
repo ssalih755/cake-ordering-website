@@ -8,4 +8,10 @@ export default {
       headers: { Authorization: `Bearer ${token}` },
     });
   },
+
+  addFlavor(flavor) {
+    return axios.post(`/flavor/addFlavor`, flavor, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  },
 };

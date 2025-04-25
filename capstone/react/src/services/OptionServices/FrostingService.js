@@ -8,4 +8,10 @@ export default {
       headers: { Authorization: `Bearer ${token}` },
     });
   },
+
+  addFrosting(frosting) {
+    return axios.post(`/frosting/addFrosting`, frosting, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  },
 };

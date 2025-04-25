@@ -44,7 +44,7 @@ export default function AddCakeView() {
       style: selectedStyle,
       description: cakeDescription,
       type: "standard",
-      price: price,
+      price: price,    //isAvailable is defaulted to 'true' in the JDBC code
     };
 
     CakeService.createCake(cake)
