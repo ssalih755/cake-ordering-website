@@ -1,15 +1,9 @@
-.form-button {
-    margin-left: 165px;
-    margin-right: 1px;
-    background-color: #f6AEB9;
-    color: #6b392f;
-    font-family: Nickainley;
-    font-weight: 300px;
-    font-style: normal;
-    font-size: 22px;
 
-}
  .view-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     /* background-color: #FEFEE5 */
     color: #6b392f;
@@ -17,12 +11,10 @@
     font-weight: 300px;
     font-style: normal;
     font-size: 14px;
-     
-  
-    
  }
 
  .view-login h2{
+    font-size: 32px;
     text-align: center;
     font-weight: bold;
     margin-left: 145px;
@@ -39,4 +31,25 @@
     text-align: center;
     padding-right: 40px;
 
+}
+.formButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 165px;
+    margin-right: 1px;
+    background-color: #f6AEB9;
+    color: #6b392f;
+    font-family: Nickainley;
+    font-weight: 300px;
+    font-style: normal;
+    font-size: 22px;
+
+
+}
+.formButton:hover {
+    background-color: #6b392f;
+    color: #f6AEB9;
 }

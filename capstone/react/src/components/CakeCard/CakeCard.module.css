@@ -8,11 +8,16 @@
   gap: 20px;
   padding: 16px;
   border-radius: 10px;
-  background: #f3f3f3;
+  background: #FCBFB7;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   align-items: flex-start;
   max-width: 500px;
   margin-bottom: 20px;
+}
+
+.card:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card :global(p){
@@ -22,6 +27,17 @@
   /* border-radius: 10px;
   background: #f7c8c8;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); */
+}
+
+.adminButton{
+  background-color: #BAD7F2;
+  color:  #334E58;
+}
+
+.adminButton:hover{
+  background-color:  #77b8f5;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 h5 {
@@ -56,26 +72,41 @@ h2{
 
 .button-container{
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
 }
 
 .available-text{
+ 
   display: flex;
+  align-items: stretch;
 }
 
 .available-text :global(h1){
   display: flex;
+  width: 138px;
   font-size: 20px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   justify-content: center;
-  color: rgb(116, 118, 230);
+  color: #BAD7F2;
   border: none;
   cursor: pointer;
   font-weight: 600;
   gap: 8px;
-  border: #696767 solid 1px;
-  background-color: aliceblue;
+  border:  #334E58 solid 1px;
+  background-color: #334E58;
+  margin-top: 4px;
+border-radius: 3px;
 
+}
+
+.card-footer {
+  width: 100%; 
+  display: flex;
+  justify-content: center; 
+  margin-top: auto; 
 }
 
 

@@ -15,13 +15,11 @@ export default function StandardCakeView() {
     loadCakes();
   }, []);
 
-
   const loadCakes = () => {
-    // Determine which endpoint to use based on admin status
-    const cakeEndpoint = isAdmin(user) 
-      ? CakeService.getStandardCakes() 
+    const cakeEndpoint = isAdmin(user)
+      ? CakeService.getStandardCakes()
       : CakeService.getAllCakes();
-      
+
     cakeEndpoint
       .then((response) => {
         setCakes(response.data);
@@ -33,6 +31,14 @@ export default function StandardCakeView() {
 
   const handleAddNewCake = () => {
     navigate("/addcake");
+  };
+
+  const handleAddNewOptions = () => {
+    navigate("/addoption");
+  };
+
+  const handleStandardCake = () => {
+    navigate("/cakes/:id"); // NOTE: This likely needs dynamic id
   };
 
   const handleAvailabilityChanged = (cakeId) => {
@@ -50,12 +56,13 @@ export default function StandardCakeView() {
       <div className={styles.headerContainer}>
         <div className={styles.titleAndButtonContainer}>
           <h1>Standard Cakes</h1>
+
           {isAdmin(user) && (
             <section className={styles.buttonContainer}>
               <button className={styles.adminButton} onClick={handleAddNewCake}>
                 Add Cake
               </button>
-              <button className={styles.adminButton} onClick={handleAddNewCake}>
+              <button className={styles.adminButton} onClick={handleAddNewOptions}>
                 Add Cake Options
               </button>
             </section>

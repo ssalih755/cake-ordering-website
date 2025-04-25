@@ -52,7 +52,7 @@ public class FlavorController {
         try{
             Flavor newFlavor = flavorDao.addFlavor(flavor);
             if (newFlavor == null) {
-                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create cake");
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create flavor");
             }
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");

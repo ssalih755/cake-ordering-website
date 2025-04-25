@@ -107,7 +107,7 @@ public class JdbcCakeSizeDao implements CakeSizeDao {
                 "\tVALUES (?, ?, ?) RETURNING cakesize_id;";
         try {
             int newSizeId = jdbcTemplate.queryForObject(sql, int.class,
-                    cakeSize.getStyleId(), cakeSize.getSize(), true);
+                    1, cakeSize.getSize(), true);
             return getSizeById(newSizeId);
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);

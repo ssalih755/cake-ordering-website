@@ -53,7 +53,7 @@ public class CakeSizesController {
         try{
             CakeSize newSize = cakeSizeDao.addSize(cakeSize);
             if (newSize == null) {
-                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create cake");
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create size");
             }
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");

@@ -17,6 +17,7 @@ import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
 import AddCakeView from "./views/AddCakeView/AddCakeView";
 import PendingOrdersView from "./views/EmployeeViews/PendingOrdersView";
 import CustomProductPageView from "./views/CustomPageView/CustomProductPageView";
+import AddOptionView from "./views/AddOptionView/AddOptionView";  
 
 import axios from "axios";
 
@@ -26,7 +27,7 @@ export default function App() {
   function handleLogin(userData) {
     setUser(userData);
   }
-  //sarrahs comment
+   //sarrahs comment
 
   function handleLogout() {
     // Remove auth data from local storage
@@ -93,7 +94,7 @@ export default function App() {
                 <Route path="/cakes/:id" element={<ProductPageView />} />
                 <Route path="/customcake" element={<CustomProductPageView />} />
                 <Route path="/addcake" element={<AddCakeView />} />
-
+                <Route path="/addOption" element={<AddOptionView />} />
                 <Route
                   path="/toggleCakeAvailability"
                   element={<AddCakeView />}
