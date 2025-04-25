@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import OrderService from "../../services/OrderService";
 import styles from "./PendingOrdersView.module.css";
 
-const PendingOrdersView = () => {
+export default function PendingOrdersView() {
   const [pendingOrders, setPendingOrders] = useState([]);
 
   useEffect(() => {
@@ -12,32 +12,34 @@ const PendingOrdersView = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Pending Orders</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Pending Orders</h2>
       <table>
-        <thead>
+        <thead className={styles.tableHeader}>
           <tr>
-            <th>Order Id</th>
-            <th>Customer Id</th>
-            <th>Order Status Id</th>
-            <th>Pickup Date</th>
-            <th>Pickup Time</th>
+            <th className={styles.tableHeader}>Order Id</th>
+            <th className={styles.tableHeader}>Customer Name</th>
+            <th className={styles.tableHeader}>Order Status </th>
+            <th className={styles.tableHeader}>Pickup Date</th>
+            <th className={styles.tableHeader}>Pickup Time</th>
+            <th className={styles.tableHeader}>Cake Name</th>
+            <th className={styles.tableHeader}>Cake Type</th>
           </tr>
         </thead>
         <tbody>
           {pendingOrders.map((order) => (
             <tr key={order.id}>
-              <td>{order.id}</td>
-              <td>{order.userId}</td>
-              <td>{order.orderStatusId}</td>
-              <td>{order.pickupDate}</td>
-              <td>{order.pickupTime}</td>
+              <td className={styles.tableCell}>{order.id}</td>
+              <td className={styles.tableCell}>{order.customerName}</td>
+              <td className={styles.tableCell}>{order.status}</td>
+              <td className={styles.tableCell}>{order.pickupDate}</td>
+              <td className={styles.tableCell}>{order.pickupTime}</td>
+              <td className={styles.tableCell}>{order.cakeName}</td>
+              <td className={styles.tableCell}>{order.type}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
-};
-
-export default PendingOrdersView;
+}

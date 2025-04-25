@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Order {
     private int id;
-    private int orderDetailId;
     private  int orderStatusId;
     private int userId;
     private LocalDate pickupDate;
@@ -26,6 +25,8 @@ public class Order {
         this.pickupDate = pickupDate;
         this.pickupTime = pickupTime;
         this.Timestamp = timestamp;
+
+
     }
 
     public int getUserId() {
