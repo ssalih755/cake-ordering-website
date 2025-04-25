@@ -25,6 +25,7 @@ export default function ProductPageView() {
 
   return (
     <>
+    <div className={styles.pageContainer}>
       <h1>Product Page</h1>
       <input
         type="text"
@@ -34,6 +35,7 @@ export default function ProductPageView() {
         className={styles.writingInput}
       />
       <button className={styles.formButton} onClick={handleBuyNow}>Buy Now</button>
+    </div>
     </>
   );
 }
