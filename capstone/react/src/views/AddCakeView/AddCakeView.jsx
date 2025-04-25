@@ -7,7 +7,6 @@ import FillingService from "../../services/OptionServices/FillingService";
 import SizeService from "../../services/OptionServices/SizeService";
 import FrostingService from "../../services/OptionServices/FrostingService";
 import StyleService from "../../services/OptionServices/StyleService";
-import PriceService from "../../services/OptionServices/PriceService";
 import CakeService from "../../services/CakeService";
 
 import styles from "./AddCakeView.module.css";

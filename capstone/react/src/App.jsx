@@ -15,6 +15,7 @@ import Checkout from "./components/Checkout/Checkout";
 import ProductPageView from "./views/ProductPageView/ProductPageView";
 import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
 import AddCakeView from "./views/AddCakeView/AddCakeView";
+import PendingOrdersView from "./views/EmployeeViews/PendingOrdersView";
 
 import axios from "axios";
 
@@ -23,7 +24,6 @@ export default function App() {
 
   function handleLogin(userData) {
     setUser(userData);
-    
   }
 
   function handleLogout() {
@@ -90,9 +90,12 @@ export default function App() {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/customcake" element={<ProductPageView />} />
                 <Route path="/addcake" element={<AddCakeView />} />
-                
-                <Route path="/toggleCakeAvailability" element={<AddCakeView />} />
-                
+
+                <Route
+                  path="/toggleCakeAvailability"
+                  element={<AddCakeView />}
+                />
+                <Route path="/pendingOrders" element={<PendingOrdersView />} />
               </Routes>
               <GlobalFooterView />
             </main>

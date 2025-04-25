@@ -60,6 +60,24 @@ public class JdbcOrderDao  implements OrderDao {
             throw new DaoException("unable to connect to server", exception);
         }
     }
+
+    @Override
+    public List<Order> getAllPendingOrders(){
+        List<Order> pendingOrders = null;
+        String sql = "";
+        try{
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+            while(result.next()){
+                Order order = mapRowToOrder(result);
+                if(order != null){
+                    pendingOrders.add(order);
+                }
+            }
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to process request", exception);
+        }
+        return pendingOrders;
+    }
     private Order mapRowToOrder(SqlRowSet result) {
         Order order = new Order();
 
