@@ -98,9 +98,11 @@ export default function Checkout() {
       </form>
      
  {showPopup ? (
-  <div className={styles.notification} onClick={() => setShowPopup(false)}  >
+  <div className={styles.notification} onClick={() => setShowPopup(false) }   >
+  
       <h2 className={styles.close}>close</h2>
     {notification.message}
+   
    
    </div>
   ): null}

@@ -21,6 +21,7 @@ export default function ProductPageView() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState();
+  const [imgURL, setImgURL] = useState("");
   const [cake, setCake] = useState();
     const sizes = useOptionData(SizeService.getAllSizes);
     const flavors = useOptionData(FlavorService.getAllFlavors);
@@ -33,16 +34,15 @@ export default function ProductPageView() {
     const [selectedFrosting, setSelectedFrosting] = useState("");
     const [selectedStyle, setSelectedStyle] = useState("");
     const [notification, setNotification] = useState(null);
-
-
-
+    const [returnCake, setReturnCake] = useState({});
+   
  
     function handleSubmit(event) {
       event.preventDefault();
   
       const cake = {
         name: "Custom Cake", 
-        imgURL ,
+        imgURL,
         flavor: selectedFlavor,
         filling: selectedFilling,
         size: selectedSize,
@@ -54,19 +54,25 @@ export default function ProductPageView() {
       };
   
       CakeService.createCake(cake)
-        .then(() =>
+        .then(response =>{
+          navigate("/checkout", {
+            state: { cakeId: response.data.id, writing, cakeQuantity },
+          });
+           setReturnCake(response.data);
+           console.log(returnCake);
           setNotification({
             type: "success",
             message: "Cake Created Successfully",
+            
           })
-        )
+    })
         .catch((error) => {
           const message = error.response?.data?.message || "Create cake failed.";
           setNotification({ type: "error", message });
         });
     }
 
-  const cakeId = parseInt(id);
+  const cakeId = (returnCake.id);
   const cakeQuantity = 1;
 
   const [writing, setWriting] = useState("");
@@ -74,14 +80,12 @@ export default function ProductPageView() {
   function handleWritingChange(event) {
     setWriting(event.target.value);
   }
-  // function Dropdown(event) {
-  //     setSelectedOption(event.target.value);
-  // }
+  
 
 
   const handleBuyNow = () => {
     console.log("Navigating with writing:", writing); // debugging payload issue
-    navigate("/checkout", { state: { cakeId, writing, cakeQuantity } });
+
   };
 
   return (
@@ -159,7 +163,13 @@ export default function ProductPageView() {
         className={styles.writingInput}
       />
       
-      <button className={styles.formButton} onClick={handleBuyNow}>Buy Now</button>
+      <button 
+      type="submit"
+      className={styles.formButton} 
+      onClick={handleBuyNow}
+      
+      >
+       Buy Now</button>
      </section>
      </form>
     </>
