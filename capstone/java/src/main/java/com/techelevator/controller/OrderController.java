@@ -5,6 +5,7 @@ import com.techelevator.dao.OrderDetailDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Order;
 import com.techelevator.model.OrderDetail;
+import com.techelevator.model.OrderHistory;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -40,8 +41,8 @@ public class OrderController {
     }
 
     @GetMapping(path = "/pendingorders")
-    public List<Order> getPendingOrders(){
-        List<Order> pendingOrders;
+    public List<OrderHistory> getPendingOrders(){
+        List<OrderHistory> pendingOrders;
         try{
             pendingOrders = orderDao.getAllPendingOrders();
         }catch (DaoException e) {

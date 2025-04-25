@@ -5,12 +5,19 @@ import axios from "axios";
  * All methods return a Promise so that the calling code can handle both success and
  * error responses appropriately.
  */
+
+const token = localStorage.getItem("token");
+
 const OrderService = {
   createOrder(order) {
     return axios.post("/order", order);
   },
   getAllPendingOrders() {
-    return axios.get("/pendingorders");
+    return axios.get("/order/pendingorders", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   },
 };
 
