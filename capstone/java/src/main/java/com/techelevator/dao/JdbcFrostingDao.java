@@ -75,7 +75,7 @@ public class JdbcFrostingDao implements FrostingDao {
 
     @Override
     public Frosting addFrosting(Frosting frosting) {
-        String sql = "INSERT INTO cakefrosting( frostign, isavailable)\n" +
+        String sql = "INSERT INTO cakefrosting( frosting, isavailable)\n" +
                 "\tVALUES (?, ?) RETURNING cakefrosting_id;";
         try {
             int newFrostingid = jdbcTemplate.queryForObject(sql, int.class,

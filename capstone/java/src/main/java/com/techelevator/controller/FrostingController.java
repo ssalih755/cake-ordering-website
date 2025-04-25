@@ -52,7 +52,7 @@ public class FrostingController {
         try{
             Frosting newFrosting = frostingDao.addFrosting(frosting);
             if (newFrosting == null) {
-                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create cake");
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create frosting");
             }
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");
