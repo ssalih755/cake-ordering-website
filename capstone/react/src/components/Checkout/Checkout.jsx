@@ -55,15 +55,14 @@ export default function Checkout() {
   }
   const getMinDate = () => {
     const date = new Date();
-    cakeType === "Custom" ? date.setDate(date.getDate() + 3) : date.setDate(date.getDate() + 2);
+    console.log(cakeType);
+    cakeType === "custom" ? date.setDate(date.getDate() + 3) : date.setDate(date.getDate() + 2);
 
    
     return date.toISOString().split("T")[0]; // returns "YYYY-MM-DD"
   };
 
   
- 
-
   const hours = Array.from(
     { length: 24 },
     (_, i) => i.toString().padStart(2, "0") + ":00"
