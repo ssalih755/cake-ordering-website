@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import com.techelevator.model.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -63,8 +64,9 @@ public class JdbcOrderDao  implements OrderDao {
 
     @Override
     public List<Order> getAllPendingOrders(){
-        List<Order> pendingOrders = null;
-        String sql = "";
+        List<Order> pendingOrders = new ArrayList<>();
+        String sql = "SELECT id, user_id, orderstatus_id, pickup_date, pickup_time, created_at\n" +
+                "FROM orders WHERE orderstatus_id = 1;";
         try{
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
             while(result.next()){
