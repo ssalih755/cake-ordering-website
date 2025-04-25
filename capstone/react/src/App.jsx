@@ -26,6 +26,7 @@ export default function App() {
     setUser(userData);
     
   }
+   //sarrahs comment
 
   function handleLogout() {
     // Remove auth data from local storage
