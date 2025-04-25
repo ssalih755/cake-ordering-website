@@ -11,7 +11,7 @@ export default function Checkout() {
   const { user } = useContext(UserContext);
 
   //********* FIX: Destructure 'writing' from state *********
-  const { cakeId, cakeQuantity, writing } = state || {};
+  const { cakeId, cakeQuantity, writing, cakeType } = state || {};
   //********* END FIX *********
 
   const [notification, setNotification] = useState("");
@@ -22,6 +22,7 @@ export default function Checkout() {
   function handleSubmit(event) {
     event.preventDefault();
     setNotification(true);
+   
 
     // build the order object
     const order = {
@@ -54,15 +55,20 @@ export default function Checkout() {
   }
   const getMinDate = () => {
     const date = new Date();
-    date.setDate(date.getDate() + 2);
+    cakeType === "Custom" ? date.setDate(date.getDate() + 3) : date.setDate(date.getDate() + 2);
+
+   
     return date.toISOString().split("T")[0]; // returns "YYYY-MM-DD"
   };
+
+  
+ 
 
   const hours = Array.from(
     { length: 24 },
     (_, i) => i.toString().padStart(2, "0") + ":00"
   );
-    // return infomation
+    // return information
   return (
     <div>
       <h2 className={styles.title}>Checkout </h2>
@@ -75,6 +81,7 @@ export default function Checkout() {
             value={pickupDate}
             placeholder="Pickup Date"
             onChange={(event) => setPickupDate(event.target.value)}
+             
             min={getMinDate()}
           />
           <p className={styles.formLabel}>Pickup Time</p>

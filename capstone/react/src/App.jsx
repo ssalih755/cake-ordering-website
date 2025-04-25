@@ -15,6 +15,7 @@ import Checkout from "./components/Checkout/Checkout";
 import ProductPageView from "./views/ProductPageView/ProductPageView";
 import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
 import AddCakeView from "./views/AddCakeView/AddCakeView";
+import CustomProductPageView from "./views/CustomPageView/CustomProductPageView";
 
 import axios from "axios";
 
@@ -88,7 +89,8 @@ export default function App() {
                   }
                 />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="/customcake" element={<ProductPageView />} />
+                <Route path="/cakes/:id" element={<ProductPageView />} />
+                <Route path="/customcake" element={<CustomProductPageView />} />
                 <Route path="/addcake" element={<AddCakeView />} />
                 
                 <Route path="/toggleCakeAvailability" element={<AddCakeView />} />
