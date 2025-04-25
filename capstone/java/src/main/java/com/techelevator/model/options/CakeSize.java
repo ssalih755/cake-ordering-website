@@ -2,6 +2,7 @@ package com.techelevator.model.options;
 
 public class CakeSize {
     private int id;
+    private int styleId;
     private String style;
     private String size;
     private boolean isAvailable;
@@ -9,11 +10,20 @@ public class CakeSize {
     public CakeSize() {
     }
 
-    public CakeSize(int id, String style, String size, boolean isAvailable) {
+    public CakeSize(int id, int styleId, String style, String size, boolean isAvailable) {
         this.id = id;
+        this.styleId = styleId;
         this.style = style;
         this.size = size;
         this.isAvailable = isAvailable;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
     }
 
     public int getId() {
@@ -24,12 +34,12 @@ public class CakeSize {
         this.id = id;
     }
 
-    public String getStyle_id() {
-        return style;
+    public int getStyleId() {
+        return styleId;
     }
 
-    public void setStyle(String style) {
-        this.style = style;
+    public void setStyleId(int styleId) {
+        this.styleId = styleId;
     }
 
     public String getSize() {
