@@ -35,6 +35,10 @@ export default function StandardCakeView() {
     navigate("/addcake");
   };
 
+  const handleAddNewOptions = () => {
+    navigate("/addoption");
+  };
+
   const handleAvailabilityChanged = (cakeId) => {
     CakeService.toggleAvailability(cakeId)
       .then(() => {
@@ -55,7 +59,7 @@ export default function StandardCakeView() {
               <button className={styles.adminButton} onClick={handleAddNewCake}>
                 Add Cake
               </button>
-              <button className={styles.adminButton} onClick={handleAddNewCake}>
+              <button className={styles.adminButton} onClick={handleAddNewOptions}>
                 Add Cake Options
               </button>
             </section>
