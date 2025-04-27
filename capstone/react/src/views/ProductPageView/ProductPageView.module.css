@@ -1,5 +1,4 @@
 .cake-Header{
-  border: #6b392f solid 1px;
    display: flex ;
     flex-direction: column;
     color: #6b392f;
@@ -7,14 +6,15 @@
     font-weight: bold;
     font-size: 32px;
     padding: 20px;
+    text-align: center;
 
 }
 .pageContainer{
-  border: #6b392f solid 1px;  
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .cake-Pic {
@@ -37,7 +37,6 @@
 
 .cake-InfoContainer{
 display: flex;
-  border: #6b392f solid 1px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -55,6 +54,16 @@ display: flex;
   font-style: normal;
   font-size: 14px;
 
+}
+.cake-InfoContainer label{
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.cake-InfoContainer p{
+  margin-top: 10px;
+  font-size: 18px;
+  color: #6b392f;
 }
 .writingInput{
     display: flex;
@@ -82,6 +91,7 @@ display: flex;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    justify-content: center;
 }
 .cake-Page{
   display: flex;
@@ -137,5 +147,10 @@ display: flex;
     background: #f7c8c8;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); */
   }
+  .line{
+    display: flex;
+    justify-content: center;
+  }
+    
  
   
