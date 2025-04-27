@@ -6,6 +6,7 @@
 .our-story{
     display: flex;
     flex-direction: column;
+    
 }
 .our-story :global(h2){
     
@@ -24,11 +25,16 @@ flex-basis: 200px;
     display: flex;
     justify-content: center;
 }
+p{
+    color: #6b392f;
+
+}
 
 .about{
    display: flex; 
    flex-direction: row;
-   color: #33261D;
+   color: #6b392f;
+
    gap: 20px;
    padding: 20px;
    border-radius: 10px;
@@ -56,14 +62,18 @@ flex-basis: 200px;
     font-weight: bold;
      font-family: Nickainley;
      font-size: 40px;
+     color: #6b392f;
+
 }
 .cake{
     width: 200px;
+    
 }
 
 .section-container{
     display: flex;
     flex-direction: column;
+    
 }
 .types {
     display: flex;
@@ -78,6 +88,8 @@ flex-basis: 200px;
     font-weight: bold;
     font-style: normal;
     font-size: 32px;
+    color: #6b392f;
+
     
   
 

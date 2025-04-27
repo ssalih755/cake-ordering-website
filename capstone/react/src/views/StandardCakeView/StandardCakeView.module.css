@@ -21,6 +21,7 @@ section{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  
 }
 
 .standard-cakes {
@@ -53,6 +54,7 @@ section{
   width: 100%;
   margin-bottom: 20px;
   flex-direction: row-reverse;
+  
 }
 
 
@@ -64,7 +66,7 @@ h1 {
   font-weight: 300px;
   font-style: bold;
   font-size: 50px;
-  color: #33261D;
+  color: #6b392f;
 }
 
 

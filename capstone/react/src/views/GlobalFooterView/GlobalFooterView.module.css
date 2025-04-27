@@ -3,7 +3,7 @@
     display: flex;
     background-color:#d9ecd1;
     
-    color: #FCBFB7;
+    color: #f6AEB9;
     margin: 5px;
     padding: 0.5rem 1rem;
     text-decoration: none;
@@ -18,6 +18,8 @@
     flex-direction: column;
     justify-content:left;
     width: 100%;
+    color: #f6AEB9;
+
 }
 .location-one{
     display: flex;
