@@ -39,20 +39,30 @@ export default function ProductPageView() {
 
   return (
     <>
-    <div className={styles.pageContainer}>
-    <h1>{cake ? cake.name : "Loading..."}</h1>
+   
+    <h1 className={styles.cakeHeader}> {cake ? cake.name : "Loading..."}</h1>
     
-   
-    <img src={cake ? cake.imgURL : "Loading..."} alt={cake ? cake.name : "Loading..."} />
-    <p>{cake ? cake.price : "Loading..."}</p>
+    <div className={styles.pageContainer}>
+    <img src={cake ? cake.imgURL : "Loading..."} alt={cake ? cake.name : "Loading..."} className={styles.cakePic} />
+    <div className={styles.cakeInfoContainer}>
+    <label >Cake Description</label>
     <p>{cake ? cake.description : "Loading..."}</p>
-    <p>{cake ? cake.flavor : "Loading..."}</p>
-    <p>{cake ? cake.size : "Loading..."}</p>
-    <p>{cake ? cake.quantity : "Loading..."}</p>
-   
-    <p>{cake ? cake.filling : "Loading..."}</p>
-    <p>{cake ? cake.frosting : "Loading..."}</p>
+    <label >Cake Style</label>
     <p>{cake ? cake.style : "Loading..."}</p>
+    <label >Cake Flavor</label>
+    <p>{cake ? cake.flavor : "Loading..."}</p>
+    <label >Cake Price</label>
+    <p>{cake ? cake.price : "Loading..."}</p>
+    <label >Cake Filling</label>
+    <p>{cake ? cake.filling : "Loading..."}</p>
+    <label >Cake Size</label>
+    <p>{cake ? cake.size : "Loading..."}</p>
+    <label >Cake Quantity</label>
+    <p>{cake ? cake.quantity : "Loading..."}</p>
+    <label >Cake Frosting</label>
+    <p>{cake ? cake.frosting : "Loading..."}</p>   
+    </div> 
+    </div>
       <input
         type="text"
         placeholder="Write your message here, then click 'Buy Now'"
@@ -61,7 +71,7 @@ export default function ProductPageView() {
         className={styles.writingInput}
       />
       <button className={styles.formButton} onClick={handleBuyNow}>Buy Now</button>
-    </div>
+  
     </>
   );
 }

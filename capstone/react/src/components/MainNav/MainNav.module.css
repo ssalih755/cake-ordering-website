@@ -1,7 +1,7 @@
 .nav-box{
     grid-area: nav;
     display: flex;
-    background-color: #334E58;
+    background-color: #d9ecd1;
     color: #FCBFB7;
     border-radius: 15px;
   
@@ -60,7 +60,7 @@
 }
 
 :global(a.active) {
-    background-color: #568292;
+    background-color: #d9ecd1;
     color: #FCBFB7 ;
     font-weight: bold;
     font-size: 30px;

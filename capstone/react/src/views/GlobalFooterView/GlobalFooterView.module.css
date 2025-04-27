@@ -1,7 +1,7 @@
 .global-footer{
     grid-area: footer;
     display: flex;
-    background-color: #334E58;
+    background-color:#d9ecd1;
     
     color: #FCBFB7;
     margin: 5px;
