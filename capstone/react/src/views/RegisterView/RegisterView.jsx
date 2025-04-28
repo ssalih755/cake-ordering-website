@@ -148,6 +148,7 @@ export default function RegisterView() {
             pattern="[0-9]*"
             value={phone}
             placeholder="1234567890"
+            size="50"
             required
             onChange={(event) => setPhone(event.target.value)}
            
