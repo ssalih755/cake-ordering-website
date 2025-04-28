@@ -86,6 +86,33 @@ public class CakeController {
     public Cake createNewCake(@RequestBody @Valid Cake cake){
         Cake newCake;
         try {
+
+            // Validate user input before inserting into the database
+            if (cake.getName() == null || cake.getName().trim().isEmpty()) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cake name is required.");
+            }
+            if (cake.getDescription() == null || cake.getDescription().trim().isEmpty()) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cake description is required.");
+            }
+            if (cake.getPrice() == null || cake.getPrice().doubleValue() <= 0) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cake price must be greater than 0.");
+            }
+            if (cake.getFlavor() == null || cake.getFlavor().trim().isEmpty()) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cake flavor is required.");
+            }
+            if (cake.getFilling() == null || cake.getFilling().trim().isEmpty()) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cake filling is required.");
+            }
+            if (cake.getSize() == null || cake.getSize().trim().isEmpty()) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cake size is required.");
+            }
+            if (cake.getFrosting() == null || cake.getFrosting().trim().isEmpty()) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cake frosting is required.");
+            }
+            if (cake.getStyle() == null || cake.getStyle().trim().isEmpty()) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cake style is required.");
+            }
+
             newCake = cakeDao.CreateCake(cake);
             if (newCake == null) {
                 throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create cake");
