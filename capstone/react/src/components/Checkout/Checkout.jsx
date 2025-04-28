@@ -8,7 +8,7 @@ import OrderService from "../../services/OrderService.js";
 export default function Checkout() {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const user = useContext(UserContext);
 
   //********* FIX: Destructure 'writing' from state *********
   const { cakeId, cakeQuantity, writing, cakeType } = state || {};
@@ -25,8 +25,7 @@ export default function Checkout() {
 
     // build the order object
     const order = {
-      // userId: user?.user.id,
-      userId: 1,
+      userId: user.id,
       orderStatusId: 1,
       pickupDate,
       pickupTime,
@@ -38,7 +37,6 @@ export default function Checkout() {
         },
       ],
     };
-    console.log(user);
 
     OrderService.createOrder(order)
       .then(() => {
