@@ -22,11 +22,10 @@ export default function Checkout() {
   function handleSubmit(event) {
     event.preventDefault();
     setNotification(true);
-   
 
     // build the order object
     const order = {
-      //userId: user?.user.id,
+      // userId: user?.user.id,
       userId: 1,
       orderStatusId: 1,
       pickupDate,
@@ -39,6 +38,7 @@ export default function Checkout() {
         },
       ],
     };
+    console.log(user);
 
     OrderService.createOrder(order)
       .then(() => {
@@ -55,17 +55,18 @@ export default function Checkout() {
   }
   const getMinDate = () => {
     const date = new Date();
-   
-    cakeType === "custom" ? date.setDate(date.getDate() + 3) : date.setDate(date.getDate() + 2);
+
+    cakeType === "custom"
+      ? date.setDate(date.getDate() + 3)
+      : date.setDate(date.getDate() + 2);
     return date.toISOString().split("T")[0]; // returns "YYYY-MM-DD"
   };
 
-  
   const hours = Array.from(
     { length: 24 },
     (_, i) => i.toString().padStart(2, "0") + ":00"
   );
-    // return information
+  // return information
   return (
     <div>
       <h2 className={styles.title}>Checkout </h2>
@@ -78,7 +79,6 @@ export default function Checkout() {
             value={pickupDate}
             placeholder="Pickup Date"
             onChange={(event) => setPickupDate(event.target.value)}
-             
             min={getMinDate()}
           />
           <p className={styles.formLabel}>Pickup Time</p>
@@ -93,24 +93,26 @@ export default function Checkout() {
               </option>
             ))}
           </select>
-      
-          <button type="submit" className={styles.formButton} 
-            onClick={() => setShowPopup(true)} >  
+
+          <button
+            type="submit"
+            className={styles.formButton}
+            onClick={() => setShowPopup(true)}
+          >
             Submit
           </button>
         </div>
       </form>
-     
- {showPopup ? (
-  <div className={styles.notification} onClick={() => setShowPopup(false) }   >
-  
-      <h2 className={styles.close}>close</h2>
-    {notification.message}
-   
-   
-   </div>
-  ): null}
-</div>
-);
-}
 
+      {showPopup ? (
+        <div
+          className={styles.notification}
+          onClick={() => setShowPopup(false)}
+        >
+          <h2 className={styles.close}>close</h2>
+          {notification.message}
+        </div>
+      ) : null}
+    </div>
+  );
+}
