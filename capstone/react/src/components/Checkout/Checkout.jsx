@@ -26,7 +26,7 @@ export default function Checkout() {
     // build the order object
     const order = {
       userId: user.id,
-      orderStatusId: 1,
+      orderStatusId: 1, //all orders are created in pending status
       pickupDate,
       pickupTime,
       orderDetails: [
