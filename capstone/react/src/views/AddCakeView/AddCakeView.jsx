@@ -43,25 +43,71 @@ export default function AddCakeView() {
       style: selectedStyle,
       description: cakeDescription,
       type: "standard",
-      price: price,    //isAvailable is defaulted to 'true' in the JDBC code
+      price: price, //isAvailable is defaulted to 'true' in the JDBC code
     };
 
     CakeService.createCake(cake)
-      .then(() =>
+      .then(() => {
         setNotification({
           type: "success",
           message: "Cake Created Successfully",
-        })
-      )
+        });
+
+        setCakeName("");
+        setImgURL("");
+        setCakeDescription("");
+        setPrice("");
+        setSelectedFlavor("");
+        setSelectedFilling("");
+        setSelectedSize("");
+        setSelectedFrosting("");
+        setSelectedStyle("");
+
+        setTimeout(() => setNotification(null), 3000);
+      })
       .catch((error) => {
-        const message = error.response?.data?.message || "Create cake failed.";
+        // const message = error.response?.data?.message || "Create cake failed.";
+
+        let message = "Create cake failed. Please provide all required data.";
+
+        if (error.response) {
+          if (error.response.data && error.response.data.message) {
+            message = error.response.data.message;
+          } else if (error.response.status === 400) {
+            message = "Missing or invalid data. Please provide missing data.";
+          } else if (error.response.status === 500) {
+            message = "Server error. Please try again later.";
+          }
+        } else {
+          message = "Network error. Please check your internet connection.";
+        }
+
         setNotification({ type: "error", message });
+
+        // setTimeout(() => setNotification(null), 3000);
       });
   }
 
   return (
     <div>
       <h1 className={styles.title}>Add New Cake</h1>
+
+      {notification && (
+        <div
+          style={{
+            color: notification.type === "success" ? "green" : "red",
+            backgroundColor: "#f0f0f0",
+            padding: "10px",
+            marginBottom: "1rem",
+            borderRadius: "5px",
+            textAlign: "center",
+            fontWeight: "bold",
+          }}
+        >
+          {notification.message}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit}>
         <div className={styles.formContainer}>
           <div className={styles.cakeNameBox}>

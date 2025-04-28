@@ -38,7 +38,7 @@ export default function StandardCakeView() {
   };
 
   const handleStandardCake = () => {
-    navigate("/cakes/:id"); // NOTE: This likely needs dynamic id
+    navigate("/cakes/:id");
   };
 
   const handleAvailabilityChanged = (cakeId) => {
@@ -62,7 +62,10 @@ export default function StandardCakeView() {
               <button className={styles.adminButton} onClick={handleAddNewCake}>
                 Add Cake
               </button>
-              <button className={styles.adminButton} onClick={handleAddNewOptions}>
+              <button
+                className={styles.adminButton}
+                onClick={handleAddNewOptions}
+              >
                 Add Cake Options
               </button>
             </section>
