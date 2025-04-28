@@ -13,7 +13,7 @@ export default function InProcessOrdersView() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Pending Orders</h2>
+      <h2 className={styles.title}>Orders</h2>
       <table>
         <thead className={styles.tableHeader}>
           <tr>
