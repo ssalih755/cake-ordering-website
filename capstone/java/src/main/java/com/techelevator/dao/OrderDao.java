@@ -14,4 +14,7 @@ public interface OrderDao {
     int getOrderStatusIdById(int orderId);
 
     Order updateOrderStatusByOrderId(int orderId);
+
+    List<OrderHistory> getMyOrders(int userId);
+
 }

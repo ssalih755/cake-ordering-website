@@ -145,6 +145,38 @@ public class JdbcOrderDao  implements OrderDao {
         return order;
     }
 
+    @Override
+    public List<OrderHistory> getMyOrders(int userId) {
+
+        List<OrderHistory> getMyOrders = new ArrayList<>();
+        String sql = "SELECT o.id, o.user_id, o.orderstatus_id, o.pickup_date, o.pickup_time, o.created_at, os.status, u.firstname || ' ' || u.lastname AS customer_name, c.name as cake_name,\n" +
+                "cf.flavor, cfr.frosting, cfl.filling, cs.style, cz.size, ct.type, od.writing, od.cake_quantity, c.cakeprice\n" +
+                "FROM orders o\n" +
+                "JOIN users u ON u.user_id = o.user_id\n" +
+                "JOIN orderstatus os ON os.id = o.orderstatus_id\n" +
+                "JOIN orderdetails od ON od.order_id = o.id\n" +
+                "JOIN cake c ON c.cake_id = od.cake_id\n" +
+                "JOIN cakeflavor cf ON cf.cakeflavor_id = c.cakeflavor_id\n" +
+                "JOIN cakefrosting cfr ON cfr.cakefrosting_id = c.cakefrosting_id\n" +
+                "JOIN cakefilling cfl ON cfl.cakefilling_id = c.cakefilling_id\n" +
+                "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id\n" +
+                "JOIN cakesize cz ON cz.cakesize_id = c.cakesize_id\n" +
+                "JOIN caketype ct ON ct.caketype_id = c.caketype_id\n" +
+                "WHERE o.orderstatus_id NOT IN (4,5) AND o.user_id  = ?;";
+        try {
+            SqlRowSet result = jdbcTemplate.queryForRowSet(sql, userId);
+            while (result.next()) {
+                OrderHistory order = mapRowToOrderHistory(result);
+                if (order != null) {
+                    getMyOrders.add(order);
+                }
+            }
+        } catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to process request", exception);
+        }
+        return getMyOrders;
+    }
+
 
     private Order mapRowToOrder(SqlRowSet result) {
         Order order = new Order();
