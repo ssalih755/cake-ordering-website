@@ -34,17 +34,14 @@ export default function ProductPageView() {
 
   return (
     <>
-<<<<<<< HEAD
       <h1 className={styles.cakeHeader}> {cake ? cake.name : "Loading..."}</h1>
 
       <div className={styles.pageContainer}>
-        <div className={styles.cakeImageContainer}>
-          <img
-            src={cake ? cake.imgURL : "Loading..."}
-            alt={cake ? cake.name : "Loading..."}
-            className={styles.cakePic}
-          />
-        </div>
+        <img
+          src={cake ? cake.imgURL : "Loading..."}
+          alt={cake ? cake.name : "Loading..."}
+          className={styles.cakePic}
+        />
         <div className={styles.cakeInfoContainer}>
           <label>Cake Description</label>
           <p>{cake ? cake.description : "Loading..."}</p>
@@ -59,7 +56,7 @@ export default function ProductPageView() {
           <label>Cake Size</label>
           <p>{cake ? cake.size : "Loading..."}</p>
           <label>Cake Quantity</label>
-          <p>{cake ? cake.quantity : "Loading..."}</p>
+          <p>{cake ? cakeQuantity : "Loading..."}</p>
           <label>Cake Frosting</label>
           <p>{cake ? cake.frosting : "Loading..."}</p>
         </div>
@@ -71,39 +68,6 @@ export default function ProductPageView() {
           onChange={handleWritingChange}
           className={styles.writingInput}
         />
-=======
-   
-    <h1 className={styles.cakeHeader}> {cake ? cake.name : "Loading..."}</h1>
-    
-    <div className={styles.pageContainer}>
-    <img src={cake ? cake.imgURL : "Loading..."} alt={cake ? cake.name : "Loading..."} className={styles.cakePic} />
-    <div className={styles.cakeInfoContainer}>
-    <label >Cake Description</label>
-    <p>{cake ? cake.description : "Loading..."}</p>
-    <label >Cake Style</label>
-    <p>{cake ? cake.style : "Loading..."}</p>
-    <label >Cake Flavor</label>
-    <p>{cake ? cake.flavor : "Loading..."}</p>
-    <label >Cake Price</label>
-    <p> $ {cake ? cake.price : "Loading..."}</p>
-    <label >Cake Filling</label>
-    <p>{cake ? cake.filling : "Loading..."}</p>
-    <label >Cake Size</label>
-    <p>{cake ? cake.size : "Loading..."}</p>
-    <label >Cake Quantity</label>
-    <p>{cake ? cakeQuantity : "Loading..."}</p>
-    <label >Cake Frosting</label>
-    <p>{cake ? cake.frosting : "Loading..."}</p>   
-    </div> 
-    
-      <input
-        type="text"
-        placeholder="Write your message here, then click 'Buy Now'"
-        value={writing}
-        onChange={handleWritingChange}
-        className={styles.writingInput}
-      />
->>>>>>> 731f3767ea1b6c0f91d3bf2443af65e65038bc1d
       </div>
       <div className={styles.line}>
         <button className={styles.formButton} onClick={handleBuyNow}>
