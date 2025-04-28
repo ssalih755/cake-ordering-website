@@ -6,12 +6,10 @@ import styles from "./MainNav.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
- 
-
+import { isAdmin } from "../../services/UserHelper";
 
 export default function MainNav() {
   const user = useContext(UserContext);
-   
 
   return (
     <div className={styles.navBox} id="nav-box">
@@ -23,6 +21,13 @@ export default function MainNav() {
         </div>
         <div className={styles.navLink}>
           <NavLink to="/cakes">Cakes</NavLink>
+        </div>
+        <div className={styles.navLink}>
+          {isAdmin(user) && (
+            <div>
+              <NavLink to="/pendingOrders">Pending Orders</NavLink>
+            </div>
+          )}
         </div>
         {user ? (
           <>
@@ -38,16 +43,11 @@ export default function MainNav() {
             <NavLink to="/login">Login</NavLink>
           </div>
         )}
-    
-             
-      
       </nav>
       <div className={styles.navIcons}>
-      <FontAwesomeIcon icon={faUserCircle}></FontAwesomeIcon> 
-      <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
-         
+        <FontAwesomeIcon icon={faUserCircle}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
       </div>
     </div>
-
   );
 }
