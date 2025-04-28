@@ -23,11 +23,9 @@ export default function MainNav() {
           <NavLink to="/cakes">Cakes</NavLink>
         </div>
         <div className={styles.navLink}>
-          {isAdmin(user) && (
-            <div>
-              <NavLink to="/pendingOrders">Pending Orders</NavLink>
-            </div>
-          )}
+          <div>
+            <NavLink to="/inprocessOrders">Orders</NavLink>
+          </div>
         </div>
         {user ? (
           <>

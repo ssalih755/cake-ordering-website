@@ -75,6 +75,7 @@ INSERT INTO orderstatus(status)
 VALUES ('Pending'), 
 ('Ready'),
 ('Completed'), 
-('Canceled');
+('Canceled'),
+('InProgress');
 
 COMMIT TRANSACTION;
