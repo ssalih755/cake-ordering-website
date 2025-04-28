@@ -24,6 +24,7 @@ export default function PendingOrdersView() {
             <th className={styles.tableHeader}>Pickup Time</th>
             <th className={styles.tableHeader}>Cake Name</th>
             <th className={styles.tableHeader}>Cake Type</th>
+            <th className={styles.tableHeader}>Writing</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,7 @@ export default function PendingOrdersView() {
               <td className={styles.tableCell}>{order.pickupTime}</td>
               <td className={styles.tableCell}>{order.cakeName}</td>
               <td className={styles.tableCell}>{order.type}</td>
+              <td className={styles.tableCell}>{order.writing}</td>
             </tr>
           ))}
         </tbody>

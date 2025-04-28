@@ -53,10 +53,10 @@ public class JdbcOrderDao  implements OrderDao {
         String sql = "INSERT INTO orders( user_id, orderstatus_id, pickup_date, pickup_time)\n" +
                 "VALUES (?, ?, ?, ?) RETURNING id;";
 
-        String sql2 = "INSERT INTO orderdetails(order_id, cake_id, cake_quantity) VALUES (?, ?, ?) RETURNING id;";
+        String sql2 = "INSERT INTO orderdetails(order_id, cake_id, cake_quantity, writing) VALUES (?, ?, ?, ?) RETURNING id;";
         try {
             int newOrderId = jdbcTemplate.queryForObject(sql, int.class, order.getUserId(), order.getOrderStatusId(), order.getPickupDate(), order.getPickupTime());
-            int newOrderDetailId = jdbcTemplate.queryForObject(sql2, int.class, newOrderId, detail.getCakeId(), detail.getCakeQuantity());
+            int newOrderDetailId = jdbcTemplate.queryForObject(sql2, int.class, newOrderId, detail.getCakeId(), detail.getCakeQuantity(), detail.getWriting());
             return getOrderById(newOrderId);
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("unable to connect to server", exception);
