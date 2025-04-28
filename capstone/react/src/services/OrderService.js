@@ -12,7 +12,8 @@ const OrderService = {
   createOrder(order) {
     return axios.post("/order", order);
   },
-  getAllPendingOrders() {
+  
+  getInProcessOrders() {
     return axios.get("/order/inprocessOrders", {
       headers: {
         Authorization: `Bearer ${token}`,

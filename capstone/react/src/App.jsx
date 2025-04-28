@@ -15,7 +15,7 @@ import Checkout from "./components/Checkout/Checkout";
 import ProductPageView from "./views/ProductPageView/ProductPageView";
 import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
 import AddCakeView from "./views/AddCakeView/AddCakeView";
-import PendingOrdersView from "./views/EmployeeViews/PendingOrdersView";
+import InProcessOrdersView from "./views/InProcessOrdersView/InProcessOrdersView";
 import CustomProductPageView from "./views/CustomPageView/CustomProductPageView";
 import AddOptionView from "./views/AddOptionView/AddOptionView";  
 
@@ -99,7 +99,7 @@ export default function App() {
                   path="/toggleCakeAvailability"
                   element={<AddCakeView />}
                 />
-                <Route path="/pendingOrders" element={<PendingOrdersView />} />
+                <Route path="/inprocessOrders" element={<InProcessOrdersView />} />
               </Routes>
               <GlobalFooterView />
             </main>

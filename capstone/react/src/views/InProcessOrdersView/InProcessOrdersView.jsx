@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import OrderService from "../../services/OrderService";
-import styles from "./PendingOrdersView.module.css";
+import styles from "./InProcessOrdersView.module.css";
 
-export default function PendingOrdersView() {
-  const [pendingOrders, setPendingOrders] = useState([]);
+export default function InProcessOrdersView() {
+  const [inProcessOrders, setInProcessOrders] = useState([]);
 
   useEffect(() => {
-    OrderService.getAllPendingOrders()
-      .then((response) => setPendingOrders(response.data))
+    OrderService.getInProcessOrders()
+      .then((response) => setInProcessOrders(response.data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -28,7 +28,7 @@ export default function PendingOrdersView() {
           </tr>
         </thead>
         <tbody>
-          {pendingOrders.map((order) => (
+          {inProcessOrders.map((order) => (
             <tr key={order.id}>
               <td className={styles.tableCell}>{order.id}</td>
               <td className={styles.tableCell}>{order.customerName}</td>
