@@ -28,16 +28,17 @@ public class OrderController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "")
-    public void createNewOrder(@RequestBody @Valid Order order){
+    public Order createNewOrder(@RequestBody @Valid Order order){
+        Order newOrder;
         try {
-            Order newOrder = orderDao.createOrder(order);
+            newOrder = orderDao.createOrder(order);
             if (newOrder == null) {
                 throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to create order");
             }
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request", e);
         }
-
+        return newOrder;
     }
 
     @GetMapping(path = "/inprocessOrders")

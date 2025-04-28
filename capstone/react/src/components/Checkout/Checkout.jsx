@@ -11,7 +11,7 @@ export default function Checkout() {
   const user = useContext(UserContext);
 
   //********* FIX: Destructure 'writing' from state *********
-  const { cakeId, cakeQuantity, writing, cakeType } = state || {};
+  const { cakeId, quantity, writing, cakeType } = state || {};
   //********* END FIX *********
 
   const [notification, setNotification] = useState("");
@@ -31,9 +31,9 @@ export default function Checkout() {
       pickupTime,
       orderDetails: [
         {
-          cakeId,
-          writing,
-          cakeQuantity,
+          cakeId: cakeId,
+          writing: writing,
+          cakeQuantity: quantity,
         },
       ],
     };

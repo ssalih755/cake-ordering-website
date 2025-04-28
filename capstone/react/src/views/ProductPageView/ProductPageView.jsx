@@ -9,10 +9,11 @@ export default function ProductPageView() {
   const navigate = useNavigate();
 
   const cakeId = parseInt(id);
-  const cakeQuantity = 1;
+  // const cakeQuantity = 1;
 
   const [writing, setWriting] = useState("");
   const [cake, setCake] = useState(null);
+  const [quantity, setQuantity] = useState("1");
   useEffect(() => {
     CakeService.getCakeById(cakeId)
       .then((response) => {
@@ -29,7 +30,7 @@ export default function ProductPageView() {
   }
 
   const handleBuyNow = () => {
-    navigate("/checkout", { state: { cakeId, writing, cakeQuantity } });
+    navigate("/checkout", { state: { cakeId, writing, quantity } });
   };
 
   return (
@@ -56,9 +57,21 @@ export default function ProductPageView() {
           <label>Cake Size</label>
           <p>{cake ? cake.size : "Loading..."}</p>
           <label>Cake Quantity</label>
-          <p>{cake ? cakeQuantity : "Loading..."}</p>
+          <p>{cake ? quantity : "Loading..."}</p>
           <label>Cake Frosting</label>
           <p>{cake ? cake.frosting : "Loading..."}</p>
+          <div className={styles.quantityContainer}>
+            <label htmlFor="quantity">Cake Quantity</label>
+            <input
+              type="number"
+              id="quantity"
+              min="1"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              className={styles.quantityInput}
+              placeholder="Enter quantity"
+            />
+          </div>
         </div>
 
         <input

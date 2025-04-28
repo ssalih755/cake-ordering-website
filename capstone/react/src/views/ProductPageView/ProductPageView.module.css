@@ -15,8 +15,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* flex-wrap: wrap; */
-  outline: dotted red 1px;
+  flex-wrap: wrap;
+
 }
 
 .cake-Pic {
@@ -35,14 +35,13 @@
   object-fit: cover;
   aspect-ratio: 1 / 1;
   max-width: 20rem;
-  outline: dotted red 1px;
 }
 
 .cake-InfoContainer{
 display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
+  justify-content: center;
+  align-items: center;
   margin-left: 40px;
   margin-right: 40px;
   margin-bottom: 40px;
@@ -52,7 +51,7 @@ display: flex;
   border-radius: 10px;
 
   color: #6b392f;
-  /* font-family: Nickainley; */
+  font-family: Nickainley;
   font-weight: 300px;
   font-style: normal;
   font-size: 14px;
@@ -60,7 +59,7 @@ display: flex;
 }
 .cake-InfoContainer label{
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
 }
 .cake-InfoContainer p{
