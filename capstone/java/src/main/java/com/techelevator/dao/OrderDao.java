@@ -10,4 +10,8 @@ public interface OrderDao {
     Order createOrder(Order order);
 
     List<OrderHistory> getAllInProcessOrders();
+
+    int getOrderStatusIdById(int orderId);
+
+    Order updateOrderStatusByOrderId(int orderId);
 }

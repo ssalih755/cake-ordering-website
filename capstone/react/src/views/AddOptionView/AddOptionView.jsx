@@ -40,6 +40,7 @@ export default function AddOptionView() {
 
   const [notification, setNotification] = useState(null);
 
+  
   // Function to reload all data
   const reloadData = () => {
     setReloadTrigger((prev) => prev + 1);

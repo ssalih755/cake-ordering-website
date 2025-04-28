@@ -173,7 +173,8 @@ public class JdbcCakeDao implements CakeDao {
         } catch (CannotGetJdbcConnectionException exception) {
             throw new DaoException("Unable to connect to server", exception);
         }
-        return cake;}
+        return cake;
+    }
 
     @Override
     public Cake CreateCake(Cake cake) {

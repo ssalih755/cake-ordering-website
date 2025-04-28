@@ -1,4 +1,4 @@
-import styles from './OptionTable.module.css';
+import styles from './OptionTable.module.css';  
 const OptionTable = ({ label, options, optionKey }) => {
   console.log(`OptionTable ${label}:`, options);
 

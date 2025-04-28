@@ -72,10 +72,11 @@ INSERT INTO cake (name, imgURL, cakeFlavor_id, cakeFrosting_id, cakeFilling_id, 
 
 -- Insert into orderStatus table
 INSERT INTO orderstatus(status)
-VALUES ('Pending'), 
+VALUES ('Pending'),
+('InProgress'),
 ('Ready'),
 ('Completed'), 
-('Canceled'),
-('InProgress');
+('Canceled')
+;
 
 COMMIT TRANSACTION;
