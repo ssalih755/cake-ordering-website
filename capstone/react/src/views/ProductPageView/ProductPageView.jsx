@@ -58,7 +58,7 @@ export default function ProductPageView() {
     <label >Cake Size</label>
     <p>{cake ? cake.size : "Loading..."}</p>
     <label >Cake Quantity</label>
-    <p>{cake ? cake.quantity : "Loading..."}</p>
+    <p>{cake ? cakeQuantity : "Loading..."}</p>
     <label >Cake Frosting</label>
     <p>{cake ? cake.frosting : "Loading..."}</p>   
     </div> 

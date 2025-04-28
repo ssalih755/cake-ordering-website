@@ -40,11 +40,11 @@ public class OrderController {
 
     }
 
-    @GetMapping(path = "/pendingorders")
-    public List<OrderHistory> getPendingOrders(){
+    @GetMapping(path = "/inprocessOrders")
+    public List<OrderHistory> getAllInProcessOrders(){
         List<OrderHistory> pendingOrders;
         try{
-            pendingOrders = orderDao.getAllPendingOrders();
+            pendingOrders = orderDao.getAllInProcessOrders();
         }catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }

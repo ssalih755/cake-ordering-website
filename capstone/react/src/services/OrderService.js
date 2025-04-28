@@ -13,7 +13,7 @@ const OrderService = {
     return axios.post("/order", order);
   },
   getAllPendingOrders() {
-    return axios.get("/order/pendingorders", {
+    return axios.get("/order/inprocessOrders", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -64,7 +64,7 @@ public class JdbcOrderDao  implements OrderDao {
     }
 
     @Override
-    public List<OrderHistory> getAllPendingOrders(){
+    public List<OrderHistory> getAllInProcessOrders(){
         List<OrderHistory> pendingOrders = new ArrayList<>();
         String sql = "SELECT o.id, o.user_id, o.orderstatus_id, o.pickup_date, o.pickup_time, o.created_at, os.status, u.firstname || ' ' || u.lastname AS customer_name, c.name as cake_name,\n" +
                 "cf.flavor, cfr.frosting, cfl.filling, cs.style, cz.size, ct.type, od.writing, od.cake_quantity, c.cakeprice\n" +
@@ -79,7 +79,7 @@ public class JdbcOrderDao  implements OrderDao {
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id\n" +
                 "JOIN cakesize cz ON cz.cakesize_id = c.cakesize_id\n" +
                 "JOIN caketype ct ON ct.caketype_id = c.caketype_id\n" +
-                "WHERE o.orderstatus_id = 1;\n";
+                "WHERE o.orderstatus_id NOT IN (3,4);\n";
         try{
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
             while(result.next()){

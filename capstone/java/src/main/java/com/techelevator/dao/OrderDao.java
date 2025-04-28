@@ -9,5 +9,5 @@ public interface OrderDao {
     Order getOrderById(int orderId);
     Order createOrder(Order order);
 
-    List<OrderHistory> getAllPendingOrders();
+    List<OrderHistory> getAllInProcessOrders();
 }
