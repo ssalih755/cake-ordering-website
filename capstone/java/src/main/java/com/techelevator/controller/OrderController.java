@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.OrderDao;
 import com.techelevator.dao.OrderDetailDao;
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Cake;
 import com.techelevator.model.Order;
 import com.techelevator.model.OrderDetail;
 import com.techelevator.model.OrderHistory;
@@ -49,6 +50,21 @@ public class OrderController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
         return pendingOrders;
+    }
+
+    @PutMapping(path = "/update-status/{id}")
+    public Order advanceOrderStatus(@PathVariable int id){
+        final Order order;
+        try {
+            order = orderDao.updateOrderStatusByOrderId(id);
+            if (order == null)
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No cake found with that Id");
+
+        }catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to process request");
+        }
+
+        return order;
     }
 
 }

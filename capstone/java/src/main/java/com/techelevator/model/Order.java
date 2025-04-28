@@ -29,6 +29,13 @@ public class Order {
 
     }
 
+    public int updateStatusId(int id){
+        if((id == 1) ||(id == 2) || (id == 3)  ){
+            this.setOrderStatusId(this.getOrderStatusId() + 1);
+        }
+        return orderStatusId;
+    }
+
     public int getUserId() {
         return userId;
     }

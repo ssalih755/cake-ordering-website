@@ -12,13 +12,17 @@ const OrderService = {
   createOrder(order) {
     return axios.post("/order", order);
   },
-  
+
   getInProcessOrders() {
     return axios.get("/order/inprocessOrders", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+  },
+
+  updateStatus(orderId) {
+    return axios.put(`/order/update-status/${orderId}`);
   },
 };
 

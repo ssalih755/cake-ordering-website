@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Cake;
 import com.techelevator.model.OrderDetail;
 import com.techelevator.model.OrderHistory;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -45,6 +46,7 @@ public class JdbcOrderDao  implements OrderDao {
         return order;
     }
 
+
     @Override
     public Order createOrder(Order order) {
         List<OrderDetail> orderDetails = order.getOrderDetails();
@@ -79,7 +81,7 @@ public class JdbcOrderDao  implements OrderDao {
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id\n" +
                 "JOIN cakesize cz ON cz.cakesize_id = c.cakesize_id\n" +
                 "JOIN caketype ct ON ct.caketype_id = c.caketype_id\n" +
-                "WHERE o.orderstatus_id NOT IN (3,4);\n";
+                "WHERE o.orderstatus_id NOT IN (4,5);\n";
         try{
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
             while(result.next()){
@@ -93,6 +95,57 @@ public class JdbcOrderDao  implements OrderDao {
         }
         return pendingOrders;
     }
+
+    @Override
+    public int getOrderStatusIdById(int orderId) {
+        Order order = null;
+
+        final String sql = "SELECT id, user_id, orderstatus_id, pickup_date, pickup_time, created_at\n" +
+                "FROM orders\n" +
+                "WHERE id = ?;";
+
+        try{
+            final SqlRowSet result = jdbcTemplate.queryForRowSet(sql, orderId);
+            if (result.next()){
+                order = mapRowToOrder(result);
+            }
+        }catch (EmptyResultDataAccessException e){
+            order = null;
+        }catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("unable to connect to server", exception);
+        }
+        return order.getOrderStatusId();
+    }
+
+    @Override
+    public Order updateOrderStatusByOrderId(int orderId) {
+        Order order = getOrderById(orderId);
+        if (order == null) {
+            throw new DaoException("Order with ID " + orderId + " not found");
+        }
+
+        //boolean which is the opposite of current status
+        int newStatusId = order.updateStatusId(getOrderStatusIdById(orderId));
+
+        String sql = "UPDATE orders SET orderstatus_id = ? WHERE id = ?;";
+
+        try {
+            int rowsAffected = jdbcTemplate.update(sql, newStatusId, orderId);
+
+            if (rowsAffected == 0) {
+                throw new DaoException("Failed to update availability for order with ID " + orderId);
+            }
+
+            // Update the order object with new availability status
+            order.setOrderStatusId(newStatusId);
+
+        } catch (CannotGetJdbcConnectionException exception) {
+            throw new DaoException("Unable to connect to server", exception);
+        }
+        return order;
+    }
+
+
     private Order mapRowToOrder(SqlRowSet result) {
         Order order = new Order();
 
@@ -110,6 +163,7 @@ public class JdbcOrderDao  implements OrderDao {
         }
         return order;
     }
+
 
     private OrderHistory mapRowToOrderHistory(SqlRowSet result) {
         OrderHistory order = new OrderHistory();
