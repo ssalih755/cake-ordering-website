@@ -11,6 +11,7 @@
 }
 
 
+
 .view-register h2{
 
     /* background-color: #FEFEE5 */
@@ -50,4 +51,8 @@
 
 .login-text{
     text-align: center;
+}
+.formButton:hover {
+    background-color: #6b392f;
+    color: #f6AEB9;
 }
