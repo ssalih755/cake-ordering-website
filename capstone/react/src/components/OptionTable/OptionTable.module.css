@@ -1,0 +1,35 @@
+
+.option-table-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .option-table-wrapper label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .option-table {
+    width: fit-content;
+    border-collapse: collapse;
+  }
+  
+  .option-table thead th {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .option-table tbody td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .no-options {
+    padding: 8px;
+    color: #999;
+  }
+  

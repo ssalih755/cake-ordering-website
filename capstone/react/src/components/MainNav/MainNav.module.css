@@ -1,81 +1,67 @@
-.nav-box{
-    grid-area: nav;
-    display: flex;
-    background-color: #d9ecd1;
-    color: #FCBFB7;
-    border-radius: 15px;
-  
+.nav-box {
+  grid-area: nav;
+  display: flex;
+  background-color: #c4ebb3;
+  color: #6b392f;
+  border-radius: 15px;
 }
 
-/* Main Nav styles */
 .nav-list {
-    display: flex;
-
-    flex-direction: row;
-    justify-content: center;
-    /* margin: 0;
-    padding: 0; */
-    width: 100vw; 
-  
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
 }
 .logo {
-    display: flex;
-    justify-content: center;
-    width: 75px;
-    font-size: 22px;
-    padding: 10px;
-    margin-right: 10px;
-     
+  display: flex;
+  justify-content: center;
+  width: 75px;
+  font-size: 22px;
+  padding: 10px;
+  margin-right: 10px;
 }
 
 .nav-link a {
-    display: block;
-    
-    
-    color: #FCBFB7 ;
-    margin: 8px;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 30px;
-    font-family: Nickainley;
-    
+  display: block;
+  color: #6b392f;
+  margin: 8px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: Nickainley;
 }
 
 .nav-link :global(a:hover) {
-    color: #FCBFB7 ;
+  color: #fcbfb7;
 }
 
-.logoText{
-    font-family: Nickainley;
-    font-weight: 300px;
-    font-style: normal;
-    font-size: 30px;
-    padding-left: 30px;
-    width: 20px;
-    display: flex;
-    justify-content: center;
-   align-self: center;
+.logoText {
+  font-family: Nickainley;
+  font-weight: 300px;
+  font-style: normal;
+  font-size: 30px;
+  padding-left: 30px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 
 :global(a.active) {
-    background-color: #d9ecd1;
-    color: #FCBFB7 ;
-    font-weight: bold;
-    font-size: 30px;
-    font-family: Nickainley;
-    outline: solid 2px #FCBFB7;
-    border-radius: 10px;
-
+  color: #6b392f;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: Nickainley;
+  outline: solid 2px #6b392f;
+  border-radius: 10px;
 }
-.nav-icons{
-    display: flex;
-    align-content: flex-end;
-    justify-content: space-evenly; 
-    padding-right: 10px;
-    padding-top: 15px;
-    width: 75px;
-    font-size: 22px;
-   
+.nav-icons {
+  display: flex;
+  align-content: flex-end;
+  justify-content: space-evenly;
+  padding-right: 10px;
+  padding-top: 15px;
+  width: 75px;
+  font-size: 22px;
 }

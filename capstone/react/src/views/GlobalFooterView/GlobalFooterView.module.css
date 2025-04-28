@@ -1,45 +1,43 @@
-.global-footer{
-    grid-area: footer;
-    display: flex;
-    background-color:#d9ecd1;
-    
-    color: #f6AEB9;
-    margin: 5px;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-  
-    border-radius: 15px;
+.global-footer {
+  grid-area: footer;
+  display: flex;
+  background-color: #c4ebb3;
+  margin: 5px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+
+  border-radius: 15px;
 }
 
-.contact-us{
-    display: flex;
-    flex-direction: column;
-    justify-content:left;
-    width: 100%;
-    color: #f6AEB9;
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 100%;
+  color: #f6aeb9;
+}
+.location-one {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.location-two {
+  display: flex;
 
+  text-wrap: pretty;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
-.location-one{
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    align-items: center;
-    width: 100%;
-}
-.location-two{   display: flex;
-    
-    text-wrap: pretty;
-    flex-direction: row;
-    justify-content:center;
-    align-items: center;
-    width: 100%;
-}
-.operating-hours{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content:center;
-    width: 100%;
+.operating-hours {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }

@@ -12,7 +12,7 @@
   display: flex;
 }
 
-section{
+section {
   display: flex;
   flex-direction: row;
 }
@@ -21,7 +21,6 @@ section{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  
 }
 
 .standard-cakes {
@@ -45,8 +44,6 @@ section{
   align-items: stretch;
 }
 
-
-
 .ButtonContainer {
   display: flex;
   align-items: center;
@@ -54,9 +51,7 @@ section{
   width: 100%;
   margin-bottom: 20px;
   flex-direction: row-reverse;
-  
 }
-
 
 h1 {
   width: 100%;
@@ -69,10 +64,9 @@ h1 {
   color: #6b392f;
 }
 
-
 .adminButton {
- margin: 2px;
-  background-color: #BAD7F2;
+  margin: 2px;
+  background-color: #bad7f2;
   color: white;
   padding: 10px 16px;
   border: none;
@@ -87,8 +81,7 @@ h1 {
 }
 
 .adminButton:hover {
-  background-color:#77b8f5;
+  background-color: #77b8f5;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
