@@ -8,9 +8,9 @@ export default function UserProfileView() {
       <h1>User Profile</h1>
       <br />
       <p>Hello, {user.username}!</p>
-      <p>your email is {user.email}</p>
-      <p>your user id is {user.id} </p>
-      <p>your phone number is {user.phone}</p>
+      
+      <p>Email :{user.email}</p>
+      <p>Phone Number : {user.phone}</p>
       
   
     </div>
