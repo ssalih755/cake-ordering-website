@@ -109,7 +109,7 @@ export default function App() {
                     path="/inprocessOrders"
                     element={<InProcessOrdersView />}
                   />
-                  <Route path="/CartView" element={<CartView />} />
+                  <Route path="/cart" element={<CartView />} />
                 </Routes>
                 <GlobalFooterView />
               </main>

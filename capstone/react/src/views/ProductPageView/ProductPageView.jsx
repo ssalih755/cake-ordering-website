@@ -3,17 +3,20 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useCakeContext } from "../../context/CakeContext";
 import styles from "./ProductPageView.module.css";
 import CakeService from "../../services/CakeService";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
 
 export default function ProductPageView() {
+  const { addToCart } = useContext(CartContext);
   const { id } = useParams();
   const navigate = useNavigate();
 
   const cakeId = parseInt(id);
-  // const cakeQuantity = 1;
 
   const [writing, setWriting] = useState("");
   const [cake, setCake] = useState(null);
-  const [quantity, setQuantity] = useState("1");
+  const [quantity, setQuantity] = useState(1);
+
   useEffect(() => {
     CakeService.getCakeById(cakeId)
       .then((response) => {
@@ -29,10 +32,15 @@ export default function ProductPageView() {
     setWriting(event.target.value);
   }
 
-  const handleBuyNow = () => {
-    navigate("/checkout", { state: { cakeId, writing, quantity } });
-  };
+  // const handleBuyNow = () => {
+  //   navigate("/checkout", { state: { cakeId, writing, quantity } });
+  // };
 
+  const handleAddToCart = () => {
+    navigate("/cart");
+    addToCart({ ...cake, cartQuantity: quantity, writing: writing });
+  };
+  console.log(cake);
   return (
     <>
       <h1 className={styles.cakeHeader}> {cake ? cake.name : "Loading..."}</h1>
@@ -76,15 +84,18 @@ export default function ProductPageView() {
 
         <input
           type="text"
-          placeholder="Write your message here, then click 'Buy Now'"
+          placeholder="Write your message here"
           value={writing}
           onChange={handleWritingChange}
           className={styles.writingInput}
         />
       </div>
       <div className={styles.line}>
-        <button className={styles.formButton} onClick={handleBuyNow}>
+        {/* <button className={styles.formButton} onClick={handleBuyNow}>
           Buy Now
+        </button> */}
+        <button className={styles.formButton} onClick={handleAddToCart}>
+          Add To Cart
         </button>
       </div>
     </>
