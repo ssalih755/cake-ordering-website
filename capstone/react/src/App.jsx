@@ -18,6 +18,7 @@ import AddCakeView from "./views/AddCakeView/AddCakeView";
 import InProcessOrdersView from "./views/InProcessOrdersView/InProcessOrdersView";
 import CustomProductPageView from "./views/CustomPageView/CustomProductPageView";
 import AddOptionView from "./views/AddOptionView/AddOptionView";  
+import OrderHistoryView from "./views/OrderHistoryView/OrderHistoryView";
 
 import axios from "axios";
 
@@ -100,6 +101,7 @@ export default function App() {
                   element={<AddCakeView />}
                 />
                 <Route path="/inprocessOrders" element={<InProcessOrdersView />} />
+                <Route path="/getMyOrders/${id}" element={<OrderHistoryView />} />
               </Routes>
               <GlobalFooterView />
             </main>
