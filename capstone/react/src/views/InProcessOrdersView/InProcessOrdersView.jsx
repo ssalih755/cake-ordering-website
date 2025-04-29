@@ -38,32 +38,7 @@ export default function InProcessOrdersView() {
       <h2 className={styles.title}>Orders</h2>
 
       <div className={styles.calendarAndTableWrapper} >
-      <Calendar
-  className={styles.fullWidthCalendar} // Add this class name
-  style={{ width: '100%' }} // Add inline style
-  tileContent={({ date, view }) => {
-    if (view === "month") {
-      const ordersOnThisDay = inProcessOrders.filter((order) => {
-        const orderDate = new Date(order.pickupDate);
-        return (
-          orderDate.getFullYear() === date.getFullYear() &&
-          orderDate.getMonth() === date.getMonth() &&
-          orderDate.getDate() === date.getDate()
-        );
-      });
-      return (
-        <div className={styles.tileContent}>
-          {ordersOnThisDay.map((order) => (
-            <div key={order.id} className={styles.orderTileEntry}>
-              order #{order.id} for "{order.customerName}"
-            </div>
-          ))}
-        </div>
-      );
-    }
-  }}
-/>
-
+     
         <table className={styles.ordersTable}>
           <thead className={styles.tableHeader}>
             <tr>
@@ -105,6 +80,33 @@ export default function InProcessOrdersView() {
             ))}
           </tbody>
         </table>
+        {isAdmin(user) && (
+        <Calendar
+  className={styles.fullWidthCalendar} // Add this class name
+  style={{ width: '100%' }} // Add inline style
+  tileContent={({ date, view }) => {
+    if (view === "month") {
+      const ordersOnThisDay = inProcessOrders.filter((order) => {
+        const orderDate = new Date(order.pickupDate);
+        return (
+          orderDate.getFullYear() === date.getFullYear() &&
+          orderDate.getMonth() === date.getMonth() &&
+          orderDate.getDate() === date.getDate()
+        );
+      });
+      return (
+        <div className={styles.tileContent}>
+          {ordersOnThisDay.map((order) => (
+            <div key={order.id} className={styles.orderTileEntry}>
+              order #{order.id} for "{order.customerName}"
+            </div>
+          ))}
+        </div>
+      );
+    }
+  }}
+/>
+)}
       </div>
     </div>
   );
