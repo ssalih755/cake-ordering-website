@@ -17,41 +17,33 @@ import ProductPageView from "./views/ProductPageView/ProductPageView";
 import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
 import AddCakeView from "./views/AddCakeView/AddCakeView";
 import InProcessOrdersView from "./views/InProcessOrdersView/InProcessOrdersView";
+import OrderHistoryView from "./views/OrderHistoryView/OrderHistoryView";
 import CustomProductPageView from "./views/CustomPageView/CustomProductPageView";
 import AddOptionView from "./views/AddOptionView/AddOptionView";
 import CartView from "./views/CartView/CartView";
 import { CartProvider } from "./context/CartContext";
-
 import axios from "axios";
-
 export default function App() {
   const [user, setUser] = useState(null);
-
   function handleLogin(userData) {
     setUser(userData);
   }
-
   function handleLogout() {
     // Remove auth data from local storage
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-
     // Clear auth token from axios
     delete axios.defaults.headers.common["Authorization"];
-
     // Clear the auth context
     setUser(null);
   }
-
   // When a user comes back to the app or refreshes the page, check for user/token in local storage and validate it
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
-
     if (user && token) {
       // Set the token in the axios default headers
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
       // Make API request to ensure token is still valid
       AuthService.getUserProfile(user.id)
         .then((response) => {
@@ -64,7 +56,6 @@ export default function App() {
         });
     }
   }, []);
-
   return (
     <BrowserRouter>
       <div id="app">
@@ -109,7 +100,12 @@ export default function App() {
                     path="/inprocessOrders"
                     element={<InProcessOrdersView />}
                   />
+
                   <Route path="/cart" element={<CartView />} />
+                  <Route
+                    path="/getMyOrders/:id"
+                    element={<OrderHistoryView />}
+                  />
                 </Routes>
                 <GlobalFooterView />
               </main>

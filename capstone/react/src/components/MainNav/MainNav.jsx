@@ -26,7 +26,13 @@ export default function MainNav() {
           <div>
             <NavLink to="/inprocessOrders">Orders</NavLink>
           </div>
+          </div>
+          <div className={styles.navLink}>
+          <div>
+            <NavLink to="/getMyOrders/${id}">Order History</NavLink>
+          </div>
         </div>
+        
         {user ? (
           <>
             <div className={styles.navLink}>
@@ -49,5 +55,6 @@ export default function MainNav() {
         </NavLink>
       </div>
     </div>
+    
   );
 }

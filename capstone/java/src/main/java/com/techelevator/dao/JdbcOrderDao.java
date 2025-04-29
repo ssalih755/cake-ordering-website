@@ -1,7 +1,6 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Cake;
 import com.techelevator.model.OrderDetail;
 import com.techelevator.model.OrderHistory;
 import org.springframework.dao.EmptyResultDataAccessException;
