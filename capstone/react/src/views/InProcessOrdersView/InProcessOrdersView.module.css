@@ -22,9 +22,8 @@
 .calendarAndTableWrapper {
     display: flex;
     gap: 2rem;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 100%;
+    /* flex-wrap: wrap; */
+
 }
 
 /* ===== CALENDAR OVERRIDES ===== */

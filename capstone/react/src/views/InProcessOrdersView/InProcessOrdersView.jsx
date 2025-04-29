@@ -38,7 +38,6 @@ export default function InProcessOrdersView() {
       <h2 className={styles.title}>Orders</h2>
 
       <div className={styles.calendarAndTableWrapper} >
-     
         <table className={styles.ordersTable}>
           <thead className={styles.tableHeader}>
             <tr>
