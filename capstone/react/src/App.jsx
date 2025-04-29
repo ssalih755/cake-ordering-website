@@ -100,7 +100,7 @@ export default function App() {
                     path="/inprocessOrders"
                     element={<InProcessOrdersView />}
                   />
-                  <Route path="/getMyOrders/${id}" element={<OrderHistoryView />} />
+                  <Route path="/getMyOrders/:id" element={<OrderHistoryView />} />
                   <Route path="/CartView" element={<CartView />} />
                 </Routes>
                 <GlobalFooterView />
