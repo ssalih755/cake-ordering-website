@@ -21,6 +21,14 @@ const OrderService = {
     });
   },
 
+  getMyOrders(id) {
+    return axios.get(`/order/get-my-orders/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
   updateStatus(orderId) {
     return axios.put(`/order/update-status/${orderId}`);
   },

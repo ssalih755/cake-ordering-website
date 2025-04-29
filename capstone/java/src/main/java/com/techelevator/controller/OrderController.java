@@ -69,7 +69,7 @@ public class OrderController {
 
 
 
-    @GetMapping(path = "/getMyOrders/{id}")
+    @GetMapping(path = "/get-my-orders/{id}")
     public List<OrderHistory> getMyOrders(@PathVariable int id){
         List<OrderHistory> getMyOrders;
         try{

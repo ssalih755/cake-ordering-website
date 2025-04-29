@@ -26,7 +26,13 @@ export default function MainNav() {
           <div>
             <NavLink to="/inprocessOrders">Orders</NavLink>
           </div>
+          </div>
+          <div className={styles.navLink}>
+          <div>
+            <NavLink to="/getMyOrders/${id}">Order History</NavLink>
+          </div>
         </div>
+        
         {user ? (
           <>
             <div className={styles.navLink}>
@@ -44,8 +50,11 @@ export default function MainNav() {
       </nav>
       <div className={styles.navIcons}>
         <FontAwesomeIcon icon={faUserCircle}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
+        <NavLink to="/CartView" className={styles.cartLink}>
+          <FontAwesomeIcon icon={faShoppingCart} />
+        </NavLink>
       </div>
     </div>
+    
   );
 }
