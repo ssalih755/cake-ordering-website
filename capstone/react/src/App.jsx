@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 import { CakeContext } from "./context/CakeContext";
+import { CartContext } from "./context/CartContext";
 import AuthService from "./services/AuthService";
 import LoginView from "./views/LoginView/LoginView";
 import LogoutView from "./views/LogoutView";
@@ -17,7 +18,9 @@ import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
 import AddCakeView from "./views/AddCakeView/AddCakeView";
 import InProcessOrdersView from "./views/InProcessOrdersView/InProcessOrdersView";
 import CustomProductPageView from "./views/CustomPageView/CustomProductPageView";
-import AddOptionView from "./views/AddOptionView/AddOptionView";  
+import AddOptionView from "./views/AddOptionView/AddOptionView";
+import CartView from "./views/CartView/CartView";
+import { CartProvider } from "./context/CartContext";
 
 import axios from "axios";
 
@@ -27,7 +30,6 @@ export default function App() {
   function handleLogin(userData) {
     setUser(userData);
   }
-   //sarrahs comment
 
   function handleLogout() {
     // Remove auth data from local storage
@@ -68,41 +70,50 @@ export default function App() {
       <div id="app">
         <UserContext.Provider value={user}>
           <CakeContext.Provider value={{}}>
-            <MainNav />
-            <main id="main-content">
-              <Routes>
-                <Route path="/cakes" element={<StandardCakeView />} />
-                <Route path="/" element={<HomeView />} />
-                <Route
-                  path="/login"
-                  element={<LoginView onLogin={handleLogin} />}
-                />
-                <Route
-                  path="/logout"
-                  element={<LogoutView onLogout={handleLogout} />}
-                />
-                <Route path="/register" element={<RegisterView />} />
-                <Route
-                  path="/userProfile"
-                  element={
-                    <ProtectedRoute>
-                      <UserProfileView />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/cakes/:id" element={<ProductPageView />} />
-                <Route path="/customcake" element={<CustomProductPageView />} />
-                <Route path="/addcake" element={<AddCakeView />} />
-                <Route path="/addOption" element={<AddOptionView />} />
-                <Route
-                  path="/toggleCakeAvailability"
-                  element={<AddCakeView />}
-                />
-                <Route path="/inprocessOrders" element={<InProcessOrdersView />} />
-              </Routes>
-              <GlobalFooterView />
-            </main>
+            <CartProvider>
+              <MainNav />
+              <main id="main-content">
+                <Routes>
+                  <Route path="/cakes" element={<StandardCakeView />} />
+                  <Route path="/" element={<HomeView />} />
+                  <Route
+                    path="/login"
+                    element={<LoginView onLogin={handleLogin} />}
+                  />
+                  <Route
+                    path="/logout"
+                    element={<LogoutView onLogout={handleLogout} />}
+                  />
+                  <Route path="/register" element={<RegisterView />} />
+                  <Route
+                    path="/userProfile"
+                    element={
+                      <ProtectedRoute>
+                        <UserProfileView />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/cakes/:id" element={<ProductPageView />} />
+                  <Route
+                    path="/customcake"
+                    element={<CustomProductPageView />}
+                  />
+                  <Route path="/addcake" element={<AddCakeView />} />
+                  <Route path="/addOption" element={<AddOptionView />} />
+                  <Route
+                    path="/toggleCakeAvailability"
+                    element={<AddCakeView />}
+                  />
+                  <Route
+                    path="/inprocessOrders"
+                    element={<InProcessOrdersView />}
+                  />
+                  <Route path="/CartView" element={<CartView />} />
+                </Routes>
+                <GlobalFooterView />
+              </main>
+            </CartProvider>
           </CakeContext.Provider>
         </UserContext.Provider>
       </div>
