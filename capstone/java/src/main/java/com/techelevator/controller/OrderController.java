@@ -68,4 +68,17 @@ public class OrderController {
         return order;
     }
 
+
+
+    @GetMapping(path = "/getMyOrders/{id}")
+    public List<OrderHistory> getMyOrders(@PathVariable int id){
+        List<OrderHistory> getMyOrders;
+        try{
+            getMyOrders = orderDao.getMyOrders(id);
+        }catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return getMyOrders;
+    }
+
 }
