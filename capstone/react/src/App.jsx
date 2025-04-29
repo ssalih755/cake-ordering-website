@@ -103,8 +103,9 @@ export default function App() {
                   <Route path="/getMyOrders/:id" element={<OrderHistoryView />} />
                   <Route path="/CartView" element={<CartView />} />
                 </Routes>
-                <GlobalFooterView />
+                
               </main>
+              <GlobalFooterView />
             </CartProvider>
           </CakeContext.Provider>
         </UserContext.Provider>
