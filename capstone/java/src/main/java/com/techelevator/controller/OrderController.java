@@ -3,7 +3,6 @@ package com.techelevator.controller;
 import com.techelevator.dao.OrderDao;
 import com.techelevator.dao.OrderDetailDao;
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Cake;
 import com.techelevator.model.Order;
 import com.techelevator.model.OrderDetail;
 import com.techelevator.model.OrderHistory;
