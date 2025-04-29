@@ -50,7 +50,9 @@ export default function MainNav() {
       </nav>
       <div className={styles.navIcons}>
         <FontAwesomeIcon icon={faUserCircle}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
+        <NavLink to="/CartView" className={styles.cartLink}>
+          <FontAwesomeIcon icon={faShoppingCart} />
+        </NavLink>
       </div>
     </div>
     
