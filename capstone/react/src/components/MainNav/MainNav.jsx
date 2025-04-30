@@ -13,7 +13,9 @@ export default function MainNav() {
 
   return (
     <div className={styles.navBox} id="nav-box">
-      <img src={cakeLogo} alt="logo" className={styles.logo} />
+      <Link to="/">
+        <img src={cakeLogo} alt="logo" className={styles.logo} />
+      </Link>
       <h2 className={styles.logoText}>Bams Cakery </h2>
       <nav id="main-nav" className={styles.navList}>
         <div className={styles.navLink}>
@@ -26,13 +28,13 @@ export default function MainNav() {
           <div>
             <NavLink to="/inprocessOrders">Orders</NavLink>
           </div>
-          </div>
-          <div className={styles.navLink}>
+        </div>
+        <div className={styles.navLink}>
           {/* <div>
             <NavLink to="/getMyOrders/${id}">Order History</NavLink>
           </div>  moved to orders page */}
         </div>
-        
+
         {user ? (
           <>
             <div className={styles.navLink}>
@@ -50,17 +52,13 @@ export default function MainNav() {
       </nav>
       <div className={styles.navIcons}>
         <div className={styles.icons}>
-        <FontAwesomeIcon icon={faUserCircle}></FontAwesomeIcon>
-        <NavLink to="/cart" className={styles.cartLink}>
-          <FontAwesomeIcon icon={faShoppingCart} />
-        </NavLink>
-        
+          <FontAwesomeIcon icon={faUserCircle}></FontAwesomeIcon>
+          <NavLink to="/cart" className={styles.cartLink}>
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </NavLink>
         </div>
         <p>{user ? user.username : ""} </p>
       </div>
-      
-      
     </div>
-    
   );
 }
