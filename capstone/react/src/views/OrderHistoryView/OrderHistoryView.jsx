@@ -3,11 +3,13 @@ import OrderService from "../../services/OrderService";
 import styles from "./OrderHistoryView.module.css";
 import { UserContext } from "../../context/UserContext";
 import { isAdmin } from "../../services/UserHelper";
+import { useNavigate } from 'react-router-dom';
 
 export default function OrderHistoryView() {
   const [orders, setOrders] = useState([]);
   const [reloadTrigger, setReloadTrigger] = useState(0);
   const user = useContext(UserContext);
+  const navigate = useNavigate();
 
   const reloadData = () => {
     setReloadTrigger((prev) => prev + 1);
@@ -30,9 +32,14 @@ export default function OrderHistoryView() {
     }
   }, [reloadTrigger, user]);
 
+  const handleOrderClick = () => {
+    navigate(`/inprocessOrders`);
+    };
+
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Orders</h2>
+      <h2 className={styles.title}>Order History</h2>
+      <button className={styles.toggleButton} onClick={handleOrderClick}>Orders</button>
       <table className={styles.ordersTable}>
         <thead>
           <tr>
