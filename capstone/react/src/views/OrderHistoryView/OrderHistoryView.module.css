@@ -18,17 +18,17 @@
 .table-header{
     color: #6b392f;
     font-weight: bold;
-    background-color: #d9ecd1;
-    border: 1px solid #c5d6be;
+    background-color: #FCBFB7;
+    border: 1px solid #daa39cd2;
 }
 
 .table-cell{
-    border: 1px solid #c5d6be;
+    border: 1px solid #daa39cd2;
 }
 
 table tr:nth-child(even) {
     /* background-color: #B68755; */
-    background-color: #d9ecd1;
+    background-color: #FCBFB7;
   }
   
   /* table tr:nth-child(odd) {
