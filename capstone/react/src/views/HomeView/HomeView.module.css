@@ -106,9 +106,9 @@ p{
 }
 
 .standard-cakes:hover{
-    
-        transform: translateY(-1px);
-        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+    background: #f19696;
+  transform: translateY(-6px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
       
 }
 .standard-cakes {

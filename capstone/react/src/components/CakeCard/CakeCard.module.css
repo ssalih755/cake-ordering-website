@@ -9,16 +9,16 @@
   padding: 16px;
   border-radius: 10px;
   background: #fcbfb7;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.);
   align-items: flex-start;
   max-width: 500px;
   margin-bottom: 20px;
 }
 
 .card:hover {
-  background: #f7b6ad;
-  transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: #f19696;
+  transform: translateY(-6px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card :global(p) {
@@ -94,7 +94,7 @@ h2 {
   cursor: pointer;
   font-weight: 600;
   gap: 8px;
-  border: #334e58 solid 1px;
+  /* border: #334e58 solid 1px; */
   background-color: #77b8f5;
   margin-top: 4px;
   border-radius: 3px;
