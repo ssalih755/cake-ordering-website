@@ -16,8 +16,9 @@
 }
 
 .card:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+  background: #f7b6ad;
+  transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card :global(p) {

@@ -6,35 +6,21 @@ import axios from "axios";
  * error responses appropriately.
  */
 
-const token = localStorage.getItem("token");
-
 const OrderService = {
   createOrder(order) {
     return axios.post("/order", order);
   },
 
   getInProcessOrders() {
-    return axios.get("/order/inprocessOrders", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    return axios.get("/order/inprocessOrders");
   },
 
   getAllOrders() {
-    return axios.get("/order/all", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    return axios.get("/order/all");
   },
 
   getMyOrders(id) {
-    return axios.get(`/order/get-my-orders/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    return axios.get(`/order/get-my-orders/${id}`);
   },
 
   updateStatus(orderId) {
@@ -42,11 +28,7 @@ const OrderService = {
   },
 
   getMyPendingOrders(id) {
-    return axios.get(`/order/get-my-pending-orders/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    return axios.get(`/order/get-my-pending-orders/${id}`); 
   }
 };
 

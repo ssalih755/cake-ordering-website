@@ -1,7 +1,7 @@
 .nav-box {
   grid-area: nav;
   display: flex;
-  background-color: #c4ebb3;
+  background-color: #fcbfb7;
   color: #6b392f;
   border-radius: 15px;
 }

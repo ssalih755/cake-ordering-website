@@ -4,7 +4,7 @@ body {
   color: #6b392f;
   font-family: Arial, Helvetica, sans-serif, "nickainley";
   font-size: 14px;
-  background-color: #F3F3F3;
+  background-color: #f5f0e8;
 }
 
 p {
@@ -29,12 +29,8 @@ main {
   padding: 1rem;
 }
 
-
-
 #main-content {
-
 }
-
 
 #app-info {
   display: flex;
@@ -57,7 +53,6 @@ main {
 }
 
 #main-nav {
-
 }
 
 /* Icon Button styles */
@@ -70,7 +65,6 @@ main {
 }
 
 .icon-button-inactive {
-
 }
 
 button:hover {
