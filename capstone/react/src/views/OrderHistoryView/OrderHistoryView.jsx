@@ -4,6 +4,7 @@ import styles from "./OrderHistoryView.module.css";
 import { UserContext } from "../../context/UserContext";
 import { isAdmin } from "../../services/UserHelper";
 import { useNavigate } from "react-router-dom";
+import convertTo12Hour from "../../components/HelperFunctions/convertTo12Hour";
 
 export default function OrderHistoryView() {
   const [orders, setOrders] = useState([]);
@@ -62,7 +63,9 @@ export default function OrderHistoryView() {
               <td className={styles.tableCell}>{order.customerName}</td>
               <td className={styles.tableCell}>{order.status}</td>
               <td className={styles.tableCell}>{order.pickupDate}</td>
-              <td className={styles.tableCell}>{order.pickupTime}</td>
+              <td className={styles.tableCell}>
+                {convertTo12Hour(order.pickupTime)}
+              </td>
               <td className={styles.tableCell}>{order.cakeName}</td>
               <td className={styles.tableCell}>{order.type}</td>
               <td className={styles.tableCell}>{order.writing}</td>

@@ -6,7 +6,8 @@ import OrderService from "../../services/OrderService";
 import styles from "./InProcessOrdersView.module.css";
 import { isAdmin } from "../../services/UserHelper";
 import { UserContext } from "../../context/UserContext";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import convertTo12Hour from "../../components/HelperFunctions/convertTo12Hour";
 
 export default function InProcessOrdersView() {
   const [inProcessOrders, setInProcessOrders] = useState([]);
@@ -40,34 +41,35 @@ export default function InProcessOrdersView() {
         console.error(err);
       }
     };
-  
+
     if (user?.id) {
       fetchOrders();
     }
   }, [reloadTrigger, user]);
 
-  
-
-  
-const handleOrderHistoryClick = () => {
-navigate(`/getMyOrders/${user.id}`);
-};
+  const handleOrderHistoryClick = () => {
+    navigate(`/getMyOrders/${user.id}`);
+  };
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Orders</h2>
-      
+
       {/* Add view toggle buttons */}
       {isAdmin(user) && (
         <div className={styles.viewToggle}>
           <button
-            className={`${styles.toggleButton} ${activeView === "table" ? styles.activeButton : ""}`}
+            className={`${styles.toggleButton} ${
+              activeView === "table" ? styles.activeButton : ""
+            }`}
             onClick={() => setActiveView("table")}
           >
             Table View
           </button>
           <button
-            className={`${styles.toggleButton} ${activeView === "calendar" ? styles.activeButton : ""}`}
+            className={`${styles.toggleButton} ${
+              activeView === "calendar" ? styles.activeButton : ""
+            }`}
             onClick={() => setActiveView("calendar")}
           >
             Calendar View
@@ -75,10 +77,11 @@ navigate(`/getMyOrders/${user.id}`);
         </div>
       )}
 
-<button className={styles.toggleButton}onClick={handleOrderHistoryClick}>Order History</button>
+      <button className={styles.toggleButton} onClick={handleOrderHistoryClick}>
+        Order History
+      </button>
 
       <div className={styles.calendarAndTableWrapper}>
-      
         {(activeView === "table" || !isAdmin(user)) && (
           <table className={styles.ordersTable}>
             <thead className={styles.tableHeader}>
@@ -103,7 +106,9 @@ navigate(`/getMyOrders/${user.id}`);
                   <td className={styles.tableCell}>{order.customerName}</td>
                   <td className={styles.tableCell}>{order.status}</td>
                   <td className={styles.tableCell}>{order.pickupDate}</td>
-                  <td className={styles.tableCell}>{order.pickupTime}</td>
+                  <td className={styles.tableCell}>
+                    {convertTo12Hour(order.pickupTime)}
+                  </td>
                   <td className={styles.tableCell}>{order.cakeName}</td>
                   <td className={styles.tableCell}>{order.type}</td>
                   <td className={styles.tableCell}>{order.writing}</td>
@@ -127,7 +132,7 @@ navigate(`/getMyOrders/${user.id}`);
         {isAdmin(user) && activeView === "calendar" && (
           <Calendar
             className={styles.fullWidthCalendar}
-            style={{ width: '100%' }}
+            style={{ width: "100%" }}
             tileContent={({ date, view }) => {
               if (view === "month") {
                 const ordersOnThisDay = inProcessOrders.filter((order) => {
