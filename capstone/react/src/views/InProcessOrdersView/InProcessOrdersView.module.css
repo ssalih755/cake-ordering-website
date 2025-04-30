@@ -176,16 +176,17 @@ table tr:nth-child(even) {
 
 .editButton {
   padding: 6px 12px;
-  background-color: #bad7f2;
+  background-color: #8F6D51;
   color: white;
   border: none;
+  font-size: 13px;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .editButton:hover {
-  background-color: #77b8f5;
+  background-color: #6D533E;
 }
 
 /* Responsive Styles */
