@@ -56,7 +56,7 @@ public class OrderController {
     public List<OrderHistory> getAllOrders(){
         List<OrderHistory> allOrders;
         try{
-            allOrders = orderDao.getAllInProcessOrders();
+            allOrders = orderDao.getAllOrders();
         }catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }

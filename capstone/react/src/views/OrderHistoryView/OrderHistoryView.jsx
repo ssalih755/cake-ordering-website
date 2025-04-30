@@ -3,7 +3,7 @@ import OrderService from "../../services/OrderService";
 import styles from "./OrderHistoryView.module.css";
 import { UserContext } from "../../context/UserContext";
 import { isAdmin } from "../../services/UserHelper";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function OrderHistoryView() {
   const [orders, setOrders] = useState([]);
@@ -28,18 +28,20 @@ export default function OrderHistoryView() {
       }
     };
     if (user?.id) {
-    fetchOrders();
+      fetchOrders();
     }
   }, [reloadTrigger, user]);
 
   const handleOrderClick = () => {
     navigate(`/inprocessOrders`);
-    };
+  };
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Order History</h2>
-      <button className={styles.toggleButton} onClick={handleOrderClick}>Orders</button>
+      <button className={styles.toggleButton} onClick={handleOrderClick}>
+        Orders
+      </button>
       <table className={styles.ordersTable}>
         <thead>
           <tr>

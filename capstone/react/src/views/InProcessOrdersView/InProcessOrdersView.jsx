@@ -75,7 +75,7 @@ navigate(`/getMyOrders/${user.id}`);
         </div>
       )}
 
-<button className={styles.toggleButton} onClick={handleOrderHistoryClick}>Order History</button>
+<button className={styles.toggleButton}onClick={handleOrderHistoryClick}>Order History</button>
 
       <div className={styles.calendarAndTableWrapper}>
       
