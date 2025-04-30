@@ -21,6 +21,14 @@ const OrderService = {
     });
   },
 
+  getAllOrders() {
+    return axios.get("/order/all", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
   getMyOrders(id) {
     return axios.get(`/order/get-my-orders/${id}`, {
       headers: {
@@ -32,6 +40,14 @@ const OrderService = {
   updateStatus(orderId) {
     return axios.put(`/order/update-status/${orderId}`);
   },
+
+  getMyPendingOrders(id) {
+    return axios.get(`/order/get-my-pending-orders/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 };
 
 export default OrderService;

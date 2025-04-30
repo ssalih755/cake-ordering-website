@@ -2,31 +2,38 @@ import { useEffect, useState, useContext } from "react";
 import OrderService from "../../services/OrderService";
 import styles from "./OrderHistoryView.module.css";
 import { UserContext } from "../../context/UserContext";
-import { use } from "react";
+import { isAdmin } from "../../services/UserHelper";
 
 export default function OrderHistoryView() {
-  const [getMyOrders, setMyOrders] = useState([]);
-  const user = useContext(UserContext);
+  const [orders, setOrders] = useState([]);
   const [reloadTrigger, setReloadTrigger] = useState(0);
+  const user = useContext(UserContext);
 
   const reloadData = () => {
     setReloadTrigger((prev) => prev + 1);
   };
 
-  
-
   useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        if (!user?.id) return;
+        const response = isAdmin(user)
+          ? await OrderService.getAllOrders()
+          : await OrderService.getMyOrders(user.id);
+        setOrders(response.data);
+      } catch (err) {
+        console.error("Failed to fetch orders:", err);
+      }
+    };
     if (user?.id) {
-      OrderService.getMyOrders(user.id)
-        .then((response) => setMyOrders(response.data))
-        .catch((err) => console.error(err));
+    fetchOrders();
     }
-  }, [user?.id, reloadTrigger]);
+  }, [reloadTrigger, user]);
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Orders</h2>
-      <table>
+      <table className={styles.ordersTable}>
         <thead>
           <tr>
             <th className={styles.tableHeader}>Order Id</th>
@@ -37,11 +44,10 @@ export default function OrderHistoryView() {
             <th className={styles.tableHeader}>Cake Name</th>
             <th className={styles.tableHeader}>Cake Type</th>
             <th className={styles.tableHeader}>Writing</th>
-            
           </tr>
         </thead>
         <tbody>
-          {getMyOrders.map((order) => (
+          {orders.map((order) => (
             <tr key={order.id}>
               <td className={styles.tableCell}>{order.id}</td>
               <td className={styles.tableCell}>{order.customerName}</td>
@@ -51,7 +57,6 @@ export default function OrderHistoryView() {
               <td className={styles.tableCell}>{order.cakeName}</td>
               <td className={styles.tableCell}>{order.type}</td>
               <td className={styles.tableCell}>{order.writing}</td>
-            
             </tr>
           ))}
         </tbody>
@@ -59,4 +64,3 @@ export default function OrderHistoryView() {
     </div>
   );
 }
-

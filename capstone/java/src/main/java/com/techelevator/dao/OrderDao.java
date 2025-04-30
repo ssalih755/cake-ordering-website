@@ -17,4 +17,8 @@ public interface OrderDao {
 
     List<OrderHistory> getMyOrders(int userId);
 
+    List<OrderHistory> getAllOrders();
+
+    List<OrderHistory> getInProcessOrdersByUserId(int userId);
+
 }
