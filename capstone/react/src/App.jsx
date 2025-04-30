@@ -24,6 +24,7 @@ import CartView from "./views/CartView/CartView";
 import { CartProvider } from "./context/CartContext";
 import OrderSummary from "./views/OrderSummary/OrderSummary";
 import axios from "axios";
+import OrderConfirmation from "./views/OrderConfirmation/OrderConfirmation";
 export default function App() {
   const [user, setUser] = useState(null);
   function handleLogin(userData) {
@@ -87,6 +88,7 @@ export default function App() {
                   />
                   <Route path="/checkout" element={<Checkout />} />
                   <Route path="/ordersummary" element={<OrderSummary />} />
+                  <Route path="/confirmation" element={<OrderConfirmation />} />
                   <Route path="/cakes/:id" element={<ProductPageView />} />
                   <Route
                     path="/customcake"
@@ -109,7 +111,6 @@ export default function App() {
                     element={<OrderHistoryView />}
                   />
                 </Routes>
-                
               </main>
               <GlobalFooterView />
             </CartProvider>
