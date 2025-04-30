@@ -192,7 +192,8 @@ public class JdbcOrderDao  implements OrderDao {
                 "JOIN cakefilling cfl ON cfl.cakefilling_id = c.cakefilling_id\n" +
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id\n" +
                 "JOIN cakesize cz ON cz.cakesize_id = c.cakesize_id\n" +
-                "JOIN caketype ct ON ct.caketype_id = c.caketype_id;";
+                "JOIN caketype ct ON ct.caketype_id = c.caketype_id\n" +
+                "ORDER BY o.orderstatus_id, o.user_id ;";
 
         try {
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
