@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useCakeContext } from "../../context/CakeContext";
 import styles from "./CustomProductPageView.module.css";
@@ -6,6 +6,7 @@ import cakePic from "../HomeView/cake.png";
 import CakeService from "../../services/CakeService";
 import CakeCard from "../../components/CakeCard/CakeCard";
 import { UserContext } from "../../context/UserContext";
+import { CartContext } from "../../context/CartContext";
 
 import Dropdown from "../../components/Dropdown";
 import useOptionData from "../../Components/useOptionData";
@@ -34,6 +35,7 @@ export default function ProductPageView() {
   const [selectedFrosting, setSelectedFrosting] = useState("");
   const [selectedStyle, setSelectedStyle] = useState("");
   const [notification, setNotification] = useState(null);
+  const { addToCart } = useContext(CartContext);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -53,14 +55,24 @@ export default function ProductPageView() {
 
     CakeService.createCake(cake)
       .then((response) => {
-        navigate("/checkout", {
-          state: {
-            cakeId: response.data.id,
-            writing,
-            cakeQuantity,
-            cakeType: response.data.type,
-          },
-        });
+        const newCake = {
+          id: response.data.id,
+          name: "Custom Cake",
+          imgURL: "./customCakePic",
+          flavor: selectedFlavor,
+          filling: selectedFilling,
+          size: selectedSize,
+          frosting: selectedFrosting,
+          style: selectedStyle,
+          description: "Custom Cake",
+          type: "Custom",
+          price: 75.0,
+          quantity: cakeQuantity,
+          writing,
+        };
+
+        addToCart(newCake); // ✅ this adds it to your shared cart
+        navigate("/cart");
         setNotification({
           type: "success",
           message: "Cake Created Successfully",
@@ -79,10 +91,6 @@ export default function ProductPageView() {
   function handleWritingChange(event) {
     setWriting(event.target.value);
   }
-
-  const handleBuyNow = () => {
-    console.log("Navigating with writing:", writing); // debugging payload issue
-  };
 
   return (
     <>
@@ -152,18 +160,14 @@ export default function ProductPageView() {
         <section className={styles.buyNowContainer}>
           <input
             type="text"
-            placeholder="Write your message here, then click 'Buy Now'"
+            placeholder="Write your message here"
             value={writing}
             onChange={handleWritingChange}
             className={styles.writingInput}
           />
 
-          <button
-            type="submit"
-            className={styles.formButton}
-            onClick={handleBuyNow}
-          >
-            Buy Now
+          <button type="submit" className={styles.formButton}>
+            Add To Cart
           </button>
         </section>
       </form>

@@ -63,8 +63,6 @@ export default function ProductPageView() {
           <p>{cake ? cake.filling : "Loading..."}</p>
           <label>Cake Size</label>
           <p>{cake ? cake.size : "Loading..."}</p>
-          <label>Cake Quantity</label>
-          <p>{cake ? quantity : "Loading..."}</p>
           <label>Cake Frosting</label>
           <p>{cake ? cake.frosting : "Loading..."}</p>
           <div className={styles.quantityContainer}>
@@ -80,18 +78,16 @@ export default function ProductPageView() {
             />
           </div>
         </div>
-
-        
       </div>
-      <div className={styles.line} >
-      <input
+      <div className={styles.line}>
+        <input
           type="text"
           placeholder="Write your message here"
           value={writing}
           onChange={handleWritingChange}
           className={styles.writingInput}
         />
-        </div>
+      </div>
       <div className={styles.line}>
         {/* <button className={styles.formButton} onClick={handleBuyNow}>
           Buy Now
