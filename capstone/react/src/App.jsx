@@ -22,6 +22,7 @@ import CustomProductPageView from "./views/CustomPageView/CustomProductPageView"
 import AddOptionView from "./views/AddOptionView/AddOptionView";
 import CartView from "./views/CartView/CartView";
 import { CartProvider } from "./context/CartContext";
+import OrderSummary from "./views/OrderSummary/OrderSummary";
 import axios from "axios";
 export default function App() {
   const [user, setUser] = useState(null);
@@ -85,6 +86,7 @@ export default function App() {
                     }
                   />
                   <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/ordersummary" element={<OrderSummary />} />
                   <Route path="/cakes/:id" element={<ProductPageView />} />
                   <Route
                     path="/customcake"

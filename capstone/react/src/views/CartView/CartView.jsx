@@ -1,8 +1,24 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import styles from "./CartView.module.css"; // adjust if you have a different CSS file
-// import cakePic from "../../assets/cakePic.jpg"; // adjust path as needed
+import styles from "./CartView.module.css";
+
+const getMinDate = () => {
+  const today = new Date();
+  return today.toISOString().split("T")[0];
+};
+
+const hours = [
+  "9:00 AM",
+  "10:00 AM",
+  "11:00 AM",
+  "12:00 PM",
+  "1:00 PM",
+  "2:00 PM",
+  "3:00 PM",
+  "4:00 PM",
+  "5:00 PM",
+];
 
 export default function CartView() {
   const { cartItems, updateCart, removeFromCart, clearCart } =
@@ -13,7 +29,9 @@ export default function CartView() {
   const [pickupTime, setPickupTime] = useState("");
 
   const handleCheckout = () => {
-    navigate("/checkout");
+    navigate("/ordersummary", {
+      state: { pickupDate, pickupTime },
+    });
   };
 
   return (
@@ -25,7 +43,6 @@ export default function CartView() {
         <div className={styles.cartContainer}>
           {cartItems.map((cake) => (
             <div key={cake.id} className={styles.cartItem}>
-              {/* <img src={cake.imgURL || cakePic} alt="Bams Cakery" /> */}
               <img
                 className={styles.cakeImage}
                 src={cake.imgURL}
@@ -52,27 +69,33 @@ export default function CartView() {
               </div>
             </div>
           ))}
+
           <button onClick={clearCart}>Clear Cart</button>
 
           <div>
-            <h2 className={styles.title}>Checkout </h2>
-            <form onSubmit={handleSubmit}>
-              <div className={styles.form} id="checkout-form">
+            <h2 className={styles.title}>Checkout</h2>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleCheckout();
+              }}
+            >
+              <div className={styles.form} id="order-form">
                 <p className={styles.formLabel}>Pickup Date</p>
                 <input
                   type="date"
                   className={styles.formInput}
                   value={pickupDate}
-                  placeholder="Pickup Date"
                   onChange={(event) => setPickupDate(event.target.value)}
                   min={getMinDate()}
                 />
+
                 <p className={styles.formLabel}>Pickup Time</p>
                 <select
                   value={pickupTime}
                   onChange={(e) => setPickupTime(e.target.value)}
                 >
-                  <option value="">Select Time</option>
+                  <option value="">Select Pickup Time</option>
                   {hours.map((hour) => (
                     <option key={hour} value={hour}>
                       {hour}
@@ -83,15 +106,13 @@ export default function CartView() {
                 <button
                   type="submit"
                   className={styles.formButton}
-                  onClick={() => setShowPopup(true)}
+                  disabled={!pickupDate || !pickupTime}
                 >
-                  Submit
+                  Proceed To Checkout
                 </button>
               </div>
             </form>
           </div>
-
-          <button onClick={handleCheckout}>Checkout</button>
         </div>
       )}
     </div>

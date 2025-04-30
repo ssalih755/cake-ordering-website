@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useCakeContext } from "../../context/CakeContext";
 import styles from "./ProductPageView.module.css";
 import CakeService from "../../services/CakeService";
 import { CartContext } from "../../context/CartContext";
@@ -38,9 +37,9 @@ export default function ProductPageView() {
 
   const handleAddToCart = () => {
     navigate("/cart");
-    addToCart({ ...cake, cartQuantity: quantity, writing: writing });
+    addToCart({ ...cake, quantity: quantity, writing: writing });
   };
-  console.log(cake);
+
   return (
     <>
       <h1 className={styles.cakeHeader}> {cake ? cake.name : "Loading..."}</h1>
