@@ -9,12 +9,13 @@ export default function OrderConfirmation() {
   return (
     <div className={styles.confirmationContainer}>
       <h2 className={styles.title}>Order Confirmation</h2>
+      <p className={styles.message}>Thank you for your order!</p>
       <p className={styles.message}>
-        Thank you for your order! Your order #({order.id}) has been placed
-        successfully.
+        Your order #({order.id}) has been placed successfully.
       </p>
+      <p className={styles.pickupDetails}> Pickup Details:</p>
+      <p className={styles.pickupDetails}>Date: {order.pickupDate}</p>
       <p className={styles.pickupDetails}>
-        Pickup Details: Date: {order.pickupDate}
         Time: {convertTo12Hour(order.pickupTime)}
       </p>
       <p>
