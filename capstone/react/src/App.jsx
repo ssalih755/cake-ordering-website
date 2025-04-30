@@ -12,7 +12,6 @@ import MainNav from "./components/MainNav/MainNav";
 import ProtectedRoute from "./components/ProtectedRoute";
 import HomeView from "./views/HomeView/HomeView";
 import GlobalFooterView from "./views/GlobalFooterView/GlobalFooterView";
-import Checkout from "./components/Checkout/Checkout";
 import ProductPageView from "./views/ProductPageView/ProductPageView";
 import StandardCakeView from "./views/StandardCakeView/StandardCakeView";
 import AddCakeView from "./views/AddCakeView/AddCakeView";
@@ -21,7 +20,7 @@ import OrderHistoryView from "./views/OrderHistoryView/OrderHistoryView";
 import CustomProductPageView from "./views/CustomPageView/CustomProductPageView";
 import AddOptionView from "./views/AddOptionView/AddOptionView";
 import CartView from "./views/CartView/CartView";
-import { CartProvider } from "./context/CartContext";
+import CartProvider from "./context/CartContext";
 import OrderSummary from "./views/OrderSummary/OrderSummary";
 import axios from "axios";
 import OrderConfirmation from "./views/OrderConfirmation/OrderConfirmation";
@@ -86,7 +85,6 @@ export default function App() {
                       </ProtectedRoute>
                     }
                   />
-                  <Route path="/checkout" element={<Checkout />} />
                   <Route path="/ordersummary" element={<OrderSummary />} />
                   <Route path="/confirmation" element={<OrderConfirmation />} />
                   <Route path="/cakes/:id" element={<ProductPageView />} />

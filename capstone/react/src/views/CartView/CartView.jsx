@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import styles from "./CartView.module.css";
@@ -9,8 +9,19 @@ export default function CartView() {
     useContext(CartContext);
   const navigate = useNavigate();
 
-  const [pickupDate, setPickupDate] = useState("");
-  const [pickupTime, setPickupTime] = useState("");
+  const [pickupDate, setPickupDate] = useState(() => {
+    return localStorage.getItem("pickupDate") || "";
+  });
+
+  const [pickupTime, setPickupTime] = useState(() => {
+    return localStorage.getItem("pickupTime") || "";
+  });
+
+  //sync to local storage
+  useEffect(() => {
+    localStorage.setItem("pickupDate", pickupDate);
+    localStorage.setItem("pickupTime", pickupTime);
+  }, [pickupDate, pickupTime]);
 
   const getMinPickupDate = () => {
     const today = new Date();

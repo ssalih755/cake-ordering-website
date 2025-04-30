@@ -1,45 +1,44 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext(null);
 
-//cart provider, this creates the cart with an empty array
-export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
+const CartProvider = ({ children }) => {
+  const [cartItems, setCartItems] = useState(() => {
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
 
-  //add to cart
-  function addToCart(cake) {
-    setCartItems((currentItems) => [...currentItems, cake]);
-  }
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
-  //update cart
-  function updateCart(cakeId, quantity, writing) {
-    setCartItems((currentItems) =>
-      currentItems.map((cake) => {
-        if (cake.id === cakeId) {
-          return { ...cake, quantity, writing };
-        }
-        return cake;
-      })
+  const addToCart = (cake) => {
+    setCartItems((prev) => [...prev, cake]);
+  };
+
+  const updateCart = (cakeId, quantity, writing) => {
+    setCartItems((prev) =>
+      prev.map((cake) =>
+        cake.id === cakeId ? { ...cake, quantity, writing } : cake
+      )
     );
-  }
+  };
 
-  //remove from cart
-  function removeFromCart(cakeId) {
-    setCartItems((currentItems) =>
-      currentItems.filter((cake) => cake.id !== cakeId)
-    );
-  }
+  const removeFromCart = (cakeId) => {
+    setCartItems((prev) => prev.filter((cake) => cake.id !== cakeId));
+  };
 
-  //clear cart
-  function clearCart() {
+  const clearCart = () => {
     setCartItems([]);
-  }
+  };
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateCart, clearCart }}
+      value={{ cartItems, addToCart, updateCart, removeFromCart, clearCart }}
     >
       {children}
     </CartContext.Provider>
   );
-}
+};
+
+export default CartProvider;

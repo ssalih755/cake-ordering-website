@@ -58,6 +58,13 @@ function OrderSummary({ showTotal = true }) {
     <div className={styles.summaryContainer}>
       <h3>Order Summary</h3>
 
+      <p>
+        <strong>Pickup Date:</strong> {pickupDate}
+      </p>
+      <p>
+        <strong>Pickup Time:</strong> {pickupTime}
+      </p>
+
       {cartItems.map((item) => (
         <div key={item.id} className={styles.itemRow}>
           <div className={styles.itemInfo}>
