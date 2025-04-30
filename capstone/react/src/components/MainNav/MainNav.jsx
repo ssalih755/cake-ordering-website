@@ -28,9 +28,9 @@ export default function MainNav() {
           </div>
           </div>
           <div className={styles.navLink}>
-          <div>
+          {/* <div>
             <NavLink to="/getMyOrders/${id}">Order History</NavLink>
-          </div>
+          </div>  moved to orders page */}
         </div>
         
         {user ? (

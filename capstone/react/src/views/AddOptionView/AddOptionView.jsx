@@ -67,6 +67,11 @@ export default function AddOptionView() {
     const size = { size: sizeName };
     const style = { style: styleName };
 
+    
+    const navigate = useNavigate();
+
+  
+
     try {
       if (flavorName) {
         try {
@@ -138,8 +143,7 @@ export default function AddOptionView() {
   return (
     <div>
       <h1 className={styles.title}>Edit Options</h1>
-
-      <form onSubmit={submitOptions}>
+      <form onSubmit={submitOptions} >
         <div className={styles.entirePage}>
           <p className={styles.warning}>
             {" "}

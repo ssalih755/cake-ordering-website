@@ -6,12 +6,14 @@ import OrderService from "../../services/OrderService";
 import styles from "./InProcessOrdersView.module.css";
 import { isAdmin } from "../../services/UserHelper";
 import { UserContext } from "../../context/UserContext";
+import { useNavigate } from 'react-router-dom';
 
 export default function InProcessOrdersView() {
   const [inProcessOrders, setInProcessOrders] = useState([]);
   const user = useContext(UserContext);
   const [reloadTrigger, setReloadTrigger] = useState(0);
   const [activeView, setActiveView] = useState("table"); // Add state for toggling view
+  const navigate = useNavigate();
 
   const reloadData = () => {
     setReloadTrigger((prev) => prev + 1);
@@ -28,10 +30,28 @@ export default function InProcessOrdersView() {
   };
 
   useEffect(() => {
-    OrderService.getInProcessOrders()
-      .then((response) => setInProcessOrders(response.data))
-      .catch((err) => console.error(err));
-  }, [reloadTrigger]);
+    const fetchOrders = async () => {
+      try {
+        const response = isAdmin(user)
+          ? await OrderService.getInProcessOrders()
+          : await OrderService.getMyPendingOrders(user.id);
+        setInProcessOrders(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+  
+    if (user?.id) {
+      fetchOrders();
+    }
+  }, [reloadTrigger, user]);
+
+  
+
+  
+const handleOrderHistoryClick = () => {
+navigate(`/getMyOrders/${user.id}`);
+};
 
   return (
     <div className={styles.container}>
@@ -54,6 +74,8 @@ export default function InProcessOrdersView() {
           </button>
         </div>
       )}
+
+<button onClick={handleOrderHistoryClick}>Order History</button>
 
       <div className={styles.calendarAndTableWrapper}>
       

@@ -52,6 +52,17 @@ public class OrderController {
         return pendingOrders;
     }
 
+    @GetMapping(path = "/all")
+    public List<OrderHistory> getAllOrders(){
+        List<OrderHistory> allOrders;
+        try{
+            allOrders = orderDao.getAllInProcessOrders();
+        }catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return allOrders;
+    }
+
     @PutMapping(path = "/update-status/{id}")
     public Order advanceOrderStatus(@PathVariable int id){
         final Order order;
@@ -78,6 +89,17 @@ public class OrderController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
         return getMyOrders;
+    }
+
+    @GetMapping(path = "/get-my-pending-orders/{id}")
+    public List<OrderHistory> getInProcesOrdersByUserId(@PathVariable int id){
+        List<OrderHistory> getMyInProcessOrders;
+        try{
+            getMyInProcessOrders = orderDao.getInProcessOrdersByUserId(id);
+        }catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+        return getMyInProcessOrders;
     }
 
 }
