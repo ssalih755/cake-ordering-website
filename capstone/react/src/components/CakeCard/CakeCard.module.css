@@ -18,7 +18,7 @@
 .card:hover {
   background:#ffa99e;
   transform: translateY(-6px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card :global(p) {
@@ -43,6 +43,7 @@
 
 .adminButton:hover {
   background-color: #6D533E;
+  color: white;
   
 }
 

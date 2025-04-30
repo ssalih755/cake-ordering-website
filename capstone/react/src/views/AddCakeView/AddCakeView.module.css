@@ -21,12 +21,12 @@ select {
     width: 250px; /* optional: for consistency */
   }
 
-button{
+.button{
     display: flex;
     background-color: #8F6D51;
     color: #ffffff;
-    font-weight: bold;
-    font-style: normal;
+  
+    
     font-size: 20px;
   justify-content: center; 
   align-items: center;     
@@ -39,7 +39,6 @@ button{
  
 }
 .button{
-
   width: 100px;
   margin: 5% 5% 5% 25%;
   
