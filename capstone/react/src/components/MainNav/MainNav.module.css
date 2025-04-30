@@ -33,7 +33,7 @@
 }
 
 .nav-link :global(a:hover) {
-  color: #fcbfb7;
+  color: #EE97B3;
 }
 
 .logoText {
@@ -78,6 +78,11 @@
   color: #6b392f;
 }
 
+.cart-link{
+  color: #6b392f;
+  }
+  
+
 .cart-link :hover{
-color: #fcbfb7;
+color: #EE97B3;
 }
