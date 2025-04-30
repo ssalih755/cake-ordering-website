@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole('ROLE_USER')")
 @RequestMapping(path = "/flavor")
 public class FlavorController {
     private final FlavorDao flavorDao;
@@ -46,6 +46,7 @@ public class FlavorController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping(path = "/addFlavor")
     @CrossOrigin
     public void createSize(@RequestBody @Valid Flavor flavor){

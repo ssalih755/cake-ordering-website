@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole( 'ROLE_USER')")
 @RequestMapping(path = "/size")
 public class CakeSizesController {
 
@@ -45,7 +45,7 @@ public class CakeSizesController {
         }
         return sizes;
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/addSize")
     @CrossOrigin

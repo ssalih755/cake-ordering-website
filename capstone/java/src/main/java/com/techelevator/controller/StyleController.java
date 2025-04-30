@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole('ROLE_USER')")
 @RequestMapping(path = "/style")
 public class StyleController {
     private final StyleDao styleDao;
@@ -47,7 +47,7 @@ public class StyleController {
         }
         return styles;
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/addStyle")
     @CrossOrigin

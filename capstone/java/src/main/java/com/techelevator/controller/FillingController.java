@@ -14,7 +14,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole( 'ROLE_USER')")
+
 @RequestMapping(path = "/filling")
 public class FillingController {
     private final FillingDao fillingDao;
@@ -44,7 +45,7 @@ public class FillingController {
         }
         return fillings;
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/addFilling")
     @CrossOrigin
