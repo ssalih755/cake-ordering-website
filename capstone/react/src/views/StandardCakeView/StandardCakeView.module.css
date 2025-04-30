@@ -46,6 +46,7 @@ section {
 
 .ButtonContainer {
   display: flex;
+  
   align-items: center;
   position: relative;
   width: 100%;
@@ -85,3 +86,10 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.small-Button-Container{
+  display: flex;
+  flex-direction: row;
+}
+
+

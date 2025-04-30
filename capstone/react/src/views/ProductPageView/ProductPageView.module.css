@@ -1,65 +1,60 @@
-.cake-Header{
-   display: flex ;
-    flex-direction: column;
-    color: #6b392f;
-    font-family: Nickainley;    
-    font-weight: bold;
-    font-size: 32px;
-    padding: 20px;
-    text-align: center;
-    
-
+.cake-Header {
+  display: flex;
+  flex-direction: column;
+  color: #6b392f;
+  font-family: Nickainley;
+  font-weight: bold;
+  font-size: 32px;
+  padding: 20px;
+  text-align: center;
 }
-.pageContainer{
+.pageContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 2rem;
-
 }
 
 .cake-Pic {
-
   display: flex;
   justify-content: space-evenly;
- 
+
   gap: 16px;
   padding: 16px;
   border-radius: 10px;
-  background: #FCBFB7;
-  box-shadow:  #FCBFB7;
+  background: #fcbfb7;
+  box-shadow: #fcbfb7;
   align-items: center;
   margin-bottom: 20px;
- 
+
   object-fit: cover;
   aspect-ratio: 1 / 1;
   max-width: 30rem;
 }
 
-.cake-Info-Container{
-display: flex;
+.cake-Info-Container {
+  display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  
-   margin-left: 40px;
+
+  margin-left: 40px;
   margin-right: 40px;
   margin-bottom: 5px;
-  margin-top: 5px; 
+  margin-top: 5px;
   width: 30rem;
   size: 50rem;
   border-radius: 10px;
-  padding : 30px;
+  padding: 30px;
   color: #6b392f;
   font-family: Nickainley;
   font-weight: 300px;
   font-style: normal;
   font-size: 14px;
-
 }
-.cake-Info-Container label{
+.cake-Info-Container label {
   margin-top: 10px;
   font-size: 24px;
   font-weight: bold;
@@ -69,7 +64,7 @@ display: flex;
   font-family: Nickainley;
   padding-bottom: 0.5rem;
 }
-.cake-Info-Container p{
+.cake-Info-Container p {
   font-family: Arial;
   font-style: italic;
   margin-top: 10px;
@@ -79,93 +74,88 @@ display: flex;
   align-items: center;
   size: 50rem;
 }
-.writingInput{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  align-items: center;
-    width: 325px;
-    padding-block: 5px;
-    text-align: center;
-    
-    
-}
-
-.formButton{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-    margin-right: 1px;
-    background-color: #f6AEB9;
-    color: #6b392f;
-    font-family: Nickainley;
-    font-weight: 300px;
-    font-style: normal;
-    font-size: 22px;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    justify-content: center;
-}
-.cake-Page{
+.writingInput {
   display: flex;
   flex-direction: column;
-    color: #6b392f;
-    font-family: Nickainley;    
-    font-weight: bold;
-    font-size: 32px;
-    padding: 20px;
-    text-align: center;
-
-}
-.formButton:hover{
-    background-color: #6b392f;
-    color: #f6AEB9;
+  justify-content: center;
+  align-items: center;
+  width: 325px;
+  padding-block: 5px;
+  text-align: center;
 }
 
+.formButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1px;
+  background-color: #8f6d51;
+  color: #ffffff;
 
-  .buy_Now_Container{
-   
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  font-weight: 300px;
+  font-style: normal;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
 
-  }
-  .card {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    flex-wrap: wrap;
-    flex: 0 0 33.33%;
-    /* flex-basis: 400px; */
-    gap: 20px;
-    padding: 16px;
-    border-radius: 10px;
-    background: #FCBFB7;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    align-items: flex-start;
-    max-width: 500px;
-    margin-bottom: 20px;
-  }
-  
-  .card:hover{
-    transform: translateY(-1px);
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card :global(p){
-    font-size: 18px;
-    margin-bottom:10px ;
-    font-style: italic;
-    /* border-radius: 10px;
+.formButton:hover {
+  background-color: #6d533e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cake-Page {
+  display: flex;
+  flex-direction: column;
+  color: #6b392f;
+  font-family: Nickainley;
+  font-weight: bold;
+  font-size: 32px;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.buy_Now_Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex: 0 0 33.33%;
+  /* flex-basis: 400px; */
+  gap: 20px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #fcbfb7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  align-items: flex-start;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card :global(p) {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-style: italic;
+  /* border-radius: 10px;
     background: #f7c8c8;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); */
-  }
-  .line{
-    display: flex;
-    justify-content: center;
-  }
-    
- 
-  
+}
+.line {
+  display: flex;
+  justify-content: center;
+}
