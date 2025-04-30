@@ -94,9 +94,7 @@ export default function CartView() {
               </div>
             </div>
           ))}
-
-          <button onClick={clearCart}>Clear Cart</button>
-
+          
           <div>
             <form
               onSubmit={(e) => {
@@ -144,6 +142,9 @@ export default function CartView() {
                 </button>
               </div>
             </form>
+            <div className= {styles.clearCart}>
+          <button onClick={clearCart}>Clear Cart</button>
+          </div>
           </div>
         </div>
       )}
