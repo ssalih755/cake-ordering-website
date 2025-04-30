@@ -95,6 +95,7 @@
     background-color: #fff;
     border-radius: 10px;
     border: 1px solid #ddd;
+    max-width: fit-content;
   }
   
   .formLabel {
@@ -125,7 +126,7 @@
   .clearCart {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    max-width:fit-content;
     
     
   }
