@@ -21,18 +21,24 @@ select {
     width: 250px; /* optional: for consistency */
   }
 
-button{
+.button{
     display: flex;
-    background-color: #f6AEB9;
-    color: #6b392f;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 14px;
+    background-color: #8F6D51;
+    color: #ffffff;
+  
+    
+    font-size: 20px;
   justify-content: center; 
   align-items: center;     
 }
-.button{
 
+.button:hover {
+  background-color: #6D533E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ 
+}
+.button{
   width: 100px;
   margin: 5% 5% 5% 25%;
   

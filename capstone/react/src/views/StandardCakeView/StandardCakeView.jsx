@@ -37,6 +37,10 @@ export default function StandardCakeView() {
     navigate("/addoption");
   };
 
+  const handleCustomCake = () => {
+    navigate("/customcake");
+  };
+
   const handleStandardCake = () => {
     navigate("/cakes/:id");
   };
@@ -56,9 +60,11 @@ export default function StandardCakeView() {
       <div className={styles.headerContainer}>
         <div className={styles.titleAndButtonContainer}>
           <h1>Standard Cakes</h1>
-
+          <section className={styles.buttonContainer}>
+            <section className={styles.smallButtonContainer}>
           {isAdmin(user) && (
-            <section className={styles.buttonContainer}>
+            
+              <div>
               <button className={styles.adminButton} onClick={handleAddNewCake}>
                 Add Cake
               </button>
@@ -68,8 +74,21 @@ export default function StandardCakeView() {
               >
                 Add Cake Options
               </button>
-            </section>
+              </div>
+             
+            
           )}
+          <div>
+           <button
+                className={styles.adminButton}
+                onClick={handleCustomCake}
+              >
+              Order a Custom Cake
+              </button>
+              </div>
+              </section>
+              </section>
+              
         </div>
       </div>
 

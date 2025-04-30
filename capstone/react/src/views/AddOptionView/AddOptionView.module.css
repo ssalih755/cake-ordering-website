@@ -25,8 +25,8 @@
 }
 
 .button {
-  color: #33261D;
-  background-color: #FCBFB7;
+  color: #fffdfb;
+  background-color: #8F6D51;
   width: 100%;
   max-width: 200px;
   padding: 0.75rem 1rem;
@@ -34,6 +34,12 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.button:hover{
+  background-color: #6D533E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .form-container {

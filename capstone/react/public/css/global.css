@@ -57,7 +57,7 @@ main {
 
 /* Icon Button styles */
 .icon-button {
-  background-color: transparent;
+ 
   border: none;
   font-size: inherit;
   padding: 0;
@@ -95,7 +95,7 @@ input {
 }
 
 button {
-  border: 1px solid black;
+  border: 0px solid #334e58;
   border-radius: 5px;
   padding: 0.25rem 0.5rem;
 }
@@ -113,6 +113,7 @@ table {
   margin-bottom: 2rem;
   padding: 0.5rem;
 }
+
 
 thead {
   margin-bottom: 0.5rem;
