@@ -14,16 +14,17 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
+  gap: 2rem;
 
 }
 
 .cake-Pic {
 
   display: flex;
-  justify-content: space-evenly; 
-   
+  justify-content: space-evenly;
+ 
   gap: 16px;
   padding: 16px;
   border-radius: 10px;
@@ -34,22 +35,23 @@
  
   object-fit: cover;
   aspect-ratio: 1 / 1;
-  max-width: 20rem;
+  max-width: 30rem;
 }
 
-.cake-InfoContainer{
+.cake-Info-Container{
 display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin-left: 40px;
+  text-align: center;
+  
+   margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 40px;
-  margin-top: 5px;
-  width: 50rem;
-
+  margin-bottom: 5px;
+  margin-top: 5px; 
+  width: 30rem;
+  size: 50rem;
   border-radius: 10px;
-
+  padding : 30px;
   color: #6b392f;
   font-family: Nickainley;
   font-weight: 300px;
@@ -57,15 +59,25 @@ display: flex;
   font-size: 14px;
 
 }
-.cake-InfoContainer label{
+.cake-Info-Container label{
   margin-top: 10px;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
+  align-items: left;
+  size: 50rem;
+  justify-content: left;
+  font-family: Nickainley;
+  padding-bottom: 0.5rem;
 }
-.cake-InfoContainer p{
+.cake-Info-Container p{
+  font-family: Arial;
+  font-style: italic;
   margin-top: 10px;
   font-size: 18px;
   color: #6b392f;
+  justify-content: center;
+  align-items: center;
+  size: 50rem;
 }
 .writingInput{
     display: flex;
@@ -103,6 +115,7 @@ display: flex;
     font-weight: bold;
     font-size: 32px;
     padding: 20px;
+    text-align: center;
 
 }
 .formButton:hover{

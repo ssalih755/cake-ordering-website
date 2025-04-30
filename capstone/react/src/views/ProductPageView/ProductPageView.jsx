@@ -51,8 +51,7 @@ export default function ProductPageView() {
           className={styles.cakePic}
         />
         <div className={styles.cakeInfoContainer}>
-          <label>Cake Description</label>
-          <p>{cake ? cake.description : "Loading..."}</p>
+          
           <label>Cake Style</label>
           <p>{cake ? cake.style : "Loading..."}</p>
           <label>Cake Flavor</label>
@@ -63,11 +62,9 @@ export default function ProductPageView() {
           <p>{cake ? cake.filling : "Loading..."}</p>
           <label>Cake Size</label>
           <p>{cake ? cake.size : "Loading..."}</p>
-          <label>Cake Quantity</label>
-          <p>{cake ? quantity : "Loading..."}</p>
           <label>Cake Frosting</label>
           <p>{cake ? cake.frosting : "Loading..."}</p>
-          <div className={styles.quantityContainer}>
+          
             <label htmlFor="quantity">Cake Quantity</label>
             <input
               type="number"
@@ -78,7 +75,9 @@ export default function ProductPageView() {
               className={styles.quantityInput}
               placeholder="Enter quantity"
             />
-          </div>
+        
+          <label>Cake Description</label>
+          <p>{cake ? cake.description : "Loading..."}</p>
         </div>
 
         
