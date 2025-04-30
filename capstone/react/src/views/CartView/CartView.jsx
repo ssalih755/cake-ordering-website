@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import styles from "./CartView.module.css";
+import OrderSummary from "../OrderSummary/OrderSummary";
 
 const getMinDate = () => {
   const today = new Date();
@@ -73,7 +74,6 @@ export default function CartView() {
           <button onClick={clearCart}>Clear Cart</button>
 
           <div>
-            <h2 className={styles.title}>Checkout</h2>
             <form
               onSubmit={(e) => {
                 e.preventDefault();

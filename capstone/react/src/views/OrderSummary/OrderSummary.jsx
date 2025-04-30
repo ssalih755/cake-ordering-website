@@ -15,8 +15,6 @@ function OrderSummary({ showTotal = true }) {
 
   const { pickupDate, pickupTime } = location.state || {};
 
-  console.log(user);
-
   const calculateTotal = () => {
     return cartItems
       .reduce((total, item) => {
@@ -41,13 +39,14 @@ function OrderSummary({ showTotal = true }) {
     };
 
     OrderService.createOrder(order)
-      .then(() => {
+      .then((response) => {
+        const createdOrder = response.data;
         setNotification({
           type: "success",
           message: "Order Placed Successfully",
         });
         clearCart();
-        navigate("/confirmation", { state: { order } });
+        navigate("/confirmation", { state: { order: createdOrder } });
       })
       .catch((error) => {
         const message = error.response?.data?.message || "Create order failed.";
