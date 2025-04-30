@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useCakeContext } from "../../context/CakeContext";
 import styles from "./ProductPageView.module.css";
 import CakeService from "../../services/CakeService";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
 
 export default function ProductPageView() {
+  const { addToCart } = useContext(CartContext);
   const { id } = useParams();
   const navigate = useNavigate();
 
   const cakeId = parseInt(id);
-  // const cakeQuantity = 1;
 
   const [writing, setWriting] = useState("");
   const [cake, setCake] = useState(null);
-  const [quantity, setQuantity] = useState("1");
+  const [quantity, setQuantity] = useState(1);
+
   useEffect(() => {
     CakeService.getCakeById(cakeId)
       .then((response) => {
@@ -29,8 +31,13 @@ export default function ProductPageView() {
     setWriting(event.target.value);
   }
 
-  const handleBuyNow = () => {
-    navigate("/checkout", { state: { cakeId, writing, quantity } });
+  // const handleBuyNow = () => {
+  //   navigate("/checkout", { state: { cakeId, writing, quantity } });
+  // };
+
+  const handleAddToCart = () => {
+    navigate("/cart");
+    addToCart({ ...cake, quantity: quantity, writing: writing });
   };
 
   return (
@@ -44,8 +51,7 @@ export default function ProductPageView() {
           className={styles.cakePic}
         />
         <div className={styles.cakeInfoContainer}>
-          <label>Cake Description</label>
-          <p>{cake ? cake.description : "Loading..."}</p>
+          
           <label>Cake Style</label>
           <p>{cake ? cake.style : "Loading..."}</p>
           <label>Cake Flavor</label>
@@ -56,11 +62,9 @@ export default function ProductPageView() {
           <p>{cake ? cake.filling : "Loading..."}</p>
           <label>Cake Size</label>
           <p>{cake ? cake.size : "Loading..."}</p>
-          <label>Cake Quantity</label>
-          <p>{cake ? quantity : "Loading..."}</p>
           <label>Cake Frosting</label>
           <p>{cake ? cake.frosting : "Loading..."}</p>
-          <div className={styles.quantityContainer}>
+          
             <label htmlFor="quantity">Cake Quantity</label>
             <input
               type="number"
@@ -71,7 +75,9 @@ export default function ProductPageView() {
               className={styles.quantityInput}
               placeholder="Enter quantity"
             />
-          </div>
+        
+          <label>Cake Description</label>
+          <p>{cake ? cake.description : "Loading..."}</p>
         </div>
 
         
@@ -79,15 +85,18 @@ export default function ProductPageView() {
       <div className={styles.line} >
       <input
           type="text"
-          placeholder="Write your message here, then click 'Buy Now'"
+          placeholder="Write your message here"
           value={writing}
           onChange={handleWritingChange}
           className={styles.writingInput}
         />
         </div>
       <div className={styles.line}>
-        <button className={styles.formButton} onClick={handleBuyNow}>
+        {/* <button className={styles.formButton} onClick={handleBuyNow}>
           Buy Now
+        </button> */}
+        <button className={styles.formButton} onClick={handleAddToCart}>
+          Add To Cart
         </button>
       </div>
     </>
