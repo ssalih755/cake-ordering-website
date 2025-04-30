@@ -4,23 +4,6 @@ import { CartContext } from "../../context/CartContext";
 import styles from "./CartView.module.css";
 import OrderSummary from "../OrderSummary/OrderSummary";
 
-const getMinDate = () => {
-  const today = new Date();
-  return today.toISOString().split("T")[0];
-};
-
-const hours = [
-  "9:00 AM",
-  "10:00 AM",
-  "11:00 AM",
-  "12:00 PM",
-  "1:00 PM",
-  "2:00 PM",
-  "3:00 PM",
-  "4:00 PM",
-  "5:00 PM",
-];
-
 export default function CartView() {
   const { cartItems, updateCart, removeFromCart, clearCart } =
     useContext(CartContext);
@@ -28,6 +11,35 @@ export default function CartView() {
 
   const [pickupDate, setPickupDate] = useState("");
   const [pickupTime, setPickupTime] = useState("");
+
+  const getMinPickupDate = () => {
+    const today = new Date();
+    const hasCustomCake = cartItems.some((cake) => cake.type === "Custom");
+    const leadTimeDays = hasCustomCake ? 3 : 2;
+    today.setDate(today.getDate() + leadTimeDays);
+    return today.toISOString().split("T")[0];
+  };
+
+  const getAvailableHours = () => {
+    if (!pickupDate) return [];
+    const day = new Date(pickupDate).getDay(); // 0 = Sunday, 6 = Saturday
+    if (day === 0) return []; // Sunday = closed
+    if (day === 6)
+      return ["10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM"]; // Saturday
+    return [
+      "9:00 AM",
+      "10:00 AM",
+      "11:00 AM",
+      "12:00 PM",
+      "1:00 PM",
+      "2:00 PM",
+      "3:00 PM",
+      "4:00 PM",
+      "5:00 PM",
+    ];
+  };
+
+  const availableHours = getAvailableHours();
 
   const handleCheckout = () => {
     navigate("/ordersummary", {
@@ -46,7 +58,7 @@ export default function CartView() {
             <div key={cake.id} className={styles.cartItem}>
               <img
                 className={styles.cakeImage}
-                src={cake.imgURL}
+                src={cake.imgURL || "/default-cake.jpg"} // fallback image
                 alt="Bams Cakery"
               />
               <div className={styles.cartDetails}>
@@ -62,9 +74,10 @@ export default function CartView() {
                   type="number"
                   value={cake.quantity ?? 1}
                   min="1"
-                  onChange={(e) =>
-                    updateCart(cake.id, parseInt(e.target.value), cake.writing)
-                  }
+                  onChange={(e) => {
+                    const val = Math.max(1, parseInt(e.target.value) || 1);
+                    updateCart(cake.id, val, cake.writing);
+                  }}
                 />
                 <button onClick={() => removeFromCart(cake.id)}>Remove</button>
               </div>
@@ -86,22 +99,30 @@ export default function CartView() {
                   type="date"
                   className={styles.formInput}
                   value={pickupDate}
-                  onChange={(event) => setPickupDate(event.target.value)}
-                  min={getMinDate()}
+                  onChange={(event) => {
+                    setPickupDate(event.target.value);
+                    setPickupTime(""); // reset time on date change
+                  }}
+                  min={getMinPickupDate()}
                 />
 
                 <p className={styles.formLabel}>Pickup Time</p>
                 <select
                   value={pickupTime}
                   onChange={(e) => setPickupTime(e.target.value)}
+                  disabled={availableHours.length === 0}
                 >
                   <option value="">Select Pickup Time</option>
-                  {hours.map((hour) => (
+                  {availableHours.map((hour) => (
                     <option key={hour} value={hour}>
                       {hour}
                     </option>
                   ))}
                 </select>
+
+                {availableHours.length === 0 && pickupDate && (
+                  <p className={styles.warning}>We are closed on Sundays.</p>
+                )}
 
                 <button
                   type="submit"
