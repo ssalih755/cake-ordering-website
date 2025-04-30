@@ -109,8 +109,9 @@ export default function App() {
                     element={<OrderHistoryView />}
                   />
                 </Routes>
-                <GlobalFooterView />
+                
               </main>
+              <GlobalFooterView />
             </CartProvider>
           </CakeContext.Provider>
         </UserContext.Provider>

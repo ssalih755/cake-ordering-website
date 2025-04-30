@@ -1,5 +1,4 @@
 .global-footer {
-  grid-area: footer;
   display: flex;
   background-color: #c4ebb3;
   margin: 5px;
@@ -7,7 +6,7 @@
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
-
+  
   border-radius: 15px;
 }
 

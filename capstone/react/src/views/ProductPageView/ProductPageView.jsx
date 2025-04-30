@@ -81,14 +81,17 @@ export default function ProductPageView() {
           </div>
         </div>
 
-        <input
+        
+      </div>
+      <div className={styles.line} >
+      <input
           type="text"
           placeholder="Write your message here"
           value={writing}
           onChange={handleWritingChange}
           className={styles.writingInput}
         />
-      </div>
+        </div>
       <div className={styles.line}>
         {/* <button className={styles.formButton} onClick={handleBuyNow}>
           Buy Now

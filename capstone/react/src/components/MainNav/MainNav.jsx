@@ -49,11 +49,17 @@ export default function MainNav() {
         )}
       </nav>
       <div className={styles.navIcons}>
+        <div className={styles.icons}>
         <FontAwesomeIcon icon={faUserCircle}></FontAwesomeIcon>
         <NavLink to="/cart" className={styles.cartLink}>
           <FontAwesomeIcon icon={faShoppingCart} />
         </NavLink>
+        
+        </div>
+        <p>{user ? user.username : ""} </p>
       </div>
+      
+      
     </div>
     
   );
