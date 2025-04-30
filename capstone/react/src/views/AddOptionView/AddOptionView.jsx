@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import Dropdown from "../../components/Dropdown";
 import useOptionData from "../../Components/useOptionData";
-
 import FlavorService from "../../services/OptionServices/FlavorService";
 import FillingService from "../../services/OptionServices/FillingService";
 import SizeService from "../../services/OptionServices/SizeService";
 import FrostingService from "../../services/OptionServices/FrostingService";
 import StyleService from "../../services/OptionServices/StyleService";
 import OptionTable from "../../components/OptionTable/OptionTable";
-
 import styles from "./AddOptionView.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function AddOptionView() {
+  const navigate = useNavigate();
   // Using a custom reload trigger to force data refresh
   const [reloadTrigger, setReloadTrigger] = useState(0);
 
@@ -37,7 +37,6 @@ export default function AddOptionView() {
   const [frostingName, setFrostingName] = useState("");
   const [sizeName, setSizeName] = useState("");
   const [styleName, setStyleName] = useState("");
-
   const [notification, setNotification] = useState(null);
 
   
@@ -65,10 +64,8 @@ export default function AddOptionView() {
     const filling = { filling: fillingName };
     const frosting = { frosting: frostingName };
     const size = { size: sizeName };
-    const style = { style: styleName };
-
+    const style = { style: styleName };    
     
-    const navigate = useNavigate();
 
   
 
