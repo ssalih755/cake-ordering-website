@@ -23,6 +23,8 @@ select {
   background-color: #8f6d51;
   color: #ffffff;
   font-size: 20px;
+  border-radius: 5px;
+  border: 0px solid #e6e6e6;
   justify-content: center;
   align-items: center;
 }

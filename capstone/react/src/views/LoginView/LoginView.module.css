@@ -40,6 +40,8 @@
     text-align: center;
     margin-left: 165px;
     margin-right: 1px;
+    border-radius: 5px;
+    border: 0px solid #e6e6e6;
     background-color: #8F6D51;
     color: #ffffff;
     font-family: Nickainley;
