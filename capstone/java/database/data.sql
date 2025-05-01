@@ -1,10 +1,10 @@
 BEGIN TRANSACTION;
 
 -- the password for both users is "password"
-INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Customer', 'Smith', 'user@gmail.com', '3303303303');
-INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Admin', 'Employee', 'admin@gmail.com','2622622622');
-INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('missy','$2y$10$gMwCv472n6HGgMgc4RqnieWV9fuydw2n4SY4gsvnvwI8NHYYBgqcG','ROLE_ADMIN', 'Missy', 'Harper', 'missy@gmail.com','2622622622');
-INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('sarrah','$2y$10$gMwCv472n6HGgMgc4RqnieWV9fuydw2n4SY4gsvnvwI8NHYYBgqcG','ROLE_USER', 'Sarrah', 'Salih', 'sarrah@email.com','5556667778');
+INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'customer', 'smith', 'user@gmail.com', '3303303303');
+INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'admin', 'employee', 'admin@gmail.com','2622622622');
+INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('missy','$2y$10$gMwCv472n6HGgMgc4RqnieWV9fuydw2n4SY4gsvnvwI8NHYYBgqcG','ROLE_ADMIN', 'missy', 'harper', 'missy@gmail.com','2622622622');
+INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('sarrah','$2y$10$gMwCv472n6HGgMgc4RqnieWV9fuydw2n4SY4gsvnvwI8NHYYBgqcG','ROLE_USER', 'sarrah', 'salih', 'sarrah@email.com','5556667778');
 
 -- populates tables once they're created
 -- use this file to populate tables with flavors, cake styles, fillings, icings, sizes, etc.
@@ -81,23 +81,23 @@ VALUES ('Pending'),
 
 -- insert into orders table
 INSERT INTO orders(user_id, orderstatus_id, pickup_date, pickup_time) VALUES
-(1, 1, '2025-04-26', '12:00'),
-(2, 2, '2025-04-27', '9:00'),
-(3, 3, '2025-04-27', '10:00'),
-(1, 1, '2025-04-29', '8:00'),
-(2, 2, '2025-04-29', '10:00'),
-(3, 3, '2025-04-29', '16:00'),
-(1, 1, '2025-04-30', '12:00'),
-(2, 2, '2025-04-30', '14:00'),
-(1, 1, '2025-04-30', '15:00'),
-(2, 2, '2025-04-30', '17:00'),
-(3, 3, '2025-04-30', '10:00'),
-(1, 1, '2025-05-01', '11:00'),
-(2, 2, '2025-05-02', '10:00'),
-(3, 3, '2025-05-05', '10:00'),
-(1, 1, '2025-05-26', '13:00'),
-(2, 2, '2025-05-27', '13:00'),
-(3, 3, '2025-05-27', '15:00');
+(1, 1, '2025-05-26', '12:00'),
+(2, 2, '2025-05-27', '9:00'),
+(3, 3, '2025-05-27', '10:00'),
+(1, 1, '2025-05-29', '8:00'),
+(2, 2, '2025-05-29', '10:00'),
+(3, 3, '2025-05-29', '16:00'),
+(1, 4, '2025-05-30', '12:00'),
+(2, 3, '2025-05-30', '14:00'),
+(1, 4, '2025-05-30', '15:00'),
+(2, 4, '2025-05-30', '17:00'),
+(3, 3, '2025-05-30', '10:00'),
+(1, 4, '2025-06-01', '11:00'),
+(2, 4, '2025-06-02', '10:00'),
+(3, 3, '2025-06-05', '10:00'),
+(1, 4, '2025-06-26', '13:00'),
+(2, 4, '2025-06-27', '13:00'),
+(3, 3, '2025-06-27', '15:00');
 
 -- Insert into orderDetails table
 INSERT INTO orderdetails(order_id, cake_id, writing, cake_quantity)
