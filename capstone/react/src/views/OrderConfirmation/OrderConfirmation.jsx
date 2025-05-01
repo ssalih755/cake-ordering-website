@@ -7,6 +7,7 @@ export default function OrderConfirmation() {
   const order = state?.order;
 
   return (
+    
     <div className={styles.confirmationContainer}>
       <h2 className={styles.title}>Order Confirmation</h2>
       <p className={styles.message}>Thank you for your order!</p>
@@ -23,5 +24,6 @@ export default function OrderConfirmation() {
         track your order.
       </p>
     </div>
+    
   );
 }

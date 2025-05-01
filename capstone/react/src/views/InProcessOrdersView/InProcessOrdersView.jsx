@@ -51,20 +51,22 @@ export default function InProcessOrdersView() {
     }
   }, [reloadTrigger, user]);
 
-  const groupedOrders = Object.values(
-    pendingOrProcessingOrders.reduce((acc, order) => {
-      const id = order.id;
-      if (!acc[id]) {
-        acc[id] = {
-          ...order,
-          totalQuantity: order.cakeQuantity || 0,
-        };
-      } else {
-        acc[id].totalQuantity += order.cakeQuantity || 0;
-      }
-
-      return acc;
-    }, {})
+  const groupedOrders = Array.from(
+    pendingOrProcessingOrders
+      .reduce((acc, order) => {
+        const id = order.id;
+        if (!acc.has(id)) {
+          acc.set(id, {
+            ...order,
+            totalQuantity: order.cakeQuantity || 0,
+          });
+        } else {
+          const existing = acc.get(id);
+          existing.totalQuantity += order.cakeQuantity || 0;
+        }
+        return acc;
+      }, new Map())
+      .values()
   );
 
   const handleOrderHistoryClick = () => {
