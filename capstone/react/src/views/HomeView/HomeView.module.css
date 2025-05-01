@@ -1,160 +1,133 @@
- 
-.home-page{
-    color: tomato;
+.home-page {
+  color: tomato;
 }
 
-.our-story{
-    display: flex;
-    flex-direction: column;
-    
-}
-.our-story :global(h2){
-    
-    padding: 20px;
-    font-weight: bold;
-     font-family: Nickainley;
-     font-size: 32px;
+.our-story {
+  display: flex;
+  flex-direction: column;
 }
 
-.about :global(img){
-flex-basis: 200px;
 
+.about :global(img) {
+  flex-basis: 200px;
 }
 
 .home-page :global(h1) {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-p{
-    color: #6b392f;
-
-}
-
-.about{
-   display: flex; 
-   flex-direction: row;
-   color: #6b392f;
-
-   gap: 20px;
-   padding: 20px;
-   border-radius: 10px;
-   background: #FCBFB7;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-   align-items: flex-start;
-   max-width: 100%;
-   margin-bottom: 20px;
-   text-align: justify;
-   font-weight: 300px;
-   font-style: normal;
-   font-size: 18px;
-   
-   
+p {
+  color: #6b392f;
 }
 
-.type-container{
-    display: flex;
-    justify-content: center;
+.about {
+  display: flex;
+  flex-direction: row;
+  color: #6b392f;
+
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fcbfb7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  align-items: flex-start;
+  max-width: 100%;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-weight: 300px;
+  font-style: normal;
+  font-size: 18px;
 }
 
-
-.our-story :global(h2){
-    padding: 10 px;
-    font-weight: bold;
-     font-family: Nickainley;
-     font-size: 40px;
-     color: #6b392f;
-
-}
-.cake{
-    width: 200px;
-    
+.type-container {
+  display: flex;
+  justify-content: center;
 }
 
-.section-container{
-    display: flex;
-    flex-direction: column;
-    
+.our-story :global(h2) {
+  padding: 10 px;
+  font-family: Nickainley;
+  font-size: 40px;
+  color: #6b392f;
+}
+.cake {
+  width: 200px;
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
 }
 .types {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    flex-direction: column;
-    
-    padding: 20px;
-   
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 32px;
-    color: #6b392f;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 
-    
-  
+  padding: 20px;
 
+  margin-bottom: 20px;
+  text-align: center;
+
+  font-style: normal;
+  font-size: 50px;
+  color: #6b392f;
 }
-.cake-container{
-    display: flex;
-    flex-direction: row;
-    max-width: 100%;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
-    flex: 1;
-    gap: 16px;
-    object-fit: cover;
+.cake-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  flex: 1;
+  gap: 16px;
+  object-fit: cover;
 }
 
-.standard-cakes:hover{
-    background: #ffa99e;
+.standard-cakes:hover {
+  background: #ffa99e;
   transform: translateY(-6px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-      
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 .standard-cakes {
- 
-    display: flex;
-    justify-content: space-evenly;  
-    gap: 16px;
-    padding: 16px;
-    border-radius: 10px;
-    background:#FCBFB7;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    align-items: center;
-    margin-bottom: 20px;
-   
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
-    max-width: 25%;
-   
+  display: flex;
+  justify-content: space-evenly;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #fcbfb7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  align-items: center;
+  margin-bottom: 20px;
+
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  max-width: 25%;
 }
 
-
-.flavor-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.flavor-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .flavor {
-    flex: 1;
-    background-color: #ffe96e;
-    gap: 16px;
-    max-width: 150px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    
+  flex: 1;
+  background-color: #ffe96e;
+  gap: 16px;
+  max-width: 150px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
-.flavor-box :global(img){
-    border-radius: 100px;
+.flavor-box :global(img) {
+  border-radius: 100px;
 }
 
-.flavor-box :global(h2){
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-    color: #6b392f
+.flavor-box :global(h2) {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  color: #6b392f;
 }
-
