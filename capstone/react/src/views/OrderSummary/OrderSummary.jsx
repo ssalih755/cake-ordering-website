@@ -69,7 +69,7 @@ function OrderSummary({ showTotal = true }) {
         <div key={item.id} className={styles.itemRow}>
           <div className={styles.itemInfo}>
             <p>
-              <strong>{item.name}</strong>
+             <div className={styles.cakeName}> <strong>{item.name}</strong></div>
             </p>
             <img
               src={item.imgURL}

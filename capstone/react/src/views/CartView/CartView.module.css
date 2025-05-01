@@ -61,29 +61,33 @@
   .cartDetails button {
     width: fit-content;
     margin-top: 0.5rem;
-    background-color: #6b392f;
-    color: #f6AEB9;
+    background-color: #8f6d51;
+  color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
   
   .cartDetails button:hover {
-        color: #6b392f;
-        background-color: #f6AEB9;
+    background-color: #6d533e;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
   
   
   button {
     margin-top: 1rem;
-    background-color: #6b392f;
-    color: #f6AEB9;
+    background-color: #8f6d51;
+  color: #ffffff;
     cursor: pointer;
   }
   
   button:hover {
-    color: #6b392f;
-    background-color: #f6AEB9;
+    background-color: #6d533e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
   .form {
@@ -111,17 +115,18 @@
   }
   
   .formButton {
-    background-color: #6b392f;
-        color: #f6AEB9;
-    
-    font-size: 1rem;
+    margin-top: 1rem;
+    background-color: #8f6d51;
+  color: #ffffff;
     cursor: pointer;
     
   }
   
   .formButton:hover {
-    color: #6b392f;
-    background-color: #f6AEB9;
+    background-color: #6d533e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   .clearCart {
     display: flex;
