@@ -1,9 +1,9 @@
-/* .cake-image{
-    width: 100px;
-    height: 100px;
-
+.cake-image{
+    width: 100rem;
+    height: 30rem;
+    left: 20px;
     border: 1px solid #6b392f;
-} */
+} 
 .summaryContainer {
     display: flex;
     flex-direction:column;

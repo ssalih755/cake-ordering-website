@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import OrderService from "../../services/OrderService";
 import styles from "./OrderSummary.module.css";
 import convertTo24Hour from "../../components/HelperFunctions/convertTo24Hour";
+import customCakePic from "../CartView/customCakePic.png";
 
 function OrderSummary({ showTotal = true }) {
   const { cartItems, clearCart } = useContext(CartContext);
@@ -35,6 +36,7 @@ function OrderSummary({ showTotal = true }) {
         cakeId: item.id,
         writing: item.writing,
         cakeQuantity: item.quantity,
+        
       })),
     };
 
@@ -72,7 +74,10 @@ function OrderSummary({ showTotal = true }) {
              <div className={styles.cakeName}> <strong>{item.name}</strong></div>
             </p>
             <img
-              src={item.imgURL}
+              src={item.imgURL || customCakePic }  onError={(e) => {
+                e.target.onerror = null; // prevent infinite loop
+                e.target.src = customCakePic ;
+                 }}
               alt={item.name}
               className={styles.cakeImage}
             />

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import styles from "./CartView.module.css";
 import OrderSummary from "../OrderSummary/OrderSummary";
+import customCakePic from "./customCakePic.png";
 
 export default function CartView() {
   const { cartItems, updateCart, removeFromCart, clearCart } =
@@ -51,10 +52,11 @@ export default function CartView() {
   };
 
   const availableHours = getAvailableHours();
+ 
 
   const handleCheckout = () => {
     navigate("/ordersummary", {
-      state: { pickupDate, pickupTime },
+      state: { pickupDate, pickupTime}, 
     });
   };
 
@@ -67,11 +69,21 @@ export default function CartView() {
         <div className={styles.cartContainer}>
           {cartItems.map((cake) => (
             <div key={cake.id} className={styles.cartItem}>
-              <img
-                className={styles.cakeImage}
-                src={cake.imgURL || "/default-cake.jpg"} // fallback image
-                alt="Bams Cakery"
-              />
+        <img
+            className={styles.cakeImage}
+            src={cake.imgURL || customCakePic }
+            onError={(e) => {
+            e.target.onerror = null; // prevent infinite loop
+            e.target.src = customCakePic ;
+             }}
+            alt="Bams Cakery"
+            onChange={(e) => {
+              e.target.onerror = null; // prevent infinite loop
+              e.target.src = customCakePic ;
+  
+            }}
+          />
+
               <div className={styles.cartDetails}>
                 <h5>Cake: {cake.name}</h5>
                 <p>Description: {cake.description}</p>
