@@ -79,4 +79,45 @@ VALUES ('Pending'),
 ('Canceled')
 ;
 
+-- insert into orders table
+INSERT INTO orders(user_id, orderstatus_id, pickup_date, pickup_time) VALUES
+(1, 1, '2025-04-26', '12:00'),
+(2, 2, '2025-04-27', '9:00'),
+(3, 3, '2025-04-27', '10:00'),
+(1, 1, '2025-04-29', '8:00'),
+(2, 2, '2025-04-29', '10:00'),
+(3, 3, '2025-04-29', '16:00'),
+(1, 1, '2025-04-30', '12:00'),
+(2, 2, '2025-04-30', '14:00'),
+(1, 1, '2025-04-30', '15:00'),
+(2, 2, '2025-04-30', '17:00'),
+(3, 3, '2025-04-30', '10:00'),
+(1, 1, '2025-05-01', '11:00'),
+(2, 2, '2025-05-02', '10:00'),
+(3, 3, '2025-05-05', '10:00'),
+(1, 1, '2025-05-26', '13:00'),
+(2, 2, '2025-05-27', '13:00'),
+(3, 3, '2025-05-27', '15:00');
+
+-- Insert into orderDetails table
+INSERT INTO orderdetails(order_id, cake_id, writing, cake_quantity)
+VALUES
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-04-26' AND pickup_time = '12:00'), 1, 'happy birthday!', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-04-27' AND pickup_time = '09:00'), 2, '', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-04-27' AND pickup_time = '10:00'), 3, 'cake writing 2!', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-04-29' AND pickup_time = '08:00'), 4, '', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-04-29' AND pickup_time = '10:00'), 5, '', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-04-29' AND pickup_time = '16:00'), 6, 'cake writing 3!', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-04-30' AND pickup_time = '12:00'), 7, '', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-04-30' AND pickup_time = '14:00'), 1, '', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-04-30' AND pickup_time = '15:00'), 2, '', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-04-30' AND pickup_time = '17:00'), 3, 'cake writing 4!', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-04-30' AND pickup_time = '10:00'), 4, '', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-05-01' AND pickup_time = '11:00'), 5, '', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-05-02' AND pickup_time = '10:00'), 6, '', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-05-05' AND pickup_time = '10:00'), 7, '', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-05-26' AND pickup_time = '13:00'), 1, 'cake writing 5!', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-05-27' AND pickup_time = '13:00'), 2, '', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-05-27' AND pickup_time = '15:00'), 3, '', 1);
 COMMIT TRANSACTION;
+
