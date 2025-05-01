@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole('ROLE_USER')")
 @RequestMapping(path = "/frosting")
 public class FrostingController {
    private final FrostingDao frostingDao;
@@ -44,7 +44,7 @@ public class FrostingController {
         }
         return frostings;
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/addFrosting")
     @CrossOrigin
