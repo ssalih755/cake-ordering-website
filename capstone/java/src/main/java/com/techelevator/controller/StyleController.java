@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("hasRole('ROLE_USER')")
+
 @RequestMapping(path = "/style")
 public class StyleController {
     private final StyleDao styleDao;
