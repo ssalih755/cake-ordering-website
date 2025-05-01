@@ -81,20 +81,23 @@ export default function CartView() {
                 <p>Style: {cake.style}</p>
                 <p>Writing: {cake.writing}</p>
                 <p>Price: ${cake.price}</p>
-                <input
-                  type="number"
-                  value={cake.quantity ?? 1}
-                  min="1"
-                  onChange={(e) => {
-                    const val = Math.max(1, parseInt(e.target.value) || 1);
-                    updateCart(cake.id, val, cake.writing);
-                  }}
-                />
+                <label>
+                  Quantity:
+                  <input
+                    type="number"
+                    value={cake.quantity ?? 1}
+                    min="1"
+                    onChange={(e) => {
+                      const val = Math.max(1, parseInt(e.target.value) || 1);
+                      updateCart(cake.id, val, cake.writing);
+                    }}
+                  />
+                </label>
                 <button onClick={() => removeFromCart(cake.id)}>Remove</button>
               </div>
             </div>
           ))}
-          
+
           <div>
             <form
               onSubmit={(e) => {
@@ -142,9 +145,9 @@ export default function CartView() {
                 </button>
               </div>
             </form>
-            <div className= {styles.clearCart}>
-          <button onClick={clearCart}>Clear Cart</button>
-          </div>
+            <div className={styles.clearCart}>
+              <button onClick={clearCart}>Clear Cart</button>
+            </div>
           </div>
         </div>
       )}
