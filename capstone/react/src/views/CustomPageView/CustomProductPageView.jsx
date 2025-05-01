@@ -1,11 +1,11 @@
-import { useEffect, useState, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useCakeContext } from "../../context/CakeContext";
+import { useState, useContext } from "react";
+import {  useNavigate } from "react-router-dom";
+
 import styles from "./CustomProductPageView.module.css";
 import cakePic from "../HomeView/cake.png";
 import CakeService from "../../services/CakeService";
-import CakeCard from "../../components/CakeCard/CakeCard";
-import { UserContext } from "../../context/UserContext";
+
+
 import { CartContext } from "../../context/CartContext";
 
 import Dropdown from "../../components/Dropdown";
@@ -18,23 +18,24 @@ import FrostingService from "../../services/OptionServices/FrostingService";
 import StyleService from "../../services/OptionServices/StyleService";
 
 export default function ProductPageView() {
-  //const { selectCake } = useCakeContext([]);
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState();
-  const [imgURL, setImgURL] = useState("");
-  const [cake, setCake] = useState();
-  const sizes = useOptionData(SizeService.getAllSizes);
-  const flavors = useOptionData(FlavorService.getAllFlavors);
-  const fillings = useOptionData(FillingService.getAllFillings);
-  const frostings = useOptionData(FrostingService.getAllFrostings);
-  const stylesData = useOptionData(StyleService.getAllStyles);
   const [selectedFlavor, setSelectedFlavor] = useState("");
   const [selectedFilling, setSelectedFilling] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedFrosting, setSelectedFrosting] = useState("");
   const [selectedStyle, setSelectedStyle] = useState("");
-  const [notification, setNotification] = useState(null);
+  const [writing, setWriting] = useState("");
+  
+  const navigate = useNavigate();
+ 
+  
+   
+  const sizes = useOptionData(SizeService.getAllSizes);
+  const flavors = useOptionData(FlavorService.getAllFlavors);
+  const fillings = useOptionData(FillingService.getAllFillings);
+  const frostings = useOptionData(FrostingService.getAllFrostings);
+  const stylesData = useOptionData(StyleService.getAllStyles);
+
+  
   const { addToCart } = useContext(CartContext);
 
   function handleSubmit(event) {
@@ -42,7 +43,7 @@ export default function ProductPageView() {
 
     const cake = {
       name: "Custom Cake",
-      imgURL,
+      imgURL: "./customCakePic",
       flavor: selectedFlavor,
       filling: selectedFilling,
       size: selectedSize,
@@ -73,20 +74,17 @@ export default function ProductPageView() {
 
         addToCart(newCake); // ✅ this adds it to your shared cart
         navigate("/cart");
-        setNotification({
-          type: "success",
-          message: "Cake Created Successfully",
-        });
+      
       })
       .catch((error) => {
         const message = error.response?.data?.message || "Create cake failed.";
-        setNotification({ type: "error", message });
+       console.error(message);
       });
   }
 
   const cakeQuantity = 1;
 
-  const [writing, setWriting] = useState("");
+
 
   function handleWritingChange(event) {
     setWriting(event.target.value);

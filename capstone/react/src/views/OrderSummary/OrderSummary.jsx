@@ -34,7 +34,7 @@ function OrderSummary({ showTotal = true }) {
       orderDetails: cartItems.map((item) => ({
         cakeId: item.id,
         writing: item.writing,
-        quantity: item.quantity,
+        cakeQuantity: item.quantity,
       })),
     };
 

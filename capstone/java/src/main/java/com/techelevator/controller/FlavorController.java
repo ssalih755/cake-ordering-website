@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("hasRole('ROLE_USER')")
+
 @RequestMapping(path = "/flavor")
 public class FlavorController {
     private final FlavorDao flavorDao;
