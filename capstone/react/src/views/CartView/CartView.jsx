@@ -10,12 +10,10 @@ export default function CartView() {
     useContext(CartContext);
   const navigate = useNavigate();
 
-  const [pickupDate, setPickupDate] = useState(() => {
-    return localStorage.getItem("pickupDate") || "";
-  });
+  const [pickupDate, setPickupDate] = useState("");
 
   const [pickupTime, setPickupTime] = useState(() => {
-    return localStorage.getItem("pickupTime") || "";
+    return localStorage.getItem("pickupTime") || "9:00 AM";
   });
 
   //sync to local storage
@@ -31,6 +29,16 @@ export default function CartView() {
     today.setDate(today.getDate() + leadTimeDays);
     return today.toISOString().split("T")[0];
   };
+
+  useEffect(() => {
+    const storedDate = localStorage.getItem("pickupDate");
+    if (storedDate) {
+      setPickupDate(storedDate);
+    } else {
+      const minDate = getMinPickupDate();
+      setPickupDate(minDate);
+    }
+  }, [cartItems]);
 
   const getAvailableHours = () => {
     if (!pickupDate) return [];
@@ -52,11 +60,10 @@ export default function CartView() {
   };
 
   const availableHours = getAvailableHours();
- 
 
   const handleCheckout = () => {
     navigate("/ordersummary", {
-      state: { pickupDate, pickupTime}, 
+      state: { pickupDate, pickupTime },
     });
   };
 
@@ -69,20 +76,19 @@ export default function CartView() {
         <div className={styles.cartContainer}>
           {cartItems.map((cake) => (
             <div key={cake.id} className={styles.cartItem}>
-        <img
-            className={styles.cakeImage}
-            src={cake.imgURL || customCakePic }
-            onError={(e) => {
-            e.target.onerror = null; // prevent infinite loop
-            e.target.src = customCakePic ;
-             }}
-            alt="Bams Cakery"
-            onChange={(e) => {
-              e.target.onerror = null; // prevent infinite loop
-              e.target.src = customCakePic ;
-  
-            }}
-          />
+              <img
+                className={styles.cakeImage}
+                src={cake.imgURL || customCakePic}
+                onError={(e) => {
+                  e.target.onerror = null; // prevent infinite loop
+                  e.target.src = customCakePic;
+                }}
+                alt="Bams Cakery"
+                onChange={(e) => {
+                  e.target.onerror = null; // prevent infinite loop
+                  e.target.src = customCakePic;
+                }}
+              />
 
               <div className={styles.cartDetails}>
                 <h5>Cake: {cake.name}</h5>
@@ -93,20 +99,23 @@ export default function CartView() {
                 <p>Style: {cake.style}</p>
                 <p>Writing: {cake.writing}</p>
                 <p>Price: ${cake.price}</p>
-                <p>Quantity: <input
-                  type="number"
-                  value={cake.quantity ?? 1}
-                  min="1"
-                  onChange={(e) => {
-                    const val = Math.max(1, parseInt(e.target.value) || 1);
-                    updateCart(cake.id, val, cake.writing);
-                  }}
-                /></p>
+                <p>
+                  Quantity:{" "}
+                  <input
+                    type="number"
+                    value={cake.quantity ?? 1}
+                    min="1"
+                    onChange={(e) => {
+                      const val = Math.max(1, parseInt(e.target.value) || 1);
+                      updateCart(cake.id, val, cake.writing);
+                    }}
+                  />
+                </p>
                 <button onClick={() => removeFromCart(cake.id)}>Remove</button>
               </div>
             </div>
           ))}
-          
+
           <div>
             <form
               onSubmit={(e) => {
@@ -154,9 +163,9 @@ export default function CartView() {
                 </button>
               </div>
             </form>
-            <div className= {styles.clearCart}>
-          <button onClick={clearCart}>Clear Cart</button>
-          </div>
+            <div className={styles.clearCart}>
+              <button onClick={clearCart}>Clear Cart</button>
+            </div>
           </div>
         </div>
       )}
