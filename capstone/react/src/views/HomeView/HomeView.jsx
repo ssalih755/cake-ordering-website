@@ -35,7 +35,7 @@ export default function HomeView() {
           <p>
             At Bams Cakery, we blend time-honored baking traditions with
             innovative flavors to create memorable treats for every occasion.
-            Founded in 2018 by pastry chef Angel, our bakery has grown from a
+            Founded in 2025 by pastry chef Angel, our bakery has grown from a
             small neighborhood shop to a beloved community destination. We pride
             ourselves on using only the finest ingredients - locally sourced
             whenever possible - and creating everything from scratch daily. Our
@@ -55,23 +55,36 @@ export default function HomeView() {
       </div>
 
       <section className={styles.sectionContainer}>
-      <div className={styles.typeContainer}>
-       <h1 className={styles.types}>Cakes</h1>
-       </div>
+        <div className={styles.typeContainer}>
+          <h1 className={styles.types}>Cakes</h1>
+        </div>
         <div className={styles.cakeContainer}>
-          <img src={cake1} alt="Bams Cakery" className={styles.standardCakes} onClick={handleStandardCake} />
-          
-          <img src={cake2} alt="Bams Cakery" className={styles.standardCakes} onClick={handleStandardCake} />
-          <img src={cake3} alt="Bams Cakery" className={styles.standardCakes} onClick={handleStandardCake} />
+          <img
+            src={cake1}
+            alt="Bams Cakery"
+            className={styles.standardCakes}
+            onClick={handleStandardCake}
+          />
+
+          <img
+            src={cake2}
+            alt="Bams Cakery"
+            className={styles.standardCakes}
+            onClick={handleStandardCake}
+          />
+          <img
+            src={cake3}
+            alt="Bams Cakery"
+            className={styles.standardCakes}
+            onClick={handleStandardCake}
+          />
         </div>
       </section>
 
       <section className={styles.sectionContainer}>
-       <div className={styles.typeContainer}>
-       <h1 className={styles.types}>Custom Cakes</h1>
-       </div>
-       
-        
+        <div className={styles.typeContainer}>
+          <h1 className={styles.types}>Custom Cakes</h1>
+        </div>
 
         <div className={styles.cakeContainer}>
           <img
@@ -96,10 +109,10 @@ export default function HomeView() {
           />
         </div>
       </section>
-      <section className={styles.sectionContainer} >
-      <div className={styles.typeContainer}>
-       <h1 className={styles.types}>Flavors</h1>
-       </div>
+      <section className={styles.sectionContainer}>
+        <div className={styles.typeContainer}>
+          <h1 className={styles.types}>Flavors</h1>
+        </div>
         <div className={styles.flavorContainer}>
           <div className={styles.flavorBox}>
             <img src={flavor1} alt="Bams Cakery" className={styles.flavor} />
@@ -127,7 +140,6 @@ export default function HomeView() {
           </div>
         </div>
       </section>
-       
     </div>
   );
 }
