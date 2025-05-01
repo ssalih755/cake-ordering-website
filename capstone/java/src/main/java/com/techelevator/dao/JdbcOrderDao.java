@@ -82,7 +82,8 @@ public class JdbcOrderDao  implements OrderDao {
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id\n" +
                 "JOIN cakesize cz ON cz.cakesize_id = c.cakesize_id\n" +
                 "JOIN caketype ct ON ct.caketype_id = c.caketype_id\n" +
-                "WHERE o.orderstatus_id NOT IN (4,5);\n";
+                "WHERE o.orderstatus_id NOT IN (4,5)\n" +
+        "ORDER BY o.orderstatus_id ASC, o.pickup_date, o.pickup_time;";
         try{
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
             while(result.next()){
@@ -163,7 +164,8 @@ public class JdbcOrderDao  implements OrderDao {
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id\n" +
                 "JOIN cakesize cz ON cz.cakesize_id = c.cakesize_id\n" +
                 "JOIN caketype ct ON ct.caketype_id = c.caketype_id\n" +
-                "WHERE o.user_id  = ?;";
+                "WHERE o.user_id  = ?\n" +
+        "ORDER BY o.orderstatus_id ASC, o.pickup_date, o.pickup_time;";
         try {
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql, userId);
             while (result.next()) {
@@ -195,7 +197,7 @@ public class JdbcOrderDao  implements OrderDao {
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id\n" +
                 "JOIN cakesize cz ON cz.cakesize_id = c.cakesize_id\n" +
                 "JOIN caketype ct ON ct.caketype_id = c.caketype_id\n" +
-                "ORDER BY o.orderstatus_id, o.user_id ;";
+                "ORDER BY o.orderstatus_id ASC, o.pickup_date, o.pickup_time";
 
         try {
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
@@ -228,7 +230,8 @@ public class JdbcOrderDao  implements OrderDao {
                 "JOIN cakestyle cs ON cs.cakestyle_id = c.cakestyle_id\n" +
                 "JOIN cakesize cz ON cz.cakesize_id = c.cakesize_id\n" +
                 "JOIN caketype ct ON ct.caketype_id = c.caketype_id\n" +
-                "WHERE  (o.user_id  = ?) AND (o.orderstatus_id NOT IN (4,5));";
+                "WHERE  (o.user_id  = ?) AND (o.orderstatus_id NOT IN (4,5))\n" +
+        "ORDER BY o.orderstatus_id ASC, o.pickup_date, o.pickup_time;";
         try {
             SqlRowSet result = jdbcTemplate.queryForRowSet(sql, userId);
             while (result.next()) {
