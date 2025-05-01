@@ -235,7 +235,7 @@ export default function AddOptionView() {
           </div>
 
           <button type="submit" className={styles.button}>
-            Click here to save your new options
+            Save
           </button>
 
           {notification && (

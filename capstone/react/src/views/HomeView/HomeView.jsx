@@ -33,22 +33,19 @@ export default function HomeView() {
         <section className={styles.ourStory}>
           <h2>Our Story</h2>
           <p>
-            At Bams Cakery, we blend time-honored baking traditions with
-            innovative flavors to create memorable treats for every occasion.
-            Founded in 2025 by pastry chef Angel, our bakery has grown from a
-            small neighborhood shop to a beloved community destination. We pride
-            ourselves on using only the finest ingredients - locally sourced
-            whenever possible - and creating everything from scratch daily. Our
-            team of passionate bakers rises before dawn to ensure that every
-            pastry, loaf, and confection meets our exacting standards. Beyond
-            creating delicious baked goods, we believe in fostering connections
-            through food. Our warm, inviting space welcomes customers to linger
-            over coffee and conversation, while our custom cake service helps
-            families celebrate life's milestones. Community engagement remains
-            at our core, from hosting monthly baking workshops to supporting
-            local charity events. At Bams Cakery, we're not just selling
-            pastries we're creating experiences that bring joy to your everyday
-            life and special occasions alike.
+            At Bams Cakery, we specialize in creating unforgettable cakes that
+            celebrate life’s sweetest moments. Founded in 2025 by pastry chef
+            Angel, our bakery has grown from a small shop into a beloved cake
+            destination. Every cake is made from scratch using the finest
+            ingredients—real butter, fresh cream, and locally sourced
+            flavors—crafted with care and creativity. From classic favorites to
+            bold, custom designs, our cakes are perfect for birthdays, weddings,
+            baby showers, and more. We work closely with each client to turn
+            their vision into a beautiful and delicious centerpiece. Whether
+            it's a simple layer cake or a multi-tiered showstopper, we believe
+            every cake should bring joy, spark conversation, and create lasting
+            memories. At Bams Cakery, cake isn’t just dessert—it’s an
+            experience.
           </p>
         </section>
         {/* <img src={cake} alt="Bams Cakery" className={styles.cake} /> */}
