@@ -81,7 +81,7 @@ export default function CartView() {
                 <p>Style: {cake.style}</p>
                 <p>Writing: {cake.writing}</p>
                 <p>Price: ${cake.price}</p>
-                <input
+                <p>Quantity: <input
                   type="number"
                   value={cake.quantity ?? 1}
                   min="1"
@@ -89,7 +89,7 @@ export default function CartView() {
                     const val = Math.max(1, parseInt(e.target.value) || 1);
                     updateCart(cake.id, val, cake.writing);
                   }}
-                />
+                /></p>
                 <button onClick={() => removeFromCart(cake.id)}>Remove</button>
               </div>
             </div>
