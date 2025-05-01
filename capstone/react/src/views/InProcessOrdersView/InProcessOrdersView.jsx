@@ -10,10 +10,13 @@ import { useNavigate } from "react-router-dom";
 import convertTo12Hour from "../../components/HelperFunctions/convertTo12Hour";
 
 export default function InProcessOrdersView() {
-  const [inProcessOrders, setInProcessOrders] = useState([]);
+  const [pendingOrProcessingOrders, setPendingOrProcessingOrders] = useState(
+    []
+  );
   const user = useContext(UserContext);
   const [reloadTrigger, setReloadTrigger] = useState(0);
   const [activeView, setActiveView] = useState("table"); // Add state for toggling view
+  const [totalQuantity, setTotalQuantity] = useState(0);
   const navigate = useNavigate();
 
   const reloadData = () => {
@@ -36,7 +39,7 @@ export default function InProcessOrdersView() {
         const response = isAdmin(user)
           ? await OrderService.getInProcessOrders()
           : await OrderService.getMyPendingOrders(user.id);
-        setInProcessOrders(response.data);
+        setPendingOrProcessingOrders(response.data);
       } catch (err) {
         console.error(err);
       }
@@ -91,16 +94,17 @@ export default function InProcessOrdersView() {
                 <th className={styles.tableHeader}>Order Status</th>
                 <th className={styles.tableHeader}>Pickup Date</th>
                 <th className={styles.tableHeader}>Pickup Time</th>
-                <th className={styles.tableHeader}>Cake Name</th>
+                <th className={styles.tableHeader}>Quantity</th>
+                {/* <th className={styles.tableHeader}>Cake Name</th>
                 <th className={styles.tableHeader}>Cake Type</th>
-                <th className={styles.tableHeader}>Writing</th>
+                <th className={styles.tableHeader}>Writing</th> */}
                 {isAdmin(user) && (
                   <th className={styles.tableHeader}>Edit Status</th>
                 )}
               </tr>
             </thead>
             <tbody>
-              {inProcessOrders.map((order) => (
+              {pendingOrProcessingOrders.map((order) => (
                 <tr key={order.id}>
                   <td className={styles.tableCell}>{order.id}</td>
                   <td className={styles.tableCell}>{order.customerName}</td>
@@ -109,9 +113,10 @@ export default function InProcessOrdersView() {
                   <td className={styles.tableCell}>
                     {convertTo12Hour(order.pickupTime)}
                   </td>
-                  <td className={styles.tableCell}>{order.cakeName}</td>
+                  {/* <td className={styles.tableCell}>{order.cakeName}</td>
                   <td className={styles.tableCell}>{order.type}</td>
-                  <td className={styles.tableCell}>{order.writing}</td>
+                  <td className={styles.tableCell}>{order.writing}</td> */}
+                  <td className={styles.tableCell}>{order.totalQuantity}</td>
                   {isAdmin(user) && (
                     <td className={styles.tableCell}>
                       <button
@@ -135,14 +140,16 @@ export default function InProcessOrdersView() {
             style={{ width: "100%" }}
             tileContent={({ date, view }) => {
               if (view === "month") {
-                const ordersOnThisDay = inProcessOrders.filter((order) => {
-                  const orderDate = new Date(order.pickupDate);
-                  return (
-                    orderDate.getFullYear() === date.getFullYear() &&
-                    orderDate.getMonth() === date.getMonth() &&
-                    orderDate.getDate() === date.getDate()
-                  );
-                });
+                const ordersOnThisDay = pendingOrProcessingOrders.filter(
+                  (order) => {
+                    const orderDate = new Date(order.pickupDate);
+                    return (
+                      orderDate.getFullYear() === date.getFullYear() &&
+                      orderDate.getMonth() === date.getMonth() &&
+                      orderDate.getDate() === date.getDate()
+                    );
+                  }
+                );
                 return (
                   <div className={styles.tileContent}>
                     {ordersOnThisDay.map((order) => (
