@@ -1,17 +1,13 @@
 import axios from "axios";
 
-const token = localStorage.getItem("token");
+ 
 
 export default {
   getAllFrostings() {
-    return axios.get(`/frosting/getFrostings`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    return axios.get(`/frosting/getFrostings`);
   },
 
   addFrosting(frosting) {
-    return axios.post(`/frosting/addFrosting`, frosting, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    return axios.post(`/frosting/addFrosting`, frosting);
   },
 };
