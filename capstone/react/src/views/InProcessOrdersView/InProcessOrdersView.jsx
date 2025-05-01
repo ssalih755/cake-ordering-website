@@ -1,7 +1,8 @@
 // InProcessOrdersView.jsx - Updated import section
 import { useEffect, useState, useContext } from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+// import "react-calendar/dist/Calendar.css";
+
 import OrderService from "../../services/OrderService";
 import styles from "./InProcessOrdersView.module.css";
 import { isAdmin } from "../../services/UserHelper";
@@ -145,7 +146,6 @@ export default function InProcessOrdersView() {
           </table>
         )}
 
-        {/* Show calendar only if activeView is "calendar" and user is admin */}
         {isAdmin(user) && activeView === "calendar" && (
           <Calendar
             className={styles.fullWidthCalendar}
@@ -164,7 +164,7 @@ export default function InProcessOrdersView() {
                   <div className={styles.tileContent}>
                     {ordersOnThisDay.map((order) => (
                       <div key={order.id} className={styles.orderTileEntry}>
-                        order #{order.id} for "{order.customerName}"
+                         #{order.id} for "{order.customerName}"
                       </div>
                     ))}
                   </div>

@@ -76,19 +76,7 @@
     }
   
   
-  button {
-    margin-top: 1rem;
-    background-color: #8f6d51;
-  color: #ffffff;
-    cursor: pointer;
-  }
   
-  button:hover {
-    background-color: #6d533e;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
   
   .form {
     display: flex;
