@@ -33,6 +33,22 @@ export default function OrderHistoryView() {
     }
   }, [reloadTrigger, user]);
 
+  const groupedOrders = Object.values(
+    orders.reduce((acc, order) => {
+      const id = order.id;
+      if (!acc[id]) {
+        acc[id] = {
+          ...order,
+          totalQuantity: order.cakeQuantity || 0,
+        };
+      } else {
+        acc[id].totalQuantity += order.cakeQuantity || 0;
+      }
+
+      return acc;
+    }, {})
+  );
+
   const handleOrderClick = () => {
     navigate(`/inprocessOrders`);
   };
@@ -51,13 +67,11 @@ export default function OrderHistoryView() {
             <th className={styles.tableHeader}>Order Status</th>
             <th className={styles.tableHeader}>Pickup Date</th>
             <th className={styles.tableHeader}>Pickup Time</th>
-            <th className={styles.tableHeader}>Cake Name</th>
-            <th className={styles.tableHeader}>Cake Type</th>
-            <th className={styles.tableHeader}>Writing</th>
+            <th className={styles.tableHeader}>Number of Cakes</th>
           </tr>
         </thead>
         <tbody>
-          {orders.map((order) => (
+          {groupedOrders.map((order) => (
             <tr key={order.id}>
               <td className={styles.tableCell}>{order.id}</td>
               <td className={styles.tableCell}>{order.customerName}</td>
@@ -66,9 +80,7 @@ export default function OrderHistoryView() {
               <td className={styles.tableCell}>
                 {convertTo12Hour(order.pickupTime)}
               </td>
-              <td className={styles.tableCell}>{order.cakeName}</td>
-              <td className={styles.tableCell}>{order.type}</td>
-              <td className={styles.tableCell}>{order.writing}</td>
+              <td className={styles.tableCell}>{order.totalQuantity}</td>
             </tr>
           ))}
         </tbody>

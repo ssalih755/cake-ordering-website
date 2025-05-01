@@ -64,7 +64,7 @@ export default function StandardCakeView() {
             <section className={styles.smallButtonContainer}>
           {isAdmin(user) && (
             
-              <div>
+              <div className={styles.BigButtonContainer}>
               <button className={styles.adminButton} onClick={handleAddNewCake}>
                 Add Cake
               </button>
@@ -78,7 +78,7 @@ export default function StandardCakeView() {
              
             
           )}
-          <div>
+          <div className={styles.tinyButtonContainer}>
            <button
                 className={styles.adminButton}
                 onClick={handleCustomCake}

@@ -108,9 +108,10 @@ export default function AddCakeView() {
         </div>
       )}
 
+<div className={styles.fullPage}>
       <form onSubmit={handleSubmit}>
         <div className={styles.formContainer}>
-          <div className={styles.cakeNameBox}>
+          <div className={styles.itemBox}>
             <label htmlFor="cakeName">Cake Name</label>
             <input
               className={styles.cakeName}
@@ -122,7 +123,7 @@ export default function AddCakeView() {
             />
           </div>
 
-          <div className={styles.cakeDescriptionBox}>
+          <div className={styles.itemBox}>
             <label htmlFor="cakeDescription">Cake Description</label>
             <input
               className={styles.cakeDescription}
@@ -134,7 +135,7 @@ export default function AddCakeView() {
             />
           </div>
 
-          <div className={styles.imgURLBox}>
+          <div className={styles.itemBox}>
             <label htmlFor="imgURL">Image URL</label>
             <input
               className={styles.imgURL}
@@ -146,7 +147,7 @@ export default function AddCakeView() {
             />
           </div>
 
-          <div className={styles.price}>
+          <div className={styles.itemBox}>
             <label htmlFor="price">Price</label>
             <input
               className={styles.imgURL}
@@ -159,6 +160,7 @@ export default function AddCakeView() {
             />
           </div>
           <Dropdown
+          className={styles.itemBox}
             label="Size"
             options={sizes}
             value={selectedSize}
@@ -169,6 +171,7 @@ export default function AddCakeView() {
           />
 
           <Dropdown
+          className={styles.itemBox}
             label="Flavor"
             options={flavors}
             value={selectedFlavor}
@@ -179,6 +182,7 @@ export default function AddCakeView() {
           />
 
           <Dropdown
+          className={styles.itemBox}
             label="Filling"
             options={fillings}
             value={selectedFilling}
@@ -189,6 +193,7 @@ export default function AddCakeView() {
           />
 
           <Dropdown
+          className={styles.itemBox}
             label="Frosting"
             options={frostings}
             value={selectedFrosting}
@@ -199,6 +204,7 @@ export default function AddCakeView() {
           />
 
           <Dropdown
+          className={styles.itemBox}
             label="Style"
             options={stylesData}
             value={selectedStyle}
@@ -214,6 +220,7 @@ export default function AddCakeView() {
 
         {/* <div className={styles.button}></div> */}
       </form>
+      </div>
     </div>
   );
 }

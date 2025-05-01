@@ -50,6 +50,22 @@ export default function InProcessOrdersView() {
     }
   }, [reloadTrigger, user]);
 
+  const groupedOrders = Object.values(
+    pendingOrProcessingOrders.reduce((acc, order) => {
+      const id = order.id;
+      if (!acc[id]) {
+        acc[id] = {
+          ...order,
+          totalQuantity: order.cakeQuantity || 0,
+        };
+      } else {
+        acc[id].totalQuantity += order.cakeQuantity || 0;
+      }
+
+      return acc;
+    }, {})
+  );
+
   const handleOrderHistoryClick = () => {
     navigate(`/getMyOrders/${user.id}`);
   };
@@ -94,17 +110,14 @@ export default function InProcessOrdersView() {
                 <th className={styles.tableHeader}>Order Status</th>
                 <th className={styles.tableHeader}>Pickup Date</th>
                 <th className={styles.tableHeader}>Pickup Time</th>
-                <th className={styles.tableHeader}>Quantity</th>
-                {/* <th className={styles.tableHeader}>Cake Name</th>
-                <th className={styles.tableHeader}>Cake Type</th>
-                <th className={styles.tableHeader}>Writing</th> */}
+                <th className={styles.tableHeader}>Number of Cakes</th>
                 {isAdmin(user) && (
                   <th className={styles.tableHeader}>Edit Status</th>
                 )}
               </tr>
             </thead>
             <tbody>
-              {pendingOrProcessingOrders.map((order) => (
+              {groupedOrders.map((order) => (
                 <tr key={order.id}>
                   <td className={styles.tableCell}>{order.id}</td>
                   <td className={styles.tableCell}>{order.customerName}</td>
@@ -113,9 +126,6 @@ export default function InProcessOrdersView() {
                   <td className={styles.tableCell}>
                     {convertTo12Hour(order.pickupTime)}
                   </td>
-                  {/* <td className={styles.tableCell}>{order.cakeName}</td>
-                  <td className={styles.tableCell}>{order.type}</td>
-                  <td className={styles.tableCell}>{order.writing}</td> */}
                   <td className={styles.tableCell}>{order.totalQuantity}</td>
                   {isAdmin(user) && (
                     <td className={styles.tableCell}>
@@ -140,16 +150,14 @@ export default function InProcessOrdersView() {
             style={{ width: "100%" }}
             tileContent={({ date, view }) => {
               if (view === "month") {
-                const ordersOnThisDay = pendingOrProcessingOrders.filter(
-                  (order) => {
-                    const orderDate = new Date(order.pickupDate);
-                    return (
-                      orderDate.getFullYear() === date.getFullYear() &&
-                      orderDate.getMonth() === date.getMonth() &&
-                      orderDate.getDate() === date.getDate()
-                    );
-                  }
-                );
+                const ordersOnThisDay = groupedOrders.filter((order) => {
+                  const orderDate = new Date(order.pickupDate);
+                  return (
+                    orderDate.getFullYear() === date.getFullYear() &&
+                    orderDate.getMonth() === date.getMonth() &&
+                    orderDate.getDate() === date.getDate()
+                  );
+                });
                 return (
                   <div className={styles.tileContent}>
                     {ordersOnThisDay.map((order) => (
