@@ -1,10 +1,10 @@
 BEGIN TRANSACTION;
 
 -- the password for both users is "password"
-INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'user', 'user', 'user@gmail.com', '3303303303');
-INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'admin', 'admin', 'admin@gmail.com','2622622622');
-INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('missy','$2y$10$gMwCv472n6HGgMgc4RqnieWV9fuydw2n4SY4gsvnvwI8NHYYBgqcG','ROLE_ADMIN', 'missy', 'harper', 'missy@gmail.com','2622622622');
-INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('sarrah','$2y$10$gMwCv472n6HGgMgc4RqnieWV9fuydw2n4SY4gsvnvwI8NHYYBgqcG','ROLE_USER', 'sarrah', 'salih', 'sarrah@email.com','5556667778');
+INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Customer', 'Smith', 'user@gmail.com', '3303303303');
+INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Admin', 'Employee', 'admin@gmail.com','2622622622');
+INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('missy','$2y$10$gMwCv472n6HGgMgc4RqnieWV9fuydw2n4SY4gsvnvwI8NHYYBgqcG','ROLE_ADMIN', 'Missy', 'Harper', 'missy@gmail.com','2622622622');
+INSERT INTO users (username,password_hash,role, firstname, lastname, email, phone) VALUES ('sarrah','$2y$10$gMwCv472n6HGgMgc4RqnieWV9fuydw2n4SY4gsvnvwI8NHYYBgqcG','ROLE_USER', 'Sarrah', 'Salih', 'sarrah@email.com','5556667778');
 
 -- populates tables once they're created
 -- use this file to populate tables with flavors, cake styles, fillings, icings, sizes, etc.
@@ -102,22 +102,22 @@ INSERT INTO orders(user_id, orderstatus_id, pickup_date, pickup_time) VALUES
 -- Insert into orderDetails table
 INSERT INTO orderdetails(order_id, cake_id, writing, cake_quantity)
 VALUES
-((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-04-26' AND pickup_time = '12:00'), 1, 'happy birthday!', 1),
-((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-04-27' AND pickup_time = '09:00'), 2, '', 1),
-((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-04-27' AND pickup_time = '10:00'), 3, 'cake writing 2!', 1),
-((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-04-29' AND pickup_time = '08:00'), 4, '', 1),
-((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-04-29' AND pickup_time = '10:00'), 5, '', 1),
-((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-04-29' AND pickup_time = '16:00'), 6, 'cake writing 3!', 1),
-((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-04-30' AND pickup_time = '12:00'), 7, '', 1),
-((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-04-30' AND pickup_time = '14:00'), 1, '', 1),
-((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-04-30' AND pickup_time = '15:00'), 2, '', 1),
-((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-04-30' AND pickup_time = '17:00'), 3, 'cake writing 4!', 1),
-((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-04-30' AND pickup_time = '10:00'), 4, '', 1),
-((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-05-01' AND pickup_time = '11:00'), 5, '', 1),
-((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-05-02' AND pickup_time = '10:00'), 6, '', 1),
-((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-05-05' AND pickup_time = '10:00'), 7, '', 1),
-((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-05-26' AND pickup_time = '13:00'), 1, 'cake writing 5!', 1),
-((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-05-27' AND pickup_time = '13:00'), 2, '', 1),
-((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-05-27' AND pickup_time = '15:00'), 3, '', 1);
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-05-26' AND pickup_time = '12:00'), 1, 'happy birthday!', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-05-27' AND pickup_time = '09:00'), 2, '', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-05-27' AND pickup_time = '10:00'), 3, 'cake writing 2!', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 1 AND pickup_date = '2025-05-29' AND pickup_time = '08:00'), 4, '', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 2 AND pickup_date = '2025-05-29' AND pickup_time = '10:00'), 5, '', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-05-29' AND pickup_time = '16:00'), 6, 'cake writing 3!', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 4 AND pickup_date = '2025-05-30' AND pickup_time = '12:00'), 7, '', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 3 AND pickup_date = '2025-05-30' AND pickup_time = '14:00'), 1, '', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 4 AND pickup_date = '2025-05-30' AND pickup_time = '15:00'), 2, '', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 4 AND pickup_date = '2025-05-30' AND pickup_time = '17:00'), 3, 'cake writing 4!', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-05-30' AND pickup_time = '10:00'), 4, '', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 4 AND pickup_date = '2025-06-01' AND pickup_time = '11:00'), 5, '', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 4 AND pickup_date = '2025-06-02' AND pickup_time = '10:00'), 6, '', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-06-05' AND pickup_time = '10:00'), 7, '', 1),
+((SELECT id FROM orders WHERE user_id = 1 AND orderstatus_id = 4 AND pickup_date = '2025-06-26' AND pickup_time = '13:00'), 1, 'cake writing 5!', 1),
+((SELECT id FROM orders WHERE user_id = 2 AND orderstatus_id = 4 AND pickup_date = '2025-06-27' AND pickup_time = '13:00'), 2, '', 1),
+((SELECT id FROM orders WHERE user_id = 3 AND orderstatus_id = 3 AND pickup_date = '2025-06-27' AND pickup_time = '15:00'), 3, '', 1);
 COMMIT TRANSACTION;
 
